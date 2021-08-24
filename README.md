@@ -4,7 +4,7 @@ under [GNU General Public License 3 (GPL-3.0)](https://opensource.org/licenses/G
 
 See an example of the app here: [JewelKat](https://jewelkat.studio)
 
-##Setting up SwiftMo-Artisan
+## Setting up SwiftMo-Artisan
 
 1. Clone this repo on your server:
 
@@ -87,5 +87,5 @@ Pages, layout and logic can be altered in the `routers/main.js` specifically
 the `testNewFolder(res, focusPageAddress, item, path)` function which maps out the
 layout and indexes each page.
 
-###TODO
+### TODO
 Add auto sitemap and robots.txt generation.
