@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: swiftmo_modules/multerFileUpload/multerFileUploading.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: swiftmo_modules/multerFileUpload/multerFileUploading.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*jshint esversion: 6 */
+/**
+ * File uploading module
+ * @module multerFileUpload
+ * @description Methods for uploading files to file system.
+ */
+
+const multer = require('multer');
+const fse = require('fs-extra');
+const pathmod = require('path');
+const mongo = swiftMod('mongo');
+const crypto = require('crypto');
+/*
+const userTestRoute = multer({
+  dest: __dirname + '/userFiles/testUser/',
+});*/
+const Jimp = require('jimp');
+const reqVal = swiftMod('reqValidator').reqVal;
+const any = swiftMod('any').any;
+
+exports.damageUploads = multer({
+  storage: multer.diskStorage({
+    limits: {files: 1, parts: 11, fileSize: 5000000},
+    destination: function(req, file, callback) {
+      
+      
+    getItemRef();
+
+    async function getItemRef(){
+      try{
+        let itemtype = reqVal(req.body.itemtype, 'string', 200);
+        let imgtype = reqVal(req.body.imgtype, 'string', 200);
+        let itemref  = await makeitemref(req.body.itemref);
+        let validItem = await mongo.ifExists({itemref: req.body.itemref});
+        let path = './static/images/stock/'+ itemtype + '/' + itemref + '/' + imgtype + '/';
+        let ensureDir = await fse.ensureDir(path);
+
+        if(!validItem){
+          throw new Error('Item does not exit');
+        }
+        callback(null, path);
+      }catch(error){
+        callback(null, 'An error occured: ' + error);
+      }
+    }
+  },
+    filename: function(req, file, callback){
+    let imgtype = reqVal(req.body.imgtype, 'string', 35);
+    let ext = pathmod.extname(file.originalname);
+    if(any(['.JPG', '.jpg', 'JPEG', '.jpeg'], ext)){
+      ext = '.jpg';
+    }
+    else{
+      throw new Error('Invalid file type ' + ext);
+    }
+    callback(null, req.body.itemref + '-' + req.body.timestamp + '-' + req.body.imgtype + ext);
+  }
+  })
+});
+
+
+/**
+ * Store item image
+ * @method storeItemImage
+ * @param {object} Takes a form containing the main image file and relevant
+ * metadata in the from:
+ * { itemref: 'undefined',
+ *   timestamp: '1589547149309',
+ *   itemtype: 'theme',
+ *   value: 'rambling rose' }
+ * If an itemref is provided  the image applies to a specific item.
+ * @description Middleware function that handles the uploading of a single image
+ * for an item or item type.
+ */
+exports.storeItemImage = multer({
+    storage: multer.diskStorage({
+      limits: {files: 1, parts: 5, fileSize: 5000000},
+      destination: function(req, file, callback) {
+      getItemRef();
+      async function getItemRef(){
+        try{
+          let itemtype = reqVal(req.body.itemtype, 'string', 200);
+          let imgtype = reqVal(req.body.imgtype, 'string', 200);
+          let itemref  = (req.body.itemref === 'undefined') ? await makeitemref(req.body.itemref) : reqVal(req.body.itemref, 'string', 8);
+
+          //let validItem = await mongo.ifExists({itemref: req.body.itemref});
+          let specialpath = './static/images/stock/'+ itemtype + '/special/' + req.body.producer + '/' + req.body.value + '/' + itemref + '/';
+          let themepath = './static/images/stock/'+ itemtype + '/' + req.body.value + '/';
+          let itempath = './static/images/stock/'+ itemtype + '/' + req.body.value + '/' + req.body.theme + '/';
+
+          let path = (req.body.special === 'true') ? specialpath :
+                        (req.body.itemtype === 'theme') ? themepath : itempath;
+
+          let ensureDir = await fse.ensureDir(path);
+          
+
+          callback(null, path);
+        }catch(error){
+          callback(null, 'An error occured: ' + error);
+        }
+      }
+    },
+    filename: function(req, file, callback){
+      let imgtype = reqVal(req.body.imgtype, 'string', 35);
+      let itemref  = (req.body.itemref.length === 8) ? req.body.itemref : '';
+      let ext = pathmod.extname(file.originalname);
+      if(any(['.JPG', '.jpg', 'JPEG', '.jpeg'], ext)){
+        ext = '.jpg';
+      }
+      else{
+        throw new Error('Invalid file type ' + ext);
+      }
+
+      callback(null, itemref + '-' + imgtype + ext);
+    }
+  })
+});
+
+exports.storeBlogImage = multer({
+    storage: multer.diskStorage({
+      limits: {files: 1, parts: 5, fileSize: 5000000},
+      destination: function(req, file, callback) {
+        getItemRef();
+        async function getItemRef(){
+          try{
+            let title = reqVal(req.body.title, 'string', 200);
+            let validItem = await mongo.blogPostExists(req.body.title);
+            let path = './static/images/blog/'+ title + '/';
+            let ensureDir = await fse.ensureDir(path);
+            if(!validItem){
+              let error = new Error('Item does not exit');
+            }
+            callback(null, path);
+
+          }catch(error){
+            callback(error, false);
+          }
+        }
+      },
+      filename: function(req, file, callback){
+        let bytes = function createResetToken() {
+          return crypto.randomBytes(2).toString("hex");
+        };
+
+        let title = reqVal(req.body.title, 'string', 200);
+        let ext = pathmod.extname(file.originalname);
+        try{
+          //, '.png', '.PNG'
+          if(any(['.JPG', '.jpg', 'JPEG', '.jpeg'], ext)){
+            ext = '.jpg';
+            callback(null, req.body.title+ '-' + bytes() + ext);
+          }
+          else{
+            let error = new Error('Invalid file type, ' + ext + ', try .JPG, .jpg, .JPEG, .jpeg or .png');
+            throw error;
+          }
+        }catch(error){
+
+          callback(error, false);
+        }
+      }
+  })
+});
+
+
+/**not really used for it's original purpose, just for reqval**/
+function  makeitemref(itemref) {
+  let promise = new Promise(function (resolve, reject){
+  if(itemref){
+    reqVal(itemref, 'string', 20);
+    resolve(itemref);
+  }else{
+    let crypto = require('crypto');
+    crypto.randomBytes(8, function(err, buf) {
+      if (err) reject(err);
+      itemref = buf.toString('hex');
+      resolve(itemref);
+    });
+  }
+});
+  return promise;
+}
+
+exports.simple = multer({ dest: './static/images/' });
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

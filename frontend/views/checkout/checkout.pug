@@ -1,0 +1,208 @@
+extends ../masterView.pug
+include ../microdocs.pug
+mixin address(invoice, count)
+  .container
+    .num
+      h1 #{count}.)
+      -count++;
+    .col2  
+      +microdocs("<p>Enter the first line of your address (typically your house name or number).<p>")
+      em.attention.block *required info
+      label(for="addressline1"+invoice).block Address line 1:
+      input(type="text" name="addressline1"+invoice required id='clientaddressline1'+invoice).block
+
+  .container
+    .num
+      h1 #{count}.)
+      -count++;
+    .col2  
+      +microdocs("<p>Enter the second line of your address (typically your street name or locality).<p>")
+      label(for="addressline2"+invoice).block Address line 2:
+      input(type="text" name="addressline2"+invoice id='clientaddressline2'+invoice).block
+    
+  .container
+    .num
+      h1 #{count}.)
+      -count++;  
+    .col2  
+      +microdocs("<p>Enter your city/town or parish if you live in the countryside.<p>")
+      em.attention.block *required info
+      label(for="addresscity"+invoice).block City or town or parish:
+      input(type="text" name="addresscity"+invoice required id='addresscity'+invoice).block
+
+  .container  
+    .num
+      h1 #{count}.)
+      -count++;
+    .col2  
+      +microdocs("<p>Enter your state or province or county.<p>")
+      label(for="addressprovince"+invoice).block State or province or region:
+      input(type="text" name="addressprovince"+invoice id='clientprovince'+invoice).block
+      
+  .container  
+    .num
+      h1 #{count}.)
+      -count++;
+    .col2    
+      +microdocs("<p>Select your country.<p>")
+      em.attention.block *required info
+      label(for="country"+invoice).block Country:
+      include ../includes/countrylist.pug
+
+  .container
+    .num
+      h1 #{count}.)
+      -count++;
+    .col2  
+      +microdocs("<p>Enter your post code.<p>")
+      em.attention.block *required info
+      label(for="addresspostcode"+invoice).block Post code or ZIP:
+      input(type="text" name="addresspostcode"+invoice required id='addresspostcode'+invoice).block
+    
+mixin registration()
+  -let count = 1; 
+  .itemGroupColumn#clientDetails
+    h3 Enter your contact and shipping details: 
+    form(action="/registerClient" method="post")
+      
+      .container
+        .num
+          h1 #{count}.)
+          -count++;
+        .col2
+          +microdocs("<p>Enter an email address for us to contact you by if needed.</p>")
+          em.attention.block *required for new and return clients
+          label(for="email").block Email:
+          input(type="text" name="email" required)#clientemail.block
+          
+      .container
+        .num
+          h1 #{count}.)
+          -count++;
+        .col2
+          +microdocs("<p>Click the red button bellow and enter your client code if you're a returning client<p>")  
+          button.btnwarn.toggleFetchByConfcode Are you a returning client?  
+        .itemGroupColumn.emphasis#clientCodeInput.wrap.hide
+          .num
+          .col2
+            +microdocs("<p>Enter your 8 digit client code. Remember to enter your email first.<p>")
+            label(for="clientcode").block Enter your 8 digit client code after entring your email above. 
+            input(type="text" name="clientcode")#clientcode.block    
+           
+      .container
+        .num
+          h1 #{count}.)
+          -count++;
+        .col2
+          +microdocs("<p>Select your country calling code.</p>")
+          em.attention.block *required info
+          label(for='countrycode' name="countrycodelabel").block Country phone code: 
+          include ../includes/phoneCodes.pug
+        
+      .container
+        .num
+          h1 #{count}.)
+          -count++;
+        .col2
+          +microdocs("<p>Enter your phone number without the country code or spaces, as you would if dialling within your country.</p>")
+          em.attention.block *required info
+          label(for="phone").block Phone number:
+          input(type="text" name="phone" required)#clientphonenumber.block
+        
+      .container
+        .num
+          h1 #{count}.)
+          -count++;
+        .col2  
+          +microdocs("<p>Enter your first and last name.<p>")
+          em.attention.block *required info
+          label(for="clientname").block Your name:
+          input(type="text" name="clientname" required)#clientname.block
+          
+      +address('', count)  
+              
+      .container
+        +microdocs("<p>If your invoicing address is different from your delivery address click the next button.<p>")  
+        button.btnwarn.toggleinvoiceaddress Invoice to a different address
+        
+      -let invCount = 1;
+      
+      mixin invCount()
+        .num
+          h1 #{invCount}.)
+          -invCount++;
+        
+      .hide.emphasis
+        h3 Invoice address
+        .container
+          +invCount()
+          .col2  
+            +microdocs("<p>Name for invoice.<p>")
+            em.attention.block *required info
+            label(for="clientinvoicename").block Name for invoice:
+            input(type="text" name="clientinvoicename")#clientinvoicename.block  
+          
+        .container
+          +invCount()
+          .col2  
+            +microdocs("<p>If you wish to have your VAT number on your invoice, please enter it bellow.<p>")  
+            label(for="clientvatnumber").block V.A.T number:
+            input(type="text" name="clientvatnumber")#clientvatnumber.block
+            
+        +address('-invoice', invCount)
+          
+      .container  
+        +microdocs("<p>If you want us to keep your details so you only have to enter your email address for future orders, check the checkbox.<p>")
+        label(for="savedetails").block Save my details for future orders:
+        input(type="checkbox" name="savedetails")#savedetails.block
+    
+    .fullrowBottom
+      .yestick
+      .bigYellowBtn.toPaymentBtn.center
+        h2 Submit your details
+  
+mixin payment()
+  include ./includes/payment.pug
+  
+mixin confirmation() 
+  .itemGroupColumn#orderConfirmation  
+    
+mixin page(checkout)
+  each page, i in checkout
+    -if(Array.isArray(page) === true)
+      +page(page)
+    -else
+      .page(class=[page.display, page.address] data-address=page.address data-nextpage=page.nextpage data-name=page.page) 
+        if page.view
+          +#{page.view}(page, page.nextpage)
+
+block otherstyles
+
+block description
+  meta(name="description", content="checkout page")
+  meta(name="keywords", content="checkout")
+block robots
+  meta(name="robots", content= "noindex, nofollow")
+block title
+  title="Checkout"
+  //-meta(name="title", content=title)
+block bodycontent
+  script(type="application/ld+json")
+    !="{jsonldpage}"
+  
+  #checkout
+  -{checkout, items, price, entity}  
+  include ../mixins/folderComponents.pug
+  include ../blog/mixins.pug
+
+  .pages.itemGroup#deck
+    .alertdivfolder
+    
+    +page(checkout)
+
+  block orderConfirmation
+    //.orderConfirmation          
+block modals
+  
+block pagespecificscripts
+  script(src='https://js.stripe.com/v3/')

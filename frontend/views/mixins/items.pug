@@ -1,0 +1,8 @@
+include folderComponents.pug
+-{stock}
+.buttonContainer
+  if stock && stock.length >0
+    each item, i in stock
+      +cardItem(item.firstExample, item.items, item.count, item.jsonld)
+  else
+    h2 No items are available in your desired theme.

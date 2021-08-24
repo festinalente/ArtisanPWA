@@ -1,0 +1,95 @@
+mixin clientDetails(dets, cartcode)
+  h3 Your contact details and chosen shipping address: 
+  .simpleFlexRow
+    .flexBy200
+      h4 Contact: 
+      p Name: #{dets.clientname}
+      p Phone: #{dets.countrycode} #{dets.phone}
+      p Email: #{dets.email}
+      p 
+        b Your order code: #{cartcode}
+      p
+        b Your client code: #{dets.clientcode}
+      
+    .flexBy200
+      h4 Postal address:
+      p #{dets.addressline1}
+      p #{dets.addressline2}
+      p #{dets.addresscity}
+      p #{dets.addressprovince}
+      b #{dets.addresspostcode}
+      p #{dets.country}
+      
+    .flexBy200
+      h4 Invoice address:
+      if dets.clientinvoicename
+        p #{dets.clientinvoicename}
+        p VAT number: #{dets.clientvatnumber}
+        p #{dets['addressline1-invoice']}
+        p #{dets['addressline2-invoice']}
+        p #{dets['addresscity-invoice']}
+        p #{dets['addressprovince-invoice']}
+        p #{dets['addresspostcode-invoice']}
+        p #{dets['country-invoice']}
+      else        
+        p #{dets.addressline1}
+        p #{dets.addressline2}
+        p #{dets.addresscity}
+        p #{dets.addressprovince}
+        p #{dets.addresspostcode}
+        p #{dets.country}
+      
+mixin cartItems(d, i, currency)
+  -
+  -let price = (d.price / 100).toFixed(2);
+  -let vat = (d.price * ( d.tax / 100 ) / 100).toFixed(2);
+  -let image = (d['image links'] && d['image links'][0]) ? d['image links'][0]: 'no image';
+  
+  .flexBy350
+    h3 Item #{i}
+    .simpleFlexRow(data-pattern=d._id.pattern data-itemType=d._id.type data-items=JSON.stringify(d.items))
+      .flexBy10em.itemImage
+        .emphasis To see a picture of your chosen item allow remote content in your e-mail client.
+        -if(d['image links'] && d['image links'].length > 0)
+          -if (process.env.NODE_ENV === "development")
+              -//adds potterytest, removes leading slashes
+              img(src="https://potterytest.endurance.link/"+d['image links'][0].replace(/^\/+/g, '') alt="Image of "+d.name +" with " + d.theme.name)
+          -if (process.env.NODE_ENV === "production") 
+              img(src="https://www.porchespottery.com/"+d['image links'][0] alt="Image of "+d.name +" with " + d.theme.name)  
+        -let dimensions = (d['item type'].dimensions) ? d['item type'].dimensions.toString().replace(/,/g, ' x ') + ' mm' : null; 
+      .flexBy350
+        p #{d.name} with #{d.theme.name} design | weight ~#{d['item type'].weight} g | dimensions ~#{dimensions}
+        p 
+          em Price: #{currency} #{price} with #{currency} #{vat} tax (V.A.T.) charged at #{d.tax}%
+         
+      
+mixin summary(summary, currency, status)
+  h3 Summary:  
+  -let time = summary.orderPlaced;
+  p Order placed: #{time}
+  .alertdiv Shipping on the next working day (mo-fr). You will be notified by e-mail the exact moment your order ships.
+  -const price = (summary.price / 100).toFixed(2);
+  .itemprofile.stockItems.displayFlex.backendbox
+    h4 Total paid: #{currency} #{price} with tax.  
+  
+-{sale}
+
+.orderConfirmationPage
+  .printHeader
+    -if (process.env.NODE_ENV === "development")
+        -//adds potterytest, removes leading slashes
+        img(src="https://potterytest.endurance.link/"+'/images/logos/roundText80px.png' alt='Porches pottery logo: allow remote content to see the logo.')
+    -if (process.env.NODE_ENV === "production") 
+        img(src="https://www.porchespottery.com/"+'/images/logos/roundText80px.png' alt='Porches pottery logo: allow remote content to see the logo.')
+  h2.hideForPrint Your order:
+  p Thank you for your purchase and supporting in us in producing handmade ceramics. Bellow are the details of your purchase, should anything be a miss, please reply to this e-mail and we can ammend your order.
+  +clientDetails(sale[0].clientDetails, sale[0].cart[0].cart.cartcode)  
+  each item, j in sale[0].cartItems
+    .simpleFlexRow
+      +cartItems(item, j+1, sale[0].entity.currency)
+  +summary(sale[0].summary, sale[0].entity.currency, sale[0].summary.status)  
+  br
+  .emphasis.hideForPrint Your invoice will ship jointly with your order.
+  p Thanks again, from our whole team. 
+
+      

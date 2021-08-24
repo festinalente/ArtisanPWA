@@ -1,0 +1,7 @@
+{
+  "name": "MongoConnect",
+  "version": "1.0.0",
+  "description": "A project specific DB connection script that pools connections.",
+  "main": "mongoConnect.js",
+  "private": "true"
+}

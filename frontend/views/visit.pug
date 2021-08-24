@@ -1,0 +1,70 @@
+extends masterView.pug
+block otherstyles
+  link(rel='stylesheet' href='/css/leafletCSS/leaflet.min.css')
+  style(type='text/css', nonce=nonce).
+   .map > *{
+      width: 100%;
+      height: 40vh; 
+    }
+    .visitpic {
+      width: 100%; 
+      height: 40vh;
+      background-image: url("/images/entity/location.jpg");
+      background-size: cover;
+      background-position-y: bottom;
+    }
+    
+    .contacts > a{
+      text-decoration: none;
+    }  
+block description
+  meta(name="description", content="Directions to Porches Pottery, making handmade Portuguese pottery")
+  meta(name="keywords", content="direction, porches, pottery, algarve, attractions")
+block robots
+  meta(name="robots", content= "index")
+block title
+  title=entity.title
+block bodycontent
+  script(type="application/ld+json")
+    !="{jsonldpage}"
+  h1 Visit us
+
+  .itemGroupColumnMedium
+    h4 What you see from the road:
+    .visitpic.center
+    
+  .itemGroupColumnMedium
+    h4 Where we are located:
+    .map(data-lat=entity.location.lat data-lng=entity.location.lng)
+    
+  .fullrowBottom
+    a(href="https://www.google.pt/maps/dir//"+entity.location.lat + ',' +entity.location.lng target="_blank" rel="noopener").item.center
+      .bigYellowBtn.toPaymentBtn.center
+        h2 Get Directions  
+        
+  .itemGroupColumnMedium  
+    h4 Contacts: 
+    .itemGroup.contacts
+      a(href="tel:00"+entity['country code'] + entity.phone).item.phoneicon.center
+      a(href="mailto:"+entity.email).item.emailicon.center
+      a(href="https://www.google.pt/maps/dir//"+entity.location.lat + ',' +entity.location.lng target="_blank" rel="noopener").item.routeicon.center
+      
+  .itemGroupColumnMedium    
+    h4 Opening times:
+    div.center
+      -let days = Object.keys(entity['openingHours']);
+      ul
+        each day in days
+          li #{day}: 
+            each time, index in entity['openingHours'][day]
+              -if(!time)
+                span closed #{day}. 
+              -else if(index === 0 || index % 2 === 0)
+                span #{time} till #{entity['openingHours'][day][index+1]},
+              -else if(index % 2 === 1 && index !== entity['openingHours'][day].length -1)  
+                span  and         
+    
+block modals
+  
+block pagespecificscripts
+  script(src="https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js")

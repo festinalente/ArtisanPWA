@@ -1,0 +1,36 @@
+@import "variables.scss";
+
+.backendMenu {
+  background-color: $secondary-color;
+  color: $primary-color;
+  width: 100%;
+}
+
+.backendMenuItem {
+  color: $primary-color;
+  font-family: $reading-font;
+  font-weight: normal;
+}
+
+.backendMenuItem:hover {
+  color: $attention-color;
+  background-color: invert($attention-color);
+  cursor: pointer;
+}
+
+.logo {
+  font-family: $reading-font;
+  float: left;
+  font-size: 1.3em;
+  margin-left: 0.5em;
+}
+
+.logocol {
+  max-width: 14em;
+}
+
+.userControl {
+  justify-content: left;
+  max-width: 15em;
+  padding: 0.5em;
+}

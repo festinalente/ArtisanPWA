@@ -1,0 +1,60 @@
+doctype html
+-{language}
+html(lang="en-EU" xml:lang="en-EU")
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name="theme-color" content="#3366cc")
+    link(rel='stylesheet' href='https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.css')
+    link(rel="stylesheet" href="/backendStatic/css/production/master.min.css" async)
+    link(rel="stylesheet" href="/backendStatic/SwiftCal/css/calendarApp.css")
+
+
+    block otherstyles
+
+    block description
+
+    block robots
+
+    block title
+
+  body  
+    include ./includes/navigation.pug
+    .itemGroup#werepwa
+      .col1
+        p Add our webapp to your homescreen to have access to routes and maps offline, as well as your booking summary on any services you have ordered.
+        a.btn.btn-primary.sms1.btn-lg#addpwa(role="button") Add the SwiftMo webapp
+    block bodycontent
+    .itemGroupColumn.backendPage
+      .col1
+        .itemGroupColumn
+          form.logisticsForm
+            .itemGroup.pickup
+              .fullrowAlign.backendParentDiv.titleDiv
+                -//h3 Add new stock: 
+                button.btnbackend.sms2.bounceOnHover.toggleDocs toggle inline help
+                .maincontent
+                  h3 Click on a menu item to begin.
+    .itemGroup#footer
+      p.
+        Any backend code and server side code is published with no licence granted by Tomás Swift-Metcalfe unless otherwise stated.  
+        #[a(href="/documentation") software documentation]
+    block modals
+    .modal.alertmodal
+      .alertmodalcontent.alertdiv
+        .circle.sms2.circleClose
+          .before
+          .after      
+        p.alertmodalcontentP
+    .modal.loadingGif
+      .gif
+        h2 Wait a sec...
+        br
+        img(src='/images/platePainting.gif')
+    block pagespecificscripts
+      script(src='/backendStatic/productionJS/backendmaster.min.js')
+      script(src='/backendStatic/SwiftCal/js/calendarConstructor.js')
+      script(src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js')
+      script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js')
+      script(src='/backendStatic/mapfunctions/mapfunctions.min.js')

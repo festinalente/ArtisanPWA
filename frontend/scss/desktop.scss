@@ -1,0 +1,90 @@
+@import "variables.scss";
+@import "include-media.scss";
+
+@include media(">=desktop") {
+  body {
+    margin: 0;
+  }
+
+  .gutterMargin{
+    margin-top: 149px;
+  }
+
+  .mobileMenuTop {
+    display: none;
+  }
+
+  .desktopMenuTop {
+    display: block;
+    background: $secondary-color;
+  }
+
+  .menuNotLink{
+    background-color: $primary-color;
+  }
+
+  .menuNotLink > img {
+    width: 90vh;
+  }
+
+  .menuNotLink:hover {
+    background-color: #333;
+  }
+
+  .shoppingCart{
+    padding: 0.5em;
+    float: right;
+    cursor: pointer;
+    width: 4em;
+  }
+
+  .post {
+    width: 50vw;
+    margin: auto;
+
+    p {
+      text-align: justify;
+    }
+
+    video {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+
+  }
+
+  .gutters {
+    flex: 1 1 40px;
+  }
+
+  .guttersBody {
+    flex: 2 0 60%;
+  }
+
+  .potBespoke {
+    font-size: 1.25em !important;
+    max-width: 280px;
+  }
+
+  .modalContent {
+    margin: 1em 20vw !important;
+  }
+
+  .itemButton {
+    flex-basis: 17em;
+    padding: 1em;
+    cursor: pointer;
+    border-radius: 0em;
+
+
+    img {
+      border-radius: 0.15em;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+}

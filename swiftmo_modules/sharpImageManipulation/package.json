@@ -1,0 +1,11 @@
+{
+  "name": "Adapt user images",
+  "version": "1.0.0",
+  "description": "A project specific module that formats and resizes images for this particular project using Sharp",
+  "main": "sharpImageManipulation.js",
+  "license": "MIT license",
+  "author": "Tomás Swift-Metcalfe",
+  "dependencies": {
+    "sharp": "^0.27.0"
+  }
+}

@@ -1,0 +1,215 @@
+@import "variables.scss";
+
+@mixin potTitle(){
+  color: $base-color;
+  margin: auto;
+  height: 1em;
+  width: auto;
+  //width: $mobileWidth;
+}
+
+.background0{
+  opacity: 100%;
+}
+
+.background1{
+  opacity: 90%;
+}
+
+.potBespoke{
+  position: absolute;
+  font-weight: 100;
+  font-family: $title-fonts;
+  padding: 0.5em;
+  font-size: 1em;
+  @include potTitle();
+  margin-top: 0em;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  height: auto;
+  pointer-events: none;
+  color: $title-color;
+
+  p {
+    font-family: "Belleza Regular";
+    font-size: 2em;
+    text-decoration: none;
+    color: #372525;
+    font-weight: 400;
+  }
+}
+
+
+
+.moveText{
+  margin-top: calc((#{$boxheight}/2) + 0.25em + 2.5em);
+  background-color: $primary-shaddow;
+  width: inherit;
+  background-color: $darker-primary-transparent;
+  width: inherit;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  height: auto;
+}
+
+.overlay{
+  background: #0000007a;
+  border-top-right-radius: 0.3em;
+  border-top-left-radius: 0.3em;
+  line-height: 1em;
+}
+
+.overlay1{
+  /*background: rgb(62,154,198);*/
+  width: 100%;
+  pointer-events: none;
+  height: $boxheight;
+  mix-blend-mode: multiply;
+  //background-color: rgba(62,154,198,1);
+  //background: linear-gradient(90deg, rgba(62,154,198,1) 0%, rgba(40,77,154,0.5) 50%);
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+}
+
+.textonly{
+  background-color: $primary-shaddow;
+  width: $mobileWidth;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 5em;
+  margin: $standardMargin;
+  -webkit-box-shadow: 0 0 9px 4px #00000030;
+  -moz-box-shadow: 0 0 9px 4px #00000030;
+  box-shadow: 0 0 9px 4px #00000030;
+  @include dropShaddowBlue();
+  h1 {
+    background-color: #ffffff00;
+    pointer-events: none;
+  }
+}
+
+.cardImageRules {
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include cardImageRules();
+}
+
+.placeHolderTheme {
+  background-image: url('/images/entity/themes.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($darker-primary);
+}
+
+.placeHolderBase {
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $boxheight;
+  margin: $standardMargin;
+  @include dropShaddowGrey();
+  @include dropShaddowBlue();
+  @include verticalCenter();
+}
+
+.placeHolderItemType{
+  background-image: url('/images/entity/shapes.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderTypes{
+  background-image: url('/images/entity/types.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+
+.placeHolderTiles{
+  background-image: url('/images/entity/tiles.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderSpecial{
+  background-image: url('/images/entity/special.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderBespoke{
+  background-image: url('/images/entity/bespoke.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderShop{
+  background-image: url('/images/entity/Shop.webp');
+  background-position: 25% 44%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderVisit{
+  background-image: url('/images/entity/Visit Us.webp');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderBlog{
+  background-image: url('/images/entity/Blog.webp');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.placeHolderStory {
+  background-image: url('/images/entity/About Us.webp');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include placeholder($secondary-color);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
+  flex-direction: row;
+  flex-flow: wrap;
+  flex-grow: 1;
+  margin: 2em 0em 1em 0em;
+}
+
+.pluspoints {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: space-around;
+  flex-wrap: wrap;
+  margin: 1em 0em 1em 0em;
+}

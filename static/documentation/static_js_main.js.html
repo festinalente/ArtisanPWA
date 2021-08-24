@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/js/main.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/js/main.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+  * Client facing event delegation
+  * @namespace clientEventDelegation
+  */
+
+/**
+  * Modal Methods
+  * @namespace modalMethods
+  * @memberof clientEventDelegation
+  * @description
+    The functions which control the modal's behaviour: display and adding the
+    current modal state to window.history
+  */
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  swiftmoAlert.set();
+  setStateByPath();
+  clearTrailingSlash();
+  //cart.fetchCartData();
+  changeEvents();
+  setBySessionStore();
+
+  initMap();
+
+  if(document.querySelector('.folder')){
+    folder2.reset().reattachEvents().foldercontinue();
+  }
+
+  if(window.location.pathname.includes('/shop/designs')){
+    let designs = Array.from(document.querySelectorAll('.fetch'));
+    designs.forEach((item, i) => {
+      xhr({ [item.dataset.fetchwhat] : item.dataset.fetchthis}, '/stockQuery', function(res){
+        document.querySelector('title').textContent = 'Handmade ceramincs with the ' + item.dataset.fetchthis + 'design.';
+        document.querySelector('[data-name="'+ item.dataset.fetchthis+'"]' ).innerHTML = res;
+        if(i === designs.length -1){
+          let path = window.location.pathname.split('/');
+          let page = document.querySelector('.focus').dataset.address;
+          if(path[4]){
+            
+            let target = document.querySelector('[data-item="' +path[4].replace(/_/g, ' ') +'"][ data-theme="' +path[3].replace(/_/g, ' ') +'"]');
+            
+            
+            openModalSetState(page, target, path[4])
+          }
+        }
+      });
+    });
+  }
+
+  //if(window.location.pathname === '/shop' || window.location.pathname === '/shop/' ){
+  if(window.location.pathname.includes('/shop')){
+    shopEvents();
+    window.history.pushState({page: '0'}, '', window.location);
+  }
+
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+
+  let t = document.querySelector('.menuTablet');
+  let sticky = t.offsetTop;
+
+  window.onscroll = function() {scrollAction()};
+
+  function scrollAction() {
+    if (window.pageYOffset > sticky) {
+      t.classList.add("sticky");
+      document.querySelector('.guttersBody').classList.add("gutterMargin");
+    }
+    else if(window.pageYOffset &lt; sticky) {
+      t.classList.remove("sticky");
+      document.querySelector('.guttersBody').classList.remove("gutterMargin");
+    }
+    else{
+      t.classList.remove("sticky");
+      document.querySelector('.guttersBody').classList.remove("gutterMargin");
+    }
+  }
+
+  if(window.pageYOffset === 0){
+    t.classList.remove("sticky");
+    //document.querySelector('.guttersBody').style.marginTop = '0em';
+  }
+
+});
+
+function initMap(){
+  if(window.location.pathname === '/visit'){
+    window.setTimeout(function(){
+      let lat = document.querySelector('.map').dataset.lat;
+      let lng = document.querySelector('.map').dataset.lng;
+      let map = new MapFunctions('.map', [lat, lng]);
+      map.init();
+      map.invalidateSize();
+      map.addMarker(lat, lng);
+    }, 500);
+  }else{
+    return;
+  }
+};
+
+function backArrow(){
+  if(window.location.pathname &amp;&amp; window.location.pathname.includes('/shop')){
+    document.querySelector('.arrowBack').classList.remove('hideInSight');
+  }
+  else{
+    document.querySelector('.arrowBack').classList.add('hideInSight');
+  }
+}
+
+function clearTrailingSlash(){
+  let path = window.location.pathname;
+  if(path.length > 1 &amp;&amp; path.slice(path.length -1, path.length) === '/'){
+    window.location.pathname = path.substring(0, path.length -1);
+  }else{
+    return;
+  }
+}
+
+function path(){
+  clearTrailingSlash();
+  let path = window.location.pathname;
+
+  if(path.split('/')[4]){
+    return 'level4';
+  }
+  if(path.split('/')[3]){
+    return 'level3';
+  }
+  else{
+    return path;
+  }
+}
+
+function setStateByPath(url, historyOb){
+  backArrow();
+  if(url){
+    window.history.pushState(historyOb, '', url);
+  }else{
+    window.history.pushState({page: '0'}, '', window.location);
+  }
+}
+
+function url(){
+  let bits = window.location.pathname.split('/');
+  let url = window.location.pathname.replace(bits[bits.length-1], '');
+  if(url.slice(url.length -1, url.length) === '/'){
+    return url.substring(0, url.length -1);
+  }else{
+    return url;
+  }
+}
+
+function setStateByObject(state){
+  
+  
+  if(state.page &amp;&amp; state.theme &amp;&amp; state.item){
+    window.history.replaceState({page: state.page, theme: state.theme}, '', url())
+  }
+  else if(state.page &amp;&amp; state.theme){
+    window.history.replaceState({page: '1' }, '', url())
+    setStateByPath();
+
+  }else{
+    window.history.replaceState({page: state.page }, '', url())
+    setStateByPath();
+  }
+}
+
+
+window.onpopstate = function(e){
+  
+  
+  folder2.shortcutnextpage(window.history.state.page);
+
+};
+
+
+document.addEventListener('click', function(e){
+  backArrow();
+  if(e.target.classList.contains('arrowBack')){
+    if(parseInt(window.history.state.page) === 0){
+      window.location = window.location.origin;
+    }else{
+      window.history.back();
+      window.onpopstate = function(e){
+        folder2.shortcutnextpage(window.history.state.page);
+      }
+    }
+  }
+
+  if(e.target.classList.contains('fetch')){
+    if(document.querySelector('[data-name="'+ e.target.dataset.fetchthis+'"]' ).innerHTML.length &lt; 10){
+      xhr({ [e.target.dataset.fetchwhat] : e.target.dataset.fetchthis}, '/stockQuery', function(res){
+          let targetPage = document.querySelector('[data-name="'+ e.target.dataset.fetchthis+'"]' );
+              targetPage.innerHTML = res;
+              //window.history.state.page = targetPage.dataset.address
+          let url = new URL(window.location.href + '/' + e.target.dataset.fetchthis.replace(/ /gi, '_'));
+
+      });
+    }
+  }
+
+  if(e.target.id === 'browseSpecial'){
+    xhr({}, '/stockSpecial', function(res){
+        let targetPage = document.querySelector('[data-name="special"]' );
+            targetPage.innerHTML = res;
+        let url = new URL(window.location.href + '/' + e.target.dataset.fetchthis.replace(/ /gi, '_'));
+    });
+  }
+
+  if(e.target.classList.contains('fetchPost')){
+    if(document.querySelector('[data-name="'+ e.target.dataset.fetchthis+'"]' ).innerHTML.length &lt; 10){
+      //Looks like {"theme": "Rambling Rose"} for example, coult fetch {"special": "true"}
+      xhr({ [e.target.dataset.fetchwhat] : e.target.dataset.fetchthis}, '/postQuery', function(res){
+          let targetPage = document.querySelector('[data-name="'+ e.target.dataset.fetchthis+'"]' );
+              targetPage.innerHTML = res;
+              //window.history.state.page = targetPage.dataset.address
+          let url = new URL(window.location.href + '/' + e.target.dataset.fetchthis.replace(/ /gi, '_'));
+
+      });
+    }
+  }
+
+  if(e.target.classList.contains('fetchItemTypes')){
+    xhr({ [e.target.dataset.fetchwhat] : e.target.dataset.fetchthis}, '/stockByItemType', function(res){
+      let targetPage = document.querySelector('[data-name="'+ e.target.dataset.fetchthis+'"]' );
+          targetPage.innerHTML = res;
+          //window.history.state.page = targetPage.dataset.address
+      let url = new URL(window.location.href + '/' + e.target.dataset.fetchthis.replace(/ /gi, '_'));
+    });
+  }
+
+
+  if(e.target.classList.contains('toggleModal') &amp;&amp; !e.target.classList.contains('shoppingCart')){
+    openModalSetState(window.history.state.page, e.target.nextSibling, 'item');
+  }
+
+
+  /*
+  if(e.target.id === 'browseByItemType'){
+    let url = new URL(window.location.href + '/' + e.target.dataset.linktext.replace(/ /gi, '_'))
+    setStateByPath(url, {page: e.target.dataset.nextpage});
+  }
+
+  if(e.target.id === 'browseByTheme'){
+    let url = new URL(window.location.href + '/' + e.target.dataset.linktext.replace(/ /gi, '_'));
+    setStateByPath(url, {page: e.target.dataset.nextpage});
+  }
+
+  if(e.target.id === 'browseSpecial'){
+    let url = new URL(window.location.href + '/' + e.target.dataset.linktext.replace(/ /gi, '_'));
+    setStateByPath(url, {page: e.target.dataset.nextpage});
+  }
+
+
+  */
+
+
+
+  if(e.target.classList.contains('toggleByThemeModal')){
+    openModalSetState(window.history.state.page, e.target.nextSibling, 'theme');
+  }
+
+  if(e.target.classList.contains('shoppingCart')){
+    document.querySelector('body').style.position = 'fixed';
+    event.target.nextSibling.style.display = 'block';
+    cart.fetchCartData();
+    cart.fetchView();
+  }
+
+  if(e.target.classList.contains('question')){
+    if(e.target.nextSibling.classList.contains('infodisplay')){
+      e.target.nextSibling.classList.remove('infodisplay');
+    }else{
+      e.target.nextSibling.classList.add('infodisplay');
+    }
+    e.target.nextSibling.querySelector('.circle').addEventListener('click', function(el){
+      e.target.nextSibling.classList.remove('infodisplay');
+    });
+  }else{
+    document.querySelectorAll('.infodisplay').forEach(function(el, i){
+      el.classList.remove('infodisplay');
+    });
+  }
+
+  if(e.target.classList.contains('toggleinvoiceaddress')){
+    e.preventDefault();
+    if(e.target.parentElement.nextSibling.classList.contains('hide')){
+      e.target.parentElement.nextSibling.classList.remove('hide');
+      document.querySelector('#clientinvoicename').focus();
+      document.querySelector('#clientinvoicename').parentElement.scrollIntoView();
+    }else{
+      e.target.parentElement.nextSibling.classList.add('hide');
+      document.querySelector('#savedetails').focus();
+      document.querySelector('#savedetails').parentElement.scrollIntoView();
+    }
+  }
+
+  if(e.target.classList.contains('toggleFetchByConfcode')){
+    e.preventDefault();
+    if(e.target.parentElement.nextSibling.classList.contains('hide')){
+      e.target.parentElement.nextSibling.classList.remove('hide');
+      document.querySelector('#clientcode').focus();
+      document.querySelector('#clientcode').parentElement.parentElement.scrollIntoView();
+      document.querySelector('#clientcode').addEventListener('input', fetchClientDetails);
+    }else{
+      e.target.parentElement.nextSibling.classList.add('hide');
+      document.querySelector('#countrycode').focus();
+      document.querySelector('#countrycode').parentElement.scrollIntoView();
+    }
+  }
+
+  if(e.target.classList.contains('toCheckoutBtn')){
+    e.preventDefault();
+    makeCustomerForm();
+  }
+  
+});
+
+function fetchClientDetails(e) {
+  if(e.target.value.length === 8){
+    let email = document.querySelector('#clientemail').value;
+    xhr({ clientcode : e.target.value, email: email}, '/registerClient', function(res){
+      let parsed = JSON.parse(res);
+      let keys = Object.keys(parsed);
+
+      for (let i = 0; i &lt; keys.length; i++) {
+          let val = parsed[keys[i]];
+          let t = document.querySelector('[name="'+keys[i]+'"]');
+
+        if(i === keys.length-1){
+          let parent = document.querySelector('.payment-form');
+          initStripeCartCode(parent, null);
+          folder2.shortcut('1');
+          document.querySelector('.payment-form').scrollIntoView();
+        }
+
+        else if(keys[i] === '_id' || keys[i] === 'clientcode' ){
+          continue;
+        }
+
+        else if(t.type === 'checkbox'){
+          t.setAttribute('checked', 'checked');
+        }
+
+        else if(t.type === 'text'){
+          t.value = val;
+        }
+
+        else if(t.tagName === 'SELECT'){
+          setOption(t, val);
+        }
+
+
+      }
+    });
+
+  }
+}
+
+function setOption(t, val){
+  for(let i = 0, j = t.options.length; i &lt; j; ++i) {
+    if(t.options[i].value === val) {
+       t.selectedIndex = i;
+       break;
+    }
+  }
+}
+
+function makeCustomerForm(){
+  let form = $('#clientDetails')
+  let requiredFields = ['#clientemail', '#countrycode', '#clientphonenumber',
+  '#clientname', '#clientaddressline1', '#addresscity', '.country', '#addresspostcode'];
+
+  //Check
+  for (var i = 0; i &lt; requiredFields.length; i++) {
+    if($(requiredFields[i]).value === ''){
+      $(requiredFields[i]).classList.add('attentionBorder');
+    }
+    else{
+      $(requiredFields[i]).classList.remove('attentionBorder');
+    };
+    //Event
+    $(requiredFields[i]).addEventListener('input', function(e){
+      $(requiredFields[i]).classList.remove('attentionBorder');
+    });
+  }
+
+  formxhr(new FormData(form), "/registerClient", function(res){
+    let parent = $('.payment-form');
+    initStripeCartCode(parent, null);
+    folder2.shortcut('1');
+    parent.scrollIntoView();
+  });
+}
+
+function addScroller(targetDiv){
+  var images = new MakeScroller2();
+  
+  if(targetDiv &amp;&amp; targetDiv.firstChild === null){
+    images.build(targetDiv, JSON.parse(targetDiv.dataset.imagelinks));
+  }
+}
+
+
+/**
+  * openModalSetState
+  * @function openModalSetState
+  * @param {string} string representation of the indexes leading to the current
+    page in the folder, e.g. "1|0|1|0" that is stored on the target page as a
+    data attribute "address"
+  * @description
+    The openModalSetState both opens a modal and makes a modal state navigable
+     via the history API. Regarding parameters set via the history API see:
+       //https://developer.mozilla.org/en-US/docs/Web/API/History/pushState
+  * @memberof clientEventDelegation.modalMethods
+  */
+function openModalSetState(page, targetModal, themeOrItem){
+  document.querySelector('body').style.position = 'fixed';
+  targetModal.style.display = 'block';
+  addScroller(targetModal.querySelector('.scroller'));
+  attachCloseEvents();
+
+  window.history.pushState({
+    page: page,
+    item : targetModal.dataset.item,
+    theme : window.location.pathname.split('/')[3]
+  }, '', window.location  +'/'+ targetModal.dataset[themeOrItem].replace(/ /gi, '_'));
+}
+
+/**
+  * attachCloseEvents
+  * @function attachCloseEvents
+  * @description
+    Attaches close event to each ".itemModal" in the DOM which closes the current
+    modal and goes back one step in the history.
+  * @fires toggle.tog(event, 'none')
+  * @fires window.history.back();
+  * @memberof clientEventDelegation.modalMethods
+  */
+function attachCloseEvents(){
+  document.querySelectorAll('.itemModal').forEach((e)=>{
+    toggle.setinst(e);
+    attachClose.attach(e.querySelectorAll('.circleClose'));
+  });
+}
+
+
+const attachClose = {
+  eventsAttached: [],
+  attach: function(targets){
+    targets.forEach(function(item, i){
+      if(!attachClose.eventsAttached.includes(item)){
+        attachClose.eventsAttached.push(item)
+        item.addEventListener('click', attachClose.close);
+      }
+    });
+  },
+  close: function(e){
+    document.querySelector('body').style.position = 'unset';
+    toggle.tog(e.target.closest('.itemModal'), 'none');
+    if(window.location.pathname.includes('/shop')){
+      window.history.back();
+      
+      //window.history.pushState(window.history.state.page)
+      //setStateByObject(window.history.state);
+      //folder2.shortcutnextpage(window.history.state.page);
+    }
+  }
+}
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

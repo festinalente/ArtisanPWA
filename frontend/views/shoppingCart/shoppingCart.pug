@@ -1,0 +1,124 @@
+-
+  function aAn(bike){
+    var vowel = bike.slice(0,1);
+    var vowels =  ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u', 'Y', 'y'];
+    if(vowels.includes(vowel)){
+      return 'An ' + bike;
+    }
+    else{
+      return 'A ' + bike;
+    }
+  }
+  
+  function times(shopOpeningHours){
+    var text = shopOpeningHours[0] + '-' + shopOpeningHours[1];
+    if(shopOpeningHours.length === 2){
+      return text; 
+    }
+    else{
+      shopOpeningHours.forEach(function(e, i){
+        if(i >= 2 && i % 2 === 0){
+          text += ' and ' + shopOpeningHours[i] + '-' + shopOpeningHours[i+1];
+        }
+      });
+    }
+    return text;
+  }
+  
+  function orderstatus(payment){
+    if(payment === 'added to cart'){ 
+      return 'checkoutItem'
+    }
+    if(payment === 'paid'){      
+      return 'purchasedItem'  
+    }
+  }
+  
+  let finalFullPrice = 0;
+  let cartcode;
+
+mixin items(val,i)
+  -const price = (val.price / 100).toFixed(2)
+  -const vat = (val.totalPrice *.23 / 100).toFixed(2);
+  -const commission = (val.price *.9 / 100).toFixed(2);
+  -const guideCharge = ((val.price - (val.price *.9)) /100).toFixed(2);
+  -const index = i +1;
+  -const confcode = val.confcode;
+  -const type = val.type;
+  -const extras = val.extras;
+  .itemGroup
+    .paragraph(class=orderstatus(val.payment))
+      .itemGroup
+        .item
+          h4.item Item #{index}.) 
+            em.emphasis.
+              Item code: #{confcode} <br>Cart code: #{val.cartcode}
+        .item
+          +controls(val.payment)  
+      .itemGroup.description(id=confcode)
+        .item.description
+          h4.originalh4 Item description:
+          if(val.size)
+            p.
+              #{aAn(val.brandAndModel)} in size #{val.size} rented from #{val.start.humanDate} till the 
+              #{val.end.humanDate} for a cost of €#{price}, provided by #{val.provider}.
+          else
+            p.
+              #{aAn(val.brandAndModel)} rented starting on #{val.start.humanDate} and ending on 
+              #{val.end.humanDate} for a cost of €#{price}, provided by #{val.provider}.
+          if val.deliveryPickupOption === 'clientCollection' 
+            -const timesVar = times(val['shop opening times']);
+            p.
+              You have chosen to collect the #{val.brandAndModel} at the following coordinates:
+              latitude: #{val['shop coordinates'].lat}, longitude #{val['shop coordinates'].lng}, 
+              between #{timesVar} on #{val.start.humanDate},
+              returning the bike at the same time on #{val.end.humanDate} for no extra cost.
+          else
+            p.
+              You have chosen to have the #{val.brandAndModel} delivered at the following coordinates: 
+              latitude: #{val['client coordinates'].lat}, longitude: #{val['client coordinates'].lng}
+              for a cost of €#{(val.travelCost / 100).toFixed(2)}.
+          if(extras)
+            p You have selected the following extras with this order: 
+            ul
+            each item, i in val.extras
+              -finalFullPrice += parseFloat(item.price);
+              +extrasMixin(item)
+            p #{costtext}
+          else
+            p #{costtext}
+        .item.total
+          h4.originalh4 Item price:
+          p Price €#{price} 
+          p Tax (V.A.T. payable in portugal) €#{vat}
+      .emphasis.paid
+        p This item is #{val.payment}.
+
+mixin extrasMixin(item)
+  li #{aAn(item.brandAndModel)} #{item['item type']} for €#{(item.price / 100).toFixed(2)}
+mixin empty()
+  .emptyCart
+mixin controls(payment)
+  if(payment === 'added to cart') 
+    .center
+      button.btn.bounceOnHover.smsBlue.removeFromCart(name="removeFromCart" data-confcode=confcode data-type=type) Remove
+      button.btn.bounceOnHover.sms2.toCheckout(name="toCheckout" data-confcode=confcode data-type=type) Finish &amp; pay 
+  if(payment === 'paid')
+    button.btn.bounceOnHover.floatRight.sms2.toCheckout(name="toCheckout" data-confcode=confcode data-type=type) Retrieve Invoice 
+
+.itemGroupColumn    
+  if(items)
+    each val, index in items
+      if(val.payment ==='added to cart')
+        -finalFullPrice += parseFloat(val.price);
+        +items(val, index)
+      if(val.payment ==='paid')
+        
+        +items(val, index)
+      if(val['master order'])
+        -cartcode = items[index].cartcode;
+      if(index === items.length-1 && finalFullPrice !== 0)
+        include ./checkout.pug
+  if(!items)
+    +empty()
+    

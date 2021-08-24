@@ -1,0 +1,9 @@
+{
+  "name": "Passport authentication",
+  "version": "1.0.0",
+  "description": "Various authentication strategies via passport",
+  "main": "passportAuthentication.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

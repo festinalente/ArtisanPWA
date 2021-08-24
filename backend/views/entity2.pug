@@ -1,0 +1,107 @@
+-{entity}
+
+include ./microdocs.pug  
+mixin paragraph(field, content, originalName)
+  p.flex
+    span.bold #{field}:
+    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
+      -//span.flexrow.controlParent(data-type=originalName data-values=content tabindex='0').editContol      
+h2 Entity details:
+.backendbox 
+  -//.itemprofile
+  .itemGroup
+    .itemGCtable        
+      +microdocs("The person or business who trades using this platform").tabindex
+      -let businessName = (entity && entity.provider) ? entity.provider :'enter your business name'
+      +paragraph('Business entity name', businessName, 'provider')
+    
+      +microdocs("The trading name of the business").tabindex
+      -let tradingName = (entity && entity.name) ? entity.name :'enter your trading name'
+      +paragraph('Trading name', tradingName, 'name') 
+    
+      +microdocs("Fiscal number or 'VAT' number").tabindex
+      -let fiscalNumber = (entity && entity['fiscal number']) ? entity['fiscal number'] :'enter your fiscal (tax) number'
+      +paragraph('Fiscal number', fiscalNumber, 'fiscal number')    
+      
+      +microdocs("This is used in to title the website.").tabindex
+      -let title = (entity && entity.title) ? entity.title :'enter your slogan or tag line'
+      +paragraph('Slogan or tag line', title, 'title')
+      
+      .locationData
+        +microdocs("Phone code with no leading \"+\" or spaces or zeros").tabindex
+        -let phoneCode = (entity && entity['country code']) ? entity['country code'] :'enter your phone country code'
+        +paragraph('Country code', phoneCode, 'country code')  
+      
+        +microdocs("Phone with no spaces and no leading spaces or zeros").tabindex
+        -let phoneNum = (entity && entity.phone) ? entity.phone :'enter your business phone number'
+        +paragraph('Phone', phoneNum, 'phone')
+      
+        +microdocs("Enter the main entity email").tabindex
+        -let email = (entity && entity.email) ? entity.email :'enter your business email'
+        +paragraph('Email', email, 'email')  
+    
+        +microdocs("This address should correspond to your fiscal address").tabindex
+        h3 Business Address:
+        -let keys = Object.keys(entity.PostalAddress);
+        -let values = Object.values(entity.PostalAddress);
+        each item, i in keys
+          -let uncammeled =  item.replace(/([A-Z][a-z]+)/g, ' $1').replace(/([A-Z]{2,})/g, ' $1').replace(/\s{2,}/g, ' ').trim().toLowerCase();
+          +paragraph(uncammeled, values[i], "PostalAddress."+keys[i])
+          .itemGroup.backendParentDiv#shopdiv
+        h3.switchtitle Business hours:
+        +microdocs("If you only trade online, this timetable will be used to get contact times.").tabindex      
+        .locationTimetable(data-dates=entity.fullShopOpeningHours)
+        .btngreen.bounceOnHover.saveShopTimes.center.switchtitle Save business hours
+        
+        +microdocs("Select your business location on the map").tabindex
+        p.flex
+          span.bold.switchtitle Select location:
+        .locationMap(data-location=entity.location)
+        .coordinatesDisplay
+        .btngreen.bounceOnHover.saveCoordinates.center.switchtitle Save business location coordinates
+          
+      +microdocs("<p>If you only trade online, leave this blank.</p><p>You can add as many points of sale as you like.</p>").tabindex
+      h2 Physical points of sale controled by the entity:
+      .pointsOfSale
+        each location, j in entity.otherPointsOfSale
+          .singlePointOfSale.emphasisGrid
+            p.flex
+              span.bold.switchtitle 
+                h3 Physical point of sale #{j+1} address:
+            -let keys = Object.keys(location.PostalAddress);
+            -let values = Object.values(location.PostalAddress);
+            each item, i in keys
+              -let uncammeled =  item.replace(/([A-Z][a-z]+)/g, ' $1').replace(/([A-Z]{2,})/g, ' $1').replace(/\s{2,}/g, ' ').trim().toLowerCase();
+              +paragraph(uncammeled, values[i], "otherPointsOfSale." + j + ".PostalAddress."+keys[i])
+              .itemGroup.backendParentDiv#shopdiv
+              
+            +microdocs("Phone code with no leading \"+\" or spaces or zeros").tabindex
+            -let phoneCode = (location && location['country code']) ? location['country code'] :'enter your phone country code'
+            +paragraph('Country code', phoneCode, 'otherPointsOfSale.' + j + '.country code')  
+
+            +microdocs("Phone with no spaces and no leading spaces or zeros").tabindex
+            -let phoneNum = (location && location.phone) ? location.phone :'enter your business phone number'
+            +paragraph('Phone', phoneNum, 'otherPointsOfSale.' + j + '.phone')
+      
+            +microdocs("Enter the main entity email").tabindex
+            -let email = (location && location.email) ? location.email :'enter your business email'
+            +paragraph('Email', email, 'otherPointsOfSale.' + j + '.email')
+            
+            p.flex
+              span.bold.switchtitle Physical point of sale #{j+1} opening hours:
+            +microdocs("If you only trade online, this timetable will be used to get contact times.").tabindex      
+            .locationTimetable(data-fieldname="otherPointsOfSale." + j data-dates=location.fullShopOpeningHours)
+            .btngreen.bounceOnHover.saveShopTimes.center.switchtitle Save physical point of sale #{j+1} opening hours
+            
+            p.flex
+              span.bold.switchtitle Select physical point of sale #{j+1} location:
+            +microdocs("Select your business location on the map").tabindex
+            .locationMap(data-fieldname="otherPointsOfSale." + j data-location=location.location)
+            .coordinatesDisplay
+            .btngreen.bounceOnHover.saveCoordinates.center.switchtitle Save physical point of sale #{j+1} location coordinates  
+            
+      h2 Add more points of sale  
+      p.flex
+        span.bold Add another physical point(s) of sale:
+        span.editContol.add.addNewPointOfSale
+      

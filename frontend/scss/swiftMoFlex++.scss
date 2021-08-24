@@ -1,0 +1,86 @@
+@import "variables.scss";
+
+/**
+  * Decosnstucted pancake
+  *
+  */
+@mixin itemGroupColumn($flexby) {
+  flex: 0 1 $flexby;
+}
+
+.itemGroupColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1 1 280px;
+}
+
+.itemGroupColumnSmall {
+  flex: 1 1 100px;
+}
+
+.itemGroupColumnMedium {
+  flex: 0 1 400px;
+}
+
+.simpleFlexRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  @include itemGroupColumn(150px);
+}
+
+.itemGroup{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.fullrow {
+  flex: 0 0 100%;
+}
+
+.fullrowTopRight {
+  flex: 0 0 100%;
+  align-content: flex-end;
+  width: 100%;
+}
+
+.fullrowAlign {
+  flex: 1 1 100%;
+}
+
+ /*
+  * What proportion of the screen should be covered relative to other
+  * Divs on the same row?
+  */
+
+.col1 {
+  flex: 1 1 0px;
+  flex-wrap: wrap;
+}
+
+.col2 {
+  flex: 2 2 0px;
+  flex-wrap: wrap;
+}
+
+.col3 {
+  flex: 3 3 0px;
+  flex-wrap: wrap;
+}
+
+.col4 {
+  flex: 4 4 0px;
+  flex-wrap: wrap;
+}
+
+.col5 {
+  flex: 5 5 0px;
+  flex-wrap: wrap;
+}

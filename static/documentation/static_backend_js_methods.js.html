@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/backend/js/methods.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/backend/js/methods.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">
+
+function makeButton(parent, id, character, title, fn, canvas, file) {
+	var base = document.createElement('p');
+			base.id = id;
+			base.textContent = character;
+			parent.appendChild(base);
+			base.title = title;
+			base.classList.add('deleteButton');
+			base.addEventListener('click', function(e) {
+				fn(e, canvas, file);
+			});
+}
+/**
+  * Add item type function
+  * @function addItemType
+  * @param {object[]} array of HTML elements to be set as editable
+  * @description This function essentially sets editable attribute to true,
+  * the first element in the provided array is focused
+  */
+function addItemType(fields){
+  fields.forEach((item, i) => {
+    item.textContent = (item.classList.contains('itemNewWeight')) ? 0 : '';
+    item.classList.add('fieldEditableUp');
+    item.contentEditable = 'true';
+  });
+  fields[0].focus();
+};
+
+/**
+  * Delete image
+  * @function deleteImage
+  * @param {HTMLelement} node - Element
+  * @description
+    Deletes the closest "add image". May or may not work in a diferent context.
+  * @memberof backendEventDelegation.selectAndEdit
+  * @todo display an error to the client if the image isn't deleted
+  */
+function deleteImage(target){
+  let imglink = target.closest('.distinctImage').querySelector('img').src.split('/images')[1];
+  let update = updateData(target);
+  let type = target.dataset.type;
+  let name = document.querySelector('#itemNewName-'+type).textContent;
+  xhr({link: '/images'+imglink, itemtype: type, name: name, 'image links': update}, '/backend/deleteImage', (res)=>{
+    if(res === 'success') swiftmoAlert.setContent('Image successfully deleted.').toggle();
+
+    if(target.closest('.images').querySelectorAll('.distinctImage').length > 1){
+      target.closest('.distinctImage').remove();
+    }
+    else{
+      target.closest('.distinctImage').querySelector('.imagetype').value = '';
+      target.closest('.distinctImage').querySelector('img').src = '';
+      target.closest('.distinctImage').querySelector('.imageInput').files[0] = '';
+    }
+  })
+}
+
+function updateData(target){
+  let sel = $('#select-'+ target.dataset.type),
+      val = document.querySelector('#itemNewName-'+target.dataset.type).dataset.newname,
+      imglink = '/images' + target.closest('.distinctImage').querySelector('img').src.split('/images')[1],
+      toUpdate = getOptionByValue(sel, val).dataset.iteminfo,
+      parseDataItem = JSON.parse(toUpdate),
+      images = parseDataItem['image links'],
+      index = images.indexOf(decodeURI(imglink));
+
+  if(index > -1){
+    parseDataItem['image links'] = images.splice(index, 1) &amp;&amp; images;
+    toUpdates = JSON.stringify(parseDataItem);
+    return parseDataItem;
+  }
+}
+
+/**
+  * Make new add image div
+  * @function makeAddImage
+  * @param {HTMLelement} node - Element containing the add image applet.
+  * @param {string} name - The image name, typically "new" for a new image or
+    a given label, or in an image link as the first term after the '-' symbol &amp;
+    without the file extention.
+  * @param {string} link - The link to the image on the server.
+  * @fires attachImageLoadEvent
+  * @description - This function clones the image add applet so that more images
+    can be added for a given thing.
+  * @memberof backendEventDelegation.selectAndEdit
+  */
+function makeAddImage(parentEl, name, link, targetField){
+  
+  let clone = parentEl.cloneNode(true);
+  if(clone.querySelector('img') !== null){
+    parentEl.parentElement.appendChild(clone);
+    clone.querySelector('.imagetype').value = name;
+    clone.querySelector('img').setAttribute('src', link);
+    clone.querySelector('.uploadimage').dataset.value = name;
+    attachImageLoadEvent(clone);
+    addImageEvent(parentEl);
+  }else{
+    swiftmoAlert.setContent('Please use the first image adder before adding another one.').toggle();
+  }
+}
+
+/**
+  * Reset Images
+  * @function resetImages
+  * @param {HTMLelement} button -Element on which click is attached.
+  * @param {string} type - The type of thing the image upload belongs to
+  * ('theme', 'item type', 'produced')
+  * @summary Clear field in the image adder, removes all extra image adders.
+  * @memberof backendEventDelegation.selectAndEdit
+  */
+function resetImages(eventTarget, type){
+  
+  let imgname = eventTarget.closest('.stockModal').querySelector('.imagetype');
+      if(!imgname) return;
+      imgname.value = '';
+      imgname.classList.add('fieldEditableUp');
+      imgname.contentEditable = 'true';
+
+  let title = eventTarget.closest('.stockModal').querySelector('.distinctImage').querySelector('.title');
+      title.textContent = 'Add images:'
+
+  let extraImageDivs =  eventTarget.closest('.stockModal').querySelectorAll('.distinctImage');
+  //Leave first image upload div ∴ a for loop:
+  for (var i = 1; i &lt; extraImageDivs.length; i++) {
+    extraImageDivs[i].remove();
+  }
+
+  eventTarget.closest('.stockModal').querySelector('.editImages')
+    .addEventListener('click', (e)=>{
+      let themetitle = e.target.closest('.stockModal').querySelector('.title');
+      let themename = e.target.closest('.stockModal').querySelector('.itemNewName');
+      if(themename.textContent === ''){
+        swiftmoAlert.setContent('Enter a name first.').toggle();
+        themetitle.textContent = 'images';
+      }
+      else{
+        themetitle.textContent = themename.textContent + ' images';
+      }
+  });
+
+  let img = eventTarget.parentElement.parentElement.querySelector('.displayImage');
+
+  img.childNodes.forEach((item, i) => {
+    img.removeChild(item);
+  });
+
+}
+
+/**
+  * Reset Item Fields
+  * @function resetItemFields
+  * @param {HTMLelement} button -Element on which click is attached.
+  * @param {string} type - The type of thing the image upload belongs to
+  * ('theme', 'item type', 'produced')
+  * @summary Clears all the edit fields in the closest stock modal to the
+  * event target.
+  */
+function resetItemFields(eventTarget, type){
+  
+  eventTarget.closest('.stockModal').querySelectorAll('.edit').forEach((item, i) => {
+    item.textContent = '';
+  });
+
+  let themename = document.querySelector('#itemNewName-'+type);
+      themename.textContent = '';
+      themename.classList.add('fieldEditableUp');
+      themename.classList.remove('uneditable');
+      themename.contentEditable = 'true';
+      themename.focus();
+}
+
+/**
+  * Edit dimensions function
+  * @function editDimensions
+  * @param {HTMLelement} - The element which was clicked in modal with the
+  * dimension fields to be altered.
+  * @memberof backendEventDelegation.selectAndEdit
+  */
+function editDimensions(eventTarget){
+  Array.from(eventTarget.closest('.editmodal').querySelectorAll('.dimensions')).forEach((e)=>{
+    e.classList.add('fieldEditableUp');
+    e.classList.remove('warning');
+    e.contentEditable = 'true';
+    e.focus();
+  });
+}
+
+/**
+  * Retrieve array like information from html divs
+  * @function getArrayTypeInput
+  * @param {HTMLelement} - The element which contains the pertinent array fields.
+  * @returns {Object[]} -
+    An array containing all the values from the HTML elements
+    with the '.array' class within the parent element passed to the function.
+  */
+function getArrayTypeInput(parent, type){
+  let arr = [],
+      els = parent.querySelectorAll('.array');
+  for (var i = 0; i &lt; els.length; i++) {
+    if(els[i].textContent.length === 0){
+      //do nothing
+    }
+    else if(isNaN(els[i].textContent)){
+      arr.push(els[i].textContent);
+    }
+    else{
+      arr.push(parseInt(els[i].textContent));
+    }
+
+    if(i === els.length-1){
+      return arr;
+    }
+  }
+}
+
+/**
+  * Write Theme Changes -save selectAndEdit changes.
+  * @function writeThemeChanges
+  * @param {object} object to save.
+  * @param {string} type - The type of thing the object represents:
+  * ('theme', 'item type', 'produced')
+  * @description This function saves an object representing a thing.
+  * @memberof backendEventDelegation.selectAndEdit
+  * @todo Consider whether this should be split up as a separate function for
+  * each type.
+  */
+function writeThemeChanges(updates, type){
+  let select = document.querySelector('#select-'+type),
+      option = document.createElement("option"),
+      name = updates.name,
+      imagedivs = document.querySelector('#editmodal-'+type).querySelectorAll('.distinctImage');
+
+  let dataatr = updates;
+      dataatr['image links'] = [];
+
+  if(any(['theme', 'producer'], type)){
+    imagedivs.forEach((item, i) => {
+      if(item.querySelector('.imageInput').files[0]){
+        let imgname = item.querySelector('.imagetype').value;
+        let imgext = item.querySelector('.imageInput').files[0].name.split('.')[1];
+
+        dataatr['image links'].push('/images/stock/'+type+'/'+name+'/'+name+'-'+imgname +'.'+imgext);
+
+        if(i === imagedivs.length -1){
+          option.dataset.iteminfo = JSON.stringify(dataatr);
+          option.value = name;
+          option.textContent = name;
+          select.appendChild(option);
+          option.setAttribute('selected', 'selected');
+        }
+      }
+    });
+  }
+  if(type === 'item_type'){
+    option.dataset.iteminfo = JSON.stringify(dataatr);
+    option.value = name;
+    option.textContent = name;
+    select.appendChild(option);
+    option.setAttribute('selected', 'selected');
+  }
+}
+
+/**
+  * Saves or updates a new item
+  * @function save
+  * @param {object} object to save.
+  * @description This function saves an object representing a thing.
+  * @memberof backendEventDelegation
+  */
+function save(saveob){
+  xhr(saveob, '/backend/updateItemType', function(res){
+    if(res === 'success'){
+      //toggle.setinst(document.querySelector('.itemtypesuccess'));
+      //toggle.tog(document.querySelector('.itemtypesuccess'), 'block');
+
+      swiftmoAlert.setContent(res).toggle();
+
+      function close(){
+        document.querySelectorAll('.arraymodaltype').forEach((item, i) => {
+          toggle.tog(item, 'none');
+        });
+      }
+      window.setTimeout(close, 500);
+    }
+    else{
+      modal.document.querySelector('.warning').textContent = 'An error occured';
+      modal.document.querySelector('.warning').style.display = 'block';
+    }
+  });
+}
+
+/**
+  * Save new
+  * @function savenew
+  * @param {HTMLelement} button which is clicked to save containing itemref.
+  * @description Collects and types information to save as a new item.
+  * @memberof backendEventDelegation
+  * @todo modularize save funciton (same as update, just has a different route)
+  */
+function savenew(target){
+  let saveob = {updates: {
+	      theme: JSON.parse(optData($('#select-theme'), 'iteminfo')),
+	      'item type': JSON.parse(optData($('#select-item_type'), 'iteminfo')),
+	      producer: JSON.parse(optData($('#select-producer'), 'iteminfo')),
+	      price: parseInt($('.price').dataset.incent),
+	      tax: getInt($('.tax').value),
+	      special: $('.special').checked,
+	      'linked post': JSON.parse(optData($('#select-blogPost'), 'iteminfo')),
+	      description: document.querySelector('#itemNewIntro-description').textContent,
+	      templateItem: true,
+	      itemref: target.closest('.itemprofile').dataset.itemref
+    	}
+  	}
+
+  xhr(saveob, '/backend/updateItem', function(res){
+    if(res === 'success'){
+      swiftmoAlert.setContent('Item successfully added').toggle();
+
+      function close(){
+        document.querySelectorAll('.arraymodaltype').forEach((item, i) => {
+          toggle.tog(item, 'none');
+        });
+      }
+      window.setTimeout(close, 500);
+    }
+    else{
+      modal.document.querySelector('.warning').textContent = 'An error occured';
+      modal.document.querySelector('.warning').style.display = 'block';
+    }
+  });
+
+}
+
+function rightpics(targetField, data){
+  
+  removepics(targetField, data).then(addpics);
+}
+
+function removepics(targetField, data){
+  let promise = new Promise((resolve, reject)=>{
+    let targets = targetField.querySelectorAll('.distinctImage');
+
+    if(targets.length === 0){
+      resolve([data, targetField]);
+    }
+    else{
+      for (let i = 0; i &lt; targets.length; i++) {
+        if(i === 0){
+          if(targets[i].querySelector('img')){
+            targets[i].querySelector('img').remove();
+          }
+          targets[i].querySelector('.imagetype').value = name;
+        }else{
+          targets[i].remove();
+        }
+        if(i === targets.length-1){
+          resolve([data, targetField]);
+        }
+      }
+    }
+
+  }); return promise;
+}
+
+function addpics(args){
+	
+  let data = args[0],
+      targetField = args[1];
+  let promise = new Promise((resolve, reject)=>{
+    let images = data['image links'];
+    if (images){
+      
+      for (let i = 0; i &lt; images.length; i++) {
+				
+				
+        let name = images[i].slice(images[i].lastIndexOf('-') +1).split('.')[0];
+        
+        if(i === 0){
+          let img = document.createElement('img');
+              img.setAttribute('src', data['image links'][i]);
+          targetField.querySelectorAll('.distinctImage')[i].querySelector('.imagetype').value = name;
+          targetField.querySelectorAll('.distinctImage')[i].querySelector('.displayImage').appendChild(img);
+        }else{
+          
+          makeAddImage(targetField.querySelectorAll('.distinctImage')[0], name, data['image links'][i], targetField);
+        }
+        if(i === images.length-1){
+          resolve();
+        }
+      }
+    }
+  }); return promise;
+}
+
+function eventOnAll(classstring, event){
+  let targetclass = document.querySelectorAll(classstring);
+  for(let i = 0; i &lt; targetclass.length; i++){
+    targetclass[i].addEventListener('change', (e)=>{
+     event(e, i);
+    });
+  }
+}
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

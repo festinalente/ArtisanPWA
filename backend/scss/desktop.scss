@@ -1,0 +1,69 @@
+@import "variables.scss";
+@import "include-media.scss";
+
+@include media(">=desktop") {
+  body {
+    margin: 0;
+  }
+
+  .gutterMargin{
+    margin-top: 149px;
+  }
+
+  .mobileMenuTop {
+    display: none;
+  }
+
+  .desktopMenuTop {
+    display: block;
+  }
+
+  .desktopMenuTop {
+    display: block;
+    background: $primary-color;
+  }
+
+  .menuNotLink{
+    background-color: $primary-color;
+  }
+
+  .menuNotLink > img {
+    width: 90vh;
+  }
+
+  .menuNotLink:hover {
+    background-color: #333;
+  }
+
+  .gutters {
+    flex: 1 1 40px;
+  }
+
+  .guttersBody {
+    flex: 2 0 60%;
+  }
+
+  .potBespoke {
+    font-size: 3vw !important;
+    max-width: 370px;
+  }
+
+  .modalContent {
+    margin: 1em 20vw !important;
+  }
+
+  .itemButton {
+    flex-basis: 17em;
+    padding: 1em;
+    cursor: pointer;
+    border-radius: 0em;
+
+
+    img {
+      border-radius: 0.15em;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+}

@@ -1,0 +1,50 @@
+extends includes/folder.pug
+
+block page0
+  include ./includes/shopbase.pug       
+block page1
+  //.viewDesigns
+  include ./includes/themes.pug
+block page2
+  //.viewShapes    
+  include ./includes/itemtypes.pug
+block page3
+  -if( itemTypeOrTheme === 'item') 
+    include ./mixins/items.pug
+  -if( itemTypeOrTheme === 'theme')
+    include ./mixins/itemsByTheme.pug
+block page4
+  //item page
+  include ./includes/itemView.pug
+block page5
+  h3 Order summary:
+  h3 Your details: 
+  h3 Checkout:
+  .paymentOptions.itemGroup.cart(data-cartcode=cartcode)
+    form(action="/globalPayment" method="post").payment-form.paybutton.payment-form-2.col1
+      span.paynowarrow.paynowNew
+        .glyphicon.glyphicon-ok.customarrow(aria-hidden="true")
+      .weDoOurBest Secured with AES-256 encryption
+        .glyphicon.glyphicon-ok.weDoOurBest
+      .form-row.itemGroupColumn.center  
+        .payment-form-label.col1.
+          Pay now,
+        label(for="card-element").payment-form-label.col1.
+          credit or debit card:
+        .card-errors(role="alert").col1
+        .card-element.col1
+        -var value = "Submit Payment of €" + (finalFullPrice /100).toFixed(2);
+        #phone-number
+        #email
+        button.guidePaymentBtn.btn.sms2.bounceOnHover(type="submit") #{value}
+ 
+  //include includes/paymentInclude.pug
+
+block page6
+  include includes/verificationInclude.pug  
+    
+block page7
+  //.viewSpecial    
+ include ./mixins/special.pug
+block page8
+  

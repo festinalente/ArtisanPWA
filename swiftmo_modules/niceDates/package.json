@@ -1,0 +1,9 @@
+{
+  "name": "niceDates",
+  "version": "1.0.0",
+  "description": "Formats dates to human readable formats",
+  "main": "niceDates.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

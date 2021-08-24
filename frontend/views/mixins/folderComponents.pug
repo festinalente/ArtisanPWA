@@ -1,0 +1,184 @@
+-
+  function formatGivenNumber(number, currency){
+    let ar = number.toString().split('');
+    if(ar.length ===1) ar.splice(ar.length -2, 0, '0');
+    ar.splice(ar.length -2, 0, '.');
+    if(ar.length > 6){
+      for(let i = 6; i < ar.length; i+=4){
+        ar.splice(ar.length-i, 0, ' ');
+      }
+    }
+    st = ar.join('');
+    return currency + ' ' + st;
+  }
+  
+mixin microdocs(text)
+  .microdocs
+    .question
+    .info
+      .circle.sms2
+        .before
+        .after  
+      div !{text}
+            
+mixin optionsMixin(option)
+  div #{option['option name']}:
+  each choice, i in option.choices
+    if i === 0
+      div
+        input(type='radio' id=option['option name'] + choice name=option['option name'] checked)  
+        label(for=option['option name'] + choice) #{choice}
+    else
+      div 
+        input(type='radio' id=option['option name'] + choice name=option['option name'])  
+        label(for=option['option name'] + choice) #{choice}
+
+mixin mainCardBody(item, otherItemsOfTheSameType, count, jsonldItem)
+  -let jsonld = JSON.stringify(jsonldItem);
+  -let name = (item['item type'] && item['item type'].name) ? item['item type'].name : 'no name';
+  -let name_ = (item['item type'] && item['item type'].name) ? item['item type'].name.replace(/ /gi, '_') : 'no_name';
+  -let price = (item.price) ? item.price : 0;
+  -let description = (item.description) ? item.description : 'Handmade in Portugal';
+  -let themename = (item.theme && item.theme.name) ? item.theme.name : item._id;
+  -let links = (item['image links'] && item['video links']) ? [...item['image links'], ...item['video links']] : item['image links']; 
+  
+  script(type="application/ld+json").
+    !{jsonld}
+  .images.scroller.col1(data-imageLinks=links)
+  +microdocs("<p>Click on the image to toggle size. Click again to close.</p>")
+  .buttonContainer
+    .item.standardBoxLeft.center.price #{formatGivenNumber(price, '€')}
+    .itemGroup.center 
+      -//label(for='quantity').center Quantity: 
+      -//input(type='number' name='quantity' min="1" max=count value='1').center.quantityInput     
+      .customAdd
+        span.block Quantity:
+        .minus
+        .quantity.addbox.item
+          p(data-max=count).quantityInput 1
+        .plus
+  .plusPoints.itemGroup
+    if item['key characteristics']
+      each aspect in item['key characteristics']
+        if aspect.length > 1
+          .tick #{aspect}
+    else
+      .tick Hand made
+      .tick Made in Portugal
+      //
+        .tick Microwave safe #[a(href='/proper_use_policy') #[sup 1]]
+        .tick Dishwasher safe #[a(href='/proper_use_policy') #[sup 1]]
+        .tick Food grade #[a(href='/proper_use_policy') #[sup 1]]    
+  .plusPoints.itemGroup
+    ul.dimensions
+      li width #[span.width #{item['item type'].dimensions[0]}] mm 
+      li length #[span.length #{item['item type'].dimensions[1]}] mm
+      li depth #[span.depth #{item['item type'].dimensions[2]}] mm 
+      
+  .standardBoxLeft.center
+    
+    if item.options.length > 0
+      -
+      each option in item.options
+        +optionsMixin(option)
+    
+  .standardBoxLeft.center
+    p #{description}
+  .fullrowBottom
+    .yestick
+    .bigYellowBtn.addToCartBtn.center(data-itemrefs=otherItemsOfTheSameType)
+      h2 Add to cart
+  h3.circleClose.pseudoLink Close.
+  h3 
+    a(href="/shop/shapes/" + name.replace(' ', '_')) View other #{name.toLowerCase()} designs.
+    
+  h3 
+    a(href="/shop/designs/" + themename.replace(' ', '_')) View different items with the #{themename} design.
+  h3.circleClose.pseudoLink.toggleCart View cart
+  
+mixin cardType(id, text, page)
+  .itemGroupColumnSmall
+    .shoplink(data-nextpage=page data-fetchwhat='name' data-fetchthis=text).btnnext.textonly.fetchItemTypes
+      h1 #{text}
+      
+mixin cardLink(link, displayText, imgdivClass)
+  .itemGroupColumnMedium
+    a(href=link class=imgdivClass).shoplink.btnnext
+      .overlay1.background1
+      p.potBespoke #{displayText}
+
+mixin cardAjax(id, displayText, imgdivClass, page)
+  -let link = "/shop/" + displayText
+  .itemGroupColumnMedium
+    .shoplink.btnnext(data-nextpage=page id=id class=imgdivClass data-linktext=displayText)
+      noscript.incard
+        a(href=link) 
+          h1 #{displayText}
+      .overlay1.background1
+      p.potBespoke #{displayText}
+      
+mixin cardAjax2(id, displayText, imgdivClass, page)
+  
+  -let link = "/shop/" + displayText
+  .itemGroupColumnMedium
+    .shoplink(data-nextpage=page id=id class=imgdivClass data-linktext=displayText).btnnext
+      noscript.incard
+        a(href=link) 
+          h1 #{displayText}
+      .overlay1.background1
+      p.potBespoke #{displayText}      
+        
+mixin cardAjaxTheme(id, displayText, page, imgdivClass, themename)
+  -let link = "/shop/designs/" + themename
+  .itemGroupColumnMedium
+    .shoplink(data-nextpage=page id=id class=imgdivClass data-fetchwhat='theme' data-fetchthis=themename).btnnext.fetchTheme
+      .overlay1.background1
+      noscript.incard
+        a(href=link) 
+        p.potBespoke #{displayText}
+         h1 #{displayText}
+
+mixin cardItem(item, otherItemsOfTheSameType, count, jsonld)
+  -let name = (item['item type'] && item['item type'].name) ? item['item type'].name : 'no name';
+  -let name_ = (item['item type'] && item['item type'].name) ? item['item type'].name.replace(/ /gi, '_') : 'no_name';
+  -let price = (item.price) ? item.price : 0;
+  -let description = (item.description) ? item.description : entity['shop title tag'];
+  -let themename = (item.theme && item.theme.name) ? item.theme.name : item._id;
+  -let themename_ = (item.theme && item.theme.name) ? item.theme.name.replace(/ /gi, '_') : item._id;
+  -const imgsrc = (item && item['image links'] && item['image links'][0]) ? '/' + item['image links'][0].replace(/^\/+/g, '') : null;
+  -let stJson = JSON.stringify(jsonld);
+  
+  .itemButton.toggleModal
+    if imgsrc 
+      img(src=imgsrc alt="An image of a " + name + " in " + themename)
+    a.name(href=themename_+'/'+name) #{name}
+  .itemModal.modal(class=name_+'-modal' data-item=name data-theme=themename)
+    .modalContent.itemGroupColumn
+      .fullrowTopRight
+        .circle.sms2.circleClose
+          .before
+          .after
+      .name #{name} with #{themename} 
+      
+      +mainCardBody(item, otherItemsOfTheSameType, count, jsonld)
+
+mixin cardItemByTheme(item, otherItemsOfTheSameType, count, jsonld)
+  -let name = (item['item type'] && item['item type'].name) ? item['item type'].name : 'no name';
+  -let name_ = (item['item type'] && item['item type'].name) ? item['item type'].name.replace(/ /gi, '_') : 'no_name';
+  -let price = (item.price) ? item.price : 0;
+  -let description = (item.description) ? item.description : entity['shop title tag'];
+  -let themename = (item.theme && item.theme.name) ? item.theme.name : item._id;
+  -const imgsrc = (item && item['image links'] && item['image links'][0]) ? '/' + item['image links'][0].replace(/^\/+/g, '') : null;
+  .itemButton.toggleByThemeModal(data-item=name data-theme=themename)
+    if imgsrc 
+      img(src=imgsrc alt="An image of a " + name + " in " + themename)
+    a.name(href='./'+item['item type'].name) #{themename}
+  .itemModal.modal(class=name_+'-modal' data-item=name data-theme=themename)
+    .modalContent.itemGroupColumn
+      .fullrowTopRight
+        .circle.sms2.circleClose
+          .before
+          .after
+      .name #{name} with #{themename} 
+      +mainCardBody(item, otherItemsOfTheSameType, count, jsonld)
+                  

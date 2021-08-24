@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/js/cartCookie2.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/js/cartCookie2.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*file layout: first dom content loaded actions, then events via delegation, then functions*/
+
+//On load
+document.addEventListener("DOMContentLoaded", function(event) {
+  //cart.fetchCartData();
+  changeEvents();
+  setBySessionStore();
+});
+
+/*
+//After payment
+function thenDo(){
+  
+  if(folder2){
+    folder2.reset().reattachEvents().foldercontinue();
+    document.querySelectorAll('.tab').forEach(function(e){
+      e.style.backgroundColor = '#f0f8fe';
+      e.style.pointerEvents = 'auto';
+    });
+    
+  }
+  if(newItemObject &amp;&amp; Object.keys(newItemObject.returnOrder()).length > 0){
+    newItemObject.reset();
+  }
+  if(initCal &amp;&amp; Object.keys(initCal.retrieveStore()).length > 0){
+    initCal.reset();
+    
+  }
+  if(extras &amp;&amp; extras.length > 0){
+    extras = [];
+    
+  }
+    
+  document.querySelector('.addToCartBtn').disabled = false;
+    
+  //A new newItemObject is created, so just leave it whenever the reCAPTCHA is validated.
+}
+*/
+
+( ()=>{
+  let fullItems = [];
+  let cartOb = {
+    sessionID: '',
+    cartcode: '',
+    itemrefs: [],
+    shippingDestination: '',
+    status: {}
+  }
+
+  cart = {
+    expose: ()=>{
+      
+    },
+
+    /**
+     * Add to cart method
+     * @param {Object} The item to save
+     * @param {number} The number of items of this type.
+     * @description When there are multiple items selected several copies of
+     * the same item are added.
+     */
+    add: function(target, count){
+      let items = JSON.parse(target.dataset.itemrefs);
+      for (let i = 0; i &lt; count; i++){
+        let removed = items.splice(0, 1)
+        target.dataset.itemrefs = JSON.stringify(items);
+        cartOb.itemrefs.push(removed[0]);
+      }
+      return this;
+    },
+
+    remove: function(item, count){
+      let index = cartOb.itemrefs.indexOf(item);
+      cartOb.itemrefs.splice(index, 1);
+      return this;
+    },
+
+    fetchCartData: function(){
+      xhr(cartOb, '/fetchCartData', function(response){
+        fullItems = JSON.parse(response);
+        if(fullItems[0]){
+          assign(cartOb, fullItems[0].firstExample.cart);
+        }
+      });
+      return this;
+    },
+
+    fetchView: function(){
+      xhr(cartOb, '/fetchCartView', function(response){
+        setCartView(response);
+      });
+      return this;
+    },
+
+    addBespokeItem: function(){
+      let custom = {};
+      let criteria = new URLSearchParams(window.location.search);
+      for (let p of criteria) {
+        custom[p[0]] = p[1];
+      }
+      //make this dynamic to add other types of item:
+      custom.itemtype = 'tiles';
+      custom.price = panelPrice();
+      custom.theme = Object.keys(custom)[0].replace('_colours', '');
+      custom.colours = Object.values(custom)[0].split('_');
+      custom.cart = cartOb;
+      custom.quantity = 1;
+
+      gthing = custom;
+
+      xhr(custom, '/bespokeOrder', function(response){
+        assign(cartOb, JSON.parse(response));
+        //countDownTimer(document.querySelector('.shoppingCartModal'), 30*60*1000);
+        //setCartView(response);
+      });
+      return this;
+    },
+
+    updateOnServer: function(done){
+      cartOb.shippingDestination = sessionStorage.shippingDestination;
+      xhr(cartOb, '/updateCart', function(response){
+        assign(cartOb, JSON.parse(response));
+        //countDownTimer(document.querySelector('.shoppingCartModal'), 30*60*1000);
+      });
+      return this;
+    },
+
+    returnCartCode: function(){
+      return cartcode;
+    }
+  }
+
+  function assign(target, donor){
+    let keys = Object.keys(target);
+    keys.forEach((item, i) => {
+      target[item] = donor[item];
+    });
+  }
+
+  function countDownTimer(target, interval){
+     let timeup = new Date().getTime() + interval;
+    let x = setInterval(function() {
+      let distance = timeup - new Date().getTime();
+          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          target.querySelector(".timer").innerHTML = "Your cart will expire after " + minutes + "m " + seconds + "s of inaction.";
+
+      if (distance &lt; 0) {
+         clearInterval(x);
+         target.querySelector(".timer").innerHTML = "Your cart has expired.";
+      }
+    }, 1000);
+  }
+
+  function setCartView(response){
+    let cartView = document.querySelectorAll('.shoppingCartModal');
+      for (let i = 0; i &lt; cartView.length; i++) {
+        cartView[i].innerHTML = response;
+        cartView[i].querySelector('.modal').style.display = 'block';
+        toggle.setinst(cartView[i]);
+        cartView[i].querySelector('.modal').querySelector('.circleClose').addEventListener('click', ()=>{
+          toggle.tog(cartView[i], 'none');
+          document.querySelector('body').style.position = 'unset';
+        });
+      if(i === cartView.length -1){
+        changeEvents();
+
+      }
+    }
+  }
+
+  cart.fetchCartData();
+
+  }
+)();
+
+function setPhoneCode(val){
+  let phonecode = $('#clientDetails') &amp;&amp; $('#clientDetails').querySelector('#countrycode');
+  if(phonecode){
+    phonecode.querySelectorAll('option').forEach((item, i) => {
+      if(item.dataset.countrycode === val){
+        item.setAttribute('selected', 'selected');
+      }
+    });
+  }
+}
+
+function setBySessionStore(){
+  if(sessionStorage.shippingDestination){
+    let val = sessionStorage.shippingDestination.split('|')[0];
+    
+    setPhoneCode(val);
+  }
+}
+
+
+
+function changeEvents(){
+  //exists?
+  if(document.querySelector('.country')){
+    let selectmodal, selectform;
+
+    if($('.mobileMenuTop').style.display === '' || $('.mobileMenuTop').style.display === 'none'){
+      menu('.desktopMenuTop');
+    }
+    else{
+      menu('.mobileMenuTop');
+    }
+
+    function menu(menuname){
+      selectmodal = $(menuname).querySelector('.shoppingCartModal') &amp;&amp;
+        $(menuname).querySelector('.shoppingCartModal').querySelector('.country');
+      selectform = $(menuname).querySelector('#clientDetails') &amp;&amp;
+        $(menuname).querySelector('#clientDetails').querySelector('.country');
+    }
+
+    //Country in storage?
+    if(sessionStorage.shippingDestination){
+      if(selectmodal) setOption(selectmodal, sessionStorage.shippingDestination);
+      if(selectform ) setOption(selectform, sessionStorage.shippingDestination);
+      setBySessionStore();
+    }
+
+    //event:
+    [selectmodal, selectform].forEach((item, i) => {
+      if(item){
+        item.addEventListener('change', function(e){
+          sessionStorage.shippingDestination = e.target.value;
+          cart.updateOnServer().fetchView();
+          let val = e.target.value.split('|')[0];
+          setPhoneCode(val);
+        });
+      }
+    });
+  }
+}
+
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('addToCartBtn')){
+    //node only works in modal dialog!
+    let count = e.target.closest('.modalContent').querySelector('.quantityInput').value;
+    cart.add(e.target, parseInt(count)).updateOnServer();
+    e.target.previousSibling.classList.add('opacityOne');
+    e.target.firstChild.textContent = 'Added to cart';
+  }
+
+  if(e.target.classList.contains('addBespokeCartBtn')){
+    cart.addBespokeItem();
+    cart.expose();
+  }
+
+  if(e.target.classList.contains('removeFromCart'))  {
+    cart.remove(e.target.dataset.itemref).updateOnServer().fetchView();
+  }
+
+
+  if(e.target.classList.contains('toCheckout')){
+    document.querySelector('.cart').scrollIntoView({block: 'start',  behavior: 'smooth' });
+    document.querySelector('.cart').classList.add('bounce');
+  }
+
+}); //closes event delegation
+
+
+function updateCartCount(){
+  var items = document.getElementsByClassName('checkoutItem').length;
+  var cart = document.getElementById('cartCount');
+  if(items > 0){
+    cart.style.display = 'block';
+    cart.innerHTML = items;
+  }
+  if(items === 0){
+    cart.style.display = 'none';
+    cart.innerHTML = '0';
+  }
+}
+
+function updatePurchasedCount(){
+  var items = document.getElementsByClassName('purchasedItem').length;
+  var cart = document.getElementById('bookingCount');
+  if(items > 0){
+    cart.style.display = 'block';
+    cart.innerHTML = items;
+  }
+  if(items === 0){
+    cart.style.display = 'none';
+    cart.innerHTML = '0';
+  }
+}
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

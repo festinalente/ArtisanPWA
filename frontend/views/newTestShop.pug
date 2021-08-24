@@ -1,0 +1,217 @@
+extends masterView.pug
+
+mixin shopbase(data)
+  -let next = parseInt(data.address) + 1;
+  .itemGroup.mainBody
+    each datum, i in data.data
+      -let link = "/shop/" + datum.text
+      .itemGroupColumnMedium
+        .shoplink(data-fetchthis=datum.linkto id=datum.id class=datum.imgdivClass data-linktext=datum.text).btnnext
+          noscript.incard
+            a(href=link) 
+              h1 #{datum.text}
+          .overlay1.background1
+          h1.potBespoke #{datum.text}      
+          
+mixin itemGroup(data, nextPage)
+  -
+  .itemGroup.mainBody
+    each itemGroup, i in data.data
+      -let firstExample = itemGroup.firstExample;
+      -let displayText = (firstExample && firstExample['item type'] && firstExample['item type']['item group']) ? firstExample['item type']['item group'] : 'no name';
+      -let link = "/shop/types/" + displayText;
+      -let imageLink = (firstExample.image) ? firstExample.image[0] : (firstExample['image links'] && firstExample['image links'][0]) ? firstExample['image links'][0] : 'no image in ' + firstExample;
+      //-
+      .itemGroupColumnMedium
+        .shoplink.btnnext.fetchItemGroup.cardImageRules(data-backgroundImage=imageLink data-nextpage=nextPage data-linktext=displayText data-fetchwhat='itemgroup' data-fetchthis=displayText)
+          noscript.incard
+            a(href=link) 
+              h1 #{displayText}
+          .overlay1.background1   
+          h1.potBespoke #{displayText}
+  
+  //          
+    mixin specificItemGroup(data, nextPage)
+      -
+      .itemGroup.mainBody
+        each itemGroup, i in data.data
+          -let firstExample = itemGroup.firstExample;
+          -let displayText = (firstExample && firstExample['item type'] && firstExample['item type'].name) ? firstExample['item type'].name + ' with ' + firstExample['theme'].name : 'no name';
+          -let link = "/shop/types/" + displayText;
+          -let imageLink = (firstExample.image) ? firstExample.image[0] : (firstExample['image links'] && firstExample['image links'][0]) ? firstExample['image links'][0] : 'no image in ' + firstExample;
+          //-
+          .itemGroupColumnMedium
+            .shoplink.btnnext.fetch.cardImageRules(data-backgroundImage=imageLink data-nextpage=nextPage data-linktext=displayText data-fetchwhat='itemGroup' data-fetchthis=displayText)
+              noscript.incard
+                a(href=link) 
+                  h1 #{displayText}
+              .overlay1.background1   
+              h1.potBespoke #{displayText}
+  
+mixin themes(data, nextPage)
+  -
+  .itemGroup.mainBody
+    each theme, i in data.data
+      -let displayText = (theme && theme.name) ? theme.name.split(' - ')[0] : 'no name';
+      -let link = "/shop/designs/" + theme.name;
+      -let imageLink = (theme.image) ? theme.image : (theme['image links'] && theme['image links'][0]) ? theme['image links'][0] : 'no image in ' + theme;
+      .itemGroupColumnMedium
+        .shoplink.btnnext.fetch.cardImageRules(data-backgroundImage=imageLink data-nextpage=nextPage data-linktext=theme.name data-fetchwhat='theme' data-fetchthis=theme.name)
+          noscript.incard
+            a(href=link) 
+              h1 #{displayText}
+          .overlay1.background1   
+          h1.potBespoke #{displayText}  
+        
+  -//ONLY APPLIES IN TILES        
+mixin basicCard(data, nextPage)
+  .itemGroupColumn.mainBody
+    each theme, i in data.data
+      -let displayText = (theme && theme.name) ? theme.name.split(' - ')[0] : 'no name';
+      -let link = "/shop/designs/" + theme.name;
+      -let image = (theme.image) ? process.env.baseURL + theme.image : (theme['image links'] && theme['image links'][0]) ? theme['image links'][0] : 'no image in ' + theme;
+      .itemGroupColumnMedium
+        .shoplink.btnnext.cardImageRules(data-backgroundImage=image data-nextpage=nextPage data-parameter=theme.name data-nextpagename=theme.link)
+          -//img.overlay1.background1(src=image)
+          -//(style="background-image: url('" + theme.image + "');" nonce=nonce)
+          noscript.incard
+            a(href=link) 
+              h1 #{displayText}
+          .overlay1.background1   
+          h1.potBespoke #{displayText}
+          
+  
+  //-
+    /**
+      * Fetches information from "firstExample" from left join like query returing
+      * a single item.
+      */          
+      
+mixin specialCard(data, nextPage)
+  .itemGroup.mainBody
+    each t, i in data.data
+      -let theme = t.items[0];
+      -let displayText = (theme && theme.name) ? theme.name.split(' - ')[0] : 'no name';
+      -let link = "/shop/designs/" + theme.name;
+      -let image = (theme.image) ? theme.image : (theme['image links'] && theme['image links'][0]) ? theme['image links'][0] : 'no image in ' + theme;
+      .itemGroupColumnMedium
+        -//.shoplink.btnnext.fetch.placeHolderTheme(data-nextpage=nextPage data-linktext=theme.name data-fetchwhat='theme' data-fetchthis=theme.link)
+        .shoplink.btnnext.placeHolderTheme(data-nextpage=nextPage data-parameter=theme.name data-nextpagename=theme.link)
+          img.overlay1.background1(src=image)
+          -//(style="background-image: url('" + theme.image + "');" nonce=nonce)
+          noscript.incard
+            a(href=link) 
+             h1 #{displayText}
+          h1.potBespoke #{displayText}                    
+
+mixin itemtypesfull(data, id, next)
+  -//
+  -
+  .itemGroup.mainBody
+    each item, i in data.data
+      -let displayText = (item && item['item type'] && item['item type'].name) ? item['item type'].name : '';
+      -let link = (item && item['image links'] && item['image links'][0]) ? item['image links'][0] : 'no image';
+      -let imageLink = (item && item['image links'] && item['image links'][0]) ? item['image links'][0] : 'no image';
+      -if(item['item type'] && item['item type'].name)
+        .itemGroupColumnMedium
+          .shoplink.btnnext.fetchItemTypes.cardImageRules(data-backgroundImage=imageLink data-nextpage=nextPage data-linktext=item['item type'].name data-fetchwhat='itemtype' data-fetchthis=item['item type'].name)
+            noscript.incard
+              a(href=link) 
+                h1 #{displayText}
+            .overlay1.background1   
+            h1.potBespoke #{displayText}  
+          
+mixin itemtypes(data, id, next)
+  .itemGroup.mainBody
+    each type, i in data.data
+      .itemGroupColumnSmall
+        .shoplink(data-nextpage=next data-fetchwhat='name' data-fetchthis=type data-linktext=type).btnnext.textonly.fetchItemTypes
+          h1 #{type}
+        
+      -//+cardType('browseByItemType', type, next)  
+
+mixin blog(data, next) 
+  -let post = data.data
+  -if(post)
+    .itemGroupColumn.mainBody
+      script(type="application/ld+json")
+        !=jsonldpage 
+        
+      h2 #{post.title}
+      .post
+        each val, index in post.content  
+          case val.el
+            when 'p'
+              p #{val.cont}
+            when 'h1'
+              h1 #{val.cont}
+            when 'h2'
+              h2 #{val.cont}  
+            when 'h3'
+              h3 #{val.cont}
+            when 'h4'
+              h4 #{val.cont}      
+            when 'img' 
+              -//+imgMixin(val.cont, post.content[index+1].cont, val)
+              if post.content[index+1] && post.content[index+1].el === 'figcaption' && post.content[index+1].cont
+                +imgMixin(val.cont, post.content[index+1].cont, val)
+              else
+                +imgMixin(val.cont, 'no caption', val)
+      .fullrowBottom
+        .yestick
+        .bigYellowBtn.btnnext.center(data-nextpage=next)
+          h2 #{data.btnText}
+  -else
+    .itemGroupColumn.mainBody
+      h2 No more info on #{data.page}
+      .fullrowBottom
+        .yestick
+        .bigYellowBtn.btnnext.center(data-nextpage=next)
+          h2 #{data.btnText}
+               
+mixin itemsByTheme(data, id, next) 
+  -{stock}
+  .buttonContainer
+    if stock
+      each item, i in stock
+        +cardItemByTheme(item.firstExample)
+
+mixin page(shop)
+  each page, i in shop
+    -if(Array.isArray(page) === true)
+      +page(page)      
+    -else
+      .page(class=[page.display, page.address] data-address=page.address data-nextpage=page.nextpage data-name=page.page) 
+        if page.view
+          +#{page.view}(page, page.nextpage)
+
+block otherstyles
+
+block description
+  meta(name="description", content=description)
+  meta(name="keywords", content=(keywords) ? keywords.toString() : '')
+block robots
+  meta(name="robots", content= "index")
+block title
+  title=title
+  //-meta(name="title", content=title)
+block bodycontent
+  -{shop}  
+  include ./mixins/folderComponents.pug
+  include ./blog/mixins.pug
+  
+  .pages.itemGroup#deck
+    .alertdivfolder
+
+    +page(shop)
+
+  block orderConfirmation
+    //.orderConfirmation          
+block modals
+  
+block pagespecificscripts
+    
+
+    
+
+    

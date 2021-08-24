@@ -1,0 +1,45 @@
+extends ../masterView.pug
+
+block otherstyles
+block description
+  meta(name="description", content=description)
+  meta(name="keywords", content=keywords)
+block robots
+  meta(name="robots", content= "index")
+block title
+  title=title
+block bodycontent
+  -{data}
+    include ./mixins.pug
+    .itemGroup.mainBody
+      .fakefolder.item
+        h1 #{data[0].topics[0]}
+      .fakepages.itemGroup.paragraph  
+        .page
+          .emphasis
+            h2 All posts about #{data[0].topics[0]}:
+            if(data)
+              +distinctType(data, "title", "title")
+          each val in data
+            .addOnContainer.featuredholiday.itemprofile(data-topics=val.topics data-title = val.title)
+              -let firstImage = val.content.find(e => e.el === 'img');
+              
+              h1 #{val.title}
+              .emphasis
+                if firstImage && firstImage.cont
+                  img(src=firstImage.cont)
+              p #{val.description}
+              button.fetchpost Read more on #{val.title}
+    //          
+      .col1.backendbox.postview.hide
+        h3 Post title: 
+        input(type='text').title
+        h3 Post content: 
+        .content
+        h3 Post description: 
+        input(type='text').description  
+      block postcontent
+        
+block modals
+  
+block pagespecificscripts

@@ -1,0 +1,8 @@
+{
+  "name": "Format Sentence",
+  "version": "1.0.0",
+  "description": "It formats a sentence from an array of word ['blue', 'yellow', 'red'] -> Blue, yellow and red",
+  "main": "format.js",
+  "license": "MIT license",
+  "author": "Tomás Swift-Metcalfe"
+}

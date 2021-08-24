@@ -1,0 +1,9 @@
+{
+  "name": "Porches Pottery specific redirects",
+  "version": "1.0.0",
+  "description": "redirects",
+  "main": "redirectFunctions.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

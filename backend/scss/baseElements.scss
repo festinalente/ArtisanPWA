@@ -1,0 +1,404 @@
+@import "variables.scss";
+
+body, html {
+  margin: 0;
+  min-height: 100vh;
+  display: block;
+  margin: 0;
+}
+
+h1 {
+  font-family: $font-stack;
+  color: $font-color;
+  font-size: 2.2em;
+  font-weight: 700;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  display: block;
+  text-align: left;
+  text-transform: none;
+  text-shadow: none;
+  margin: 0.1em;
+}
+
+h2 {
+  font-family: $font-stack;
+  color: $font-color;
+  font-size: 1.8em;
+  font-weight: 700;
+  padding-top: 10px;
+  padding-bottom: 7px;
+  display: block;
+  text-align: left;
+  text-transform: none;
+  text-shadow: none;
+  margin: 0.1em;
+}
+
+h3{
+  font-family: $font-stack;
+  color: $tertiary-color;
+  font-size: 1.2em;
+  color: $font-color;
+  text-decoration: underline;
+  border-top-right-radius: 0.9em;
+  display: block;
+  margin: 0.1em;
+  width: fit-content;
+}
+
+h4{
+  font-family: $font-stack;
+  font-size: 0.9em;
+  color: $font-color;
+  text-decoration: underline;
+  border-top-right-radius: 0.9em;
+  display: inline-block;
+  margin: 0.1em;
+}
+
+option, li, p, b {
+  font-family: $font-stack;
+  font-size: 1em;
+  line-height: 1;
+  color: $font-color;
+  //font-weight: normal;
+}
+
+.numberInput{
+  height: 2em;
+  background-color: #337ab7;
+  width: 4em;
+  cursor: pointer;
+  vertical-align: middle;
+  font-family: Arial,Helvetica,sans-serif;
+  height: 2em;
+  font-size: 1.2em;
+  color: #fff;
+  border: none;
+  max-width: 20em;
+  padding: 0 1em 0 1em;
+}
+
+.bold{
+  font-weight: 900;
+  color: $font-color;
+  //width: 5em;
+}
+
+.distinctImage > img{
+  width: auto;
+}
+
+.post {
+  background-color: #fff;
+  color: #333;
+  padding: 1em;
+  @include shaddow(0px, 0px, 3px, 3px)
+}
+
+.post > p {
+  color: #333;
+}
+
+.post > figure > img {
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inlineBlock {
+  display: inline-block;
+  width: 250px;
+  min-height: 26px;
+  max-width: 518px;
+
+  figure {
+    margin: 0;
+    display: flex;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+.quantity {
+  height: 26px;
+}
+
+.btnbackend{
+  @include btn();
+  @include lrGradient($secondary-color, $tertiary-color);
+}
+
+.btnwarn{
+  @include btn();
+  @include lrGradient($orange, $warning-color);
+}
+
+
+.btnyellow{
+  @include btn();
+  @include lrGradient(#f7be42, $attention-color);
+  $invert: invert($attention-color);
+  color: $invert;
+}
+
+.btngreen{
+  @include btn();
+  @include lrGradient(#4caf50, #3c763d);
+}
+
+.btnpurple{
+  @include btn();
+  @include lrGradient(#7a4bad, #713d77);
+}
+
+.uniformdisplay > * {
+  font-size: 16px;
+  margin: 0;
+}
+
+.line{
+  width: 100%;
+  display: block;
+  height: 0.3em;
+  @include lrGradient($secondary-color, $tertiary-color);
+}
+
+.viewstock {
+  max-width: 10em;
+  margin: 0.5em;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+input, select  {
+  font-size: 1em;
+  border-style: solid;
+  border-color: $secondary-color;
+  background-color: $primary-color;
+  border-width: 2px;
+  color: $secondary-color;
+}
+
+#footer p {
+  color: black
+}
+
+.emphasis {
+  background-color: $primary-color;
+  border: $tertiary-color;
+  border-left-style: solid;
+  padding-left: 1em;
+  padding:1em;
+  display: block;
+}
+
+.itemtypesuccess{
+  vertical-align: middle;
+  font-family: $font-stack;
+  height: 2em;
+  font-size: 1.2em;
+  color: #fff;
+  border: none;
+  margin: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  @include lrGradient($secondary-color, $tertiary-color);
+}
+
+.btngreen:hover,
+.btnbackend:hover,
+.btnwarn:hover {
+  @include hoverEffect();
+}
+
+#logo{
+  background-image: url('/images/logos/round80px.png');
+  position: inherit;
+  z-index: 1;
+  width: 5em;
+}
+
+#logo:hover{
+  @include hoverEffect()
+}
+
+.backendPage{
+  flex-basis: 96%!important;
+  background-color: $secondary-color;
+  padding: $globalpad;
+}
+
+.backendParentDiv {
+  padding: 0.5em;
+  background-color: $primary-color;
+}
+
+#profile {
+  background-color: $primary-color;
+  border-width: 0;
+  border-style: solid;
+  border-top-right-radius: 1em;
+  margin: 0;
+}
+
+.version {
+  font-size: 0.6em;
+  display: block;
+  width: 100%;
+}
+
+.backendbox {
+  padding: 0.1em;
+  background-color: $primary-color;
+  height: fit-content;
+  margin: 0.1em;
+}
+
+.itemGCtable {
+  align-self: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1 1 20em;
+}
+
+.itemGCtable > p {
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+  line-height: normal;
+}
+
+.fakeFieldEditable {
+  border-style: solid;
+  border-color: $font-color;
+  flex-grow: 1;
+  z-index: 200;
+  margin-right: 1em;
+  margin-left: 1em;
+  word-break: break-all;
+}
+
+.fakeFieldEditable::placeholder {
+  color: $font-color;
+}
+
+.fakeFieldEditable > span {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark-color(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  -webkit-appearance: textfield;
+  -webkit-rtl-ordering: logical;
+  padding: 1em;
+}
+
+.save::after,
+.savepara::after,
+.savename::after,
+.savedimensions::after,
+.saveSize::after,
+.saveNewTheme::after,
+.savetheme::after,
+.saveitinerary:after,
+.fakeSave:after{
+  @include savePseudo();
+}
+
+.remove::after {
+  float: right;
+  content:"\e014";
+  font-family: 'Glyphicons Halflings';
+  color: $secondary-color;
+  font-size: 1.8em;
+  padding-left: 1em;
+}
+
+.editdimensions::after,
+.editSize:after,
+.editname:after,
+.edit:after,
+.edititemtype::after{
+  @include editPseudo();
+}
+
+.editprices:after{
+  float: right;
+  content:"\2b";
+  font-family: 'Glyphicons Halflings';
+  color: $secondary-color;
+  font-size: 1.8em;
+}
+
+.stockModal{
+  @include uniformBorder($secondary-color);
+  @include modal();
+  background-color: $primary-color;
+}
+
+.border{
+  @include uniformBorder($tertiary-color);
+}
+
+.borderYellow{
+  @include uniformBorder($attention-color);
+}
+
+.block{
+  display: block;
+  width: 100%;
+  height: 2em;
+}
+
+.add::after {
+  float: right;
+  content: "\2b";
+  font-family: 'Glyphicons Halflings';
+  color: $secondary-color;
+  font-size: 1.8em;
+}
+
+.expand::after {
+  float: right;
+  content:"\2b";
+  font-family: 'Glyphicons Halflings';
+  color: $secondary-color;
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+.contract{
+  display: 'none';
+}
+
+.contract::after {
+  float: right;
+  content:"\2212";
+  font-family: 'Glyphicons Halflings';
+  color: $secondary-color;
+  font-size: 1.8em;
+  padding-right: 0.5em;
+}
+
+/*
+.additemtype::after {
+  float: right;
+  content: "\2b";
+  font-family: 'Glyphicons Halflings';
+  color: #36f;
+  font-size: 1.8em;
+}
+*/

@@ -1,0 +1,56 @@
+mixin stockMixin(d, index)
+  //-  { _id:
+     { weight: 1350,
+       type: 'Large Oval Platter',
+       pattern: 'Artichoke - Blue' },
+    count: 1 },
+
+  -let stockKeys = Object.keys(d);
+  -let image = (d.image && d.image[0]) ? d.image[0]: 'no image';
+  -let count = parseInt(d.count) -1; 
+  -//not the cleanest, itemclass will be null, or "newitem"   
+  .stockItems.displayFlex.backendbox(data-pattern=d._id.pattern data-itemType=d._id.type data-items=JSON.stringify(d.items))
+    img.viewstock(src=image[0] alt="Image of "+d._id.type +" with " +d._id.pattern)
+    -let dimensions = (d._id.dimensions) ? d._id.dimensions.toString().replace(/,/g, ' x ') + ' mm' : null; 
+    div
+      p #{d._id.type} with #{d._id.pattern} design | weight ~#{d._id.weight} g | dimensions ~#{dimensions} 
+      p #[b Quantity: #[span.countval #{count}]]
+      input(type="number" min="1" value="1").numberInput
+      button.btnyellow.bounceOnHover.editItem edit items
+      button.btngreen.bounceOnHover.cloneType clone items
+      button.btnwarn.bounceOnHover.removeItems remove items
+      button.btnpurple.bounceOnHover.removeTemplateItem remove template
+  .editItemDiv.itemGroupColumn  
+      -//button.btnwarn.bounceOnHover.removeType remove type
+-{stock}
+  -let uniquePatterns = [...new Set(stock.map(item => item._id.pattern))];
+  -let uniqueItemTypes = [...new Set(stock.map(item => item._id.type))];
+  
+  h2 Saleable items in stock: 
+  .microdocs
+    .question 
+    p.
+      Items are sorted and defined by their item type and their theme. Item type refers to 
+      the shape of item and theme to the decoration or color of the item.
+    p.
+      A template item is the first of an item. A template item is added via filling out the form in the "Add new menu".
+    p.
+      Once a template item is added in "Add new", it can be cloned (copies made), edited and
+      removed here.
+  p Filter:  
+  select.filterPattern.filter
+    option(value="") ...theme
+    each val in uniquePatterns
+      option(value=val) #{val}
+      
+  select.filterItemType.filter
+    option(value="") ...item type
+    each val in uniqueItemTypes
+      option(value=val) #{val}    
+  br
+  button.btnwarn.bounceOnHover.resetFilters reset filters
+  br    
+  h3 Selection:     
+  each itemType, i in stock
+    if itemType._id.type && itemType._id.pattern
+      +stockMixin(itemType, i)

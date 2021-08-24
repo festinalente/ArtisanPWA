@@ -1,0 +1,17 @@
+@media (min-width:961px) {
+  .mobileMenuTop{
+    display: none;
+  }
+  .desktopMenuTop {
+    display: block;
+  }
+}
+
+ @media all and (display-mode: standalone) {
+  #werepwa {
+    display: none;
+  }
+  #addpwa{
+    display: none;
+  }
+}

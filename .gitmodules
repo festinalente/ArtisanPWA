@@ -1,0 +1,6 @@
+[submodule "backend/SwiftCal"]
+	path = backend/SwiftCal
+	url = https://github.com/festinalente/SwiftCal.git
+[submodule "backend/mapfunctions"]
+	path = backend/mapfunctions
+	url = https://github.com/festinalente/mapfunctions.git

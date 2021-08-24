@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/frontendStatic/css/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Redressed Regular";
+  src: url("/frontendStatic/css/fonts/Redressed-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Belleza Regular";
+  src: url("/frontendStatic/css/fonts/Belleza-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+/**
+  * @funtion makeShaddow
+  * @param blurRadius bigger means bigger, lighter shaddow
+  * @param spread This is the size of shaddow (0 === same size as element), (10px === el.height, width + 10px)
+  * @param the offsets basically control how box fits relative to the element
+  * Drop shadow lays outside an elemen
+  */
+@font-face {}.basedimensions {
+  display: flex;
+  flex-direction: row; }
+
+.basedimensions > .main {
+  width: 60%;
+  overflow: hidden;
+  padding: 0.5em; }
+
+.basedimensions > .left, .right {
+  width: 30%;
+  overflow: hidden;
+  display: flex;
+  align-items: center; }
+
+.basedimensions > .right > * {
+  margin-left: 15%;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 0px 7px 4px #00000066;
+  -moz-box-shadow: 0px 0px 7px 4px #00000066;
+  box-shadow: 0px 0px 7px 4px #00000066; }
+
+.basedimensions > .left > * {
+  margin-left: -15%;
+  border-radius: 1em;
+  -webkit-box-shadow: 0px 0px 7px 4px #00000066;
+  -moz-box-shadow: 0px 0px 7px 4px #00000066;
+  box-shadow: 0px 0px 7px 4px #00000066; }
+
+.basedimensions .main::before {
+  content: "\e096";
+  color: #c78965;
+  font-family: 'Glyphicons Halflings';
+  font-size: 1.5em;
+  top: 2em;
+  right: -1em;
+  position: relative;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0;
+  padding: 0.5em;
+  pointer-events: none; }
+
+.basedimensions .scrollerArrowLeft::after {
+  content: "\e095";
+  font-family: 'Glyphicons Halflings';
+  color: #c78965;
+  font-size: 1em;
+  top: 2.5em;
+  right: 2em;
+  position: relative;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0;
+  padding: .5em;
+  pointer-events: none;
+  transform: rotateX(180deg) rotateZ(45deg); }
+
+.basedimensions .scrollerArrowRight::after {
+  content: "\e095";
+  font-family: 'Glyphicons Halflings';
+  color: #4167b1;
+  font-size: 1em;
+  top: 2.5em;
+  right: 18em;
+  position: relative;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0;
+  padding: .5em;
+  pointer-events: none;
+  transform: rotateX(0deg) rotateZ(-145deg); }
+
+.imgScroller > * {
+  width: 100%;
+  opacity: 0.2;
+  transition: all 0.25s ease-in; }
+
+.basedimensions > .main > img {
+  border-radius: 2em;
+  -webkit-box-shadow: 0px 0px 5px 1px #00000066;
+  -moz-box-shadow: 0px 0px 5px 1px #00000066;
+  box-shadow: 0px 0px 5px 1px #00000066; }
+
+.smooth {
+  opacity: 1;
+  transtion: none; }
+
+.fullScreenImg {
+  width: 100vw;
+  height: 100vh;
+  box-shadow: none;
+  border-radius: initial;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  overflow: auto;
+  background: #f5c396;
+  display: flex;
+  padding: 0; }
+
+.fullScreenImg > img {
+  width: 90%;
+  margin: auto;
+  height: auto; }
+
+.fullScreenImg::before {
+  content: "\e097";
+  color: #c78965;
+  font-family: 'Glyphicons Halflings';
+  font-size: 1.5em;
+  top: 20vh;
+  right: 85vw;
+  position: absolute;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0;
+  padding: .5em;
+  pointer-events: none; }

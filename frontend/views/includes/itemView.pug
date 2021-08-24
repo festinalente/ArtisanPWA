@@ -1,0 +1,14 @@
+include ../mixins/folderComponents.pug
+-{stock}
+if stock
+  each item in stock
+    if item.name === itemtype
+      -let name = (item['item type'] && item['item type'].name) ? item['item type'].name : 'no name';
+      -let name_ = (item['item type'] && item['item type'].name) ? item['item type'].name.replace(/ /gi, '_') : 'no_name';
+      -let price = (item.price) ? item.price : 0;
+      -let description = (item.description) ? item.description : 'Ceramics made in the Algarve';
+      -let themename = (item.theme && item.theme.name) ? item.theme.name : item._id;
+      
+      .itemGroup.mainBody
+        h2 #{name}
+      +mainCardBody(item)

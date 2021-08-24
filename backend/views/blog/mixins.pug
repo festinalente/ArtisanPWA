@@ -1,0 +1,21 @@
+mixin distinctType(data, class2, name)
+  
+  -let unique = [];
+  -let unique2 = [];
+  select(class=class2 id=name.toLowerCase().replace(/\s/g, '')+'filter')
+    each val, index in data
+      -unique.push(val[name]);
+      -if(index === data.length-1)
+        -let unique2 = [... new Set(unique)];
+          option(value='null') Ignore this aspect
+        each val in unique2
+          
+          if val 
+            option(data-attribute=val)= val
+
+mixin blogImageUpload(title)
+  h4 Add an Image:
+  .lazyImage.holidaySupplementaryImgDiv
+  p #[span.bold Add or change main image:]
+  input(type="file" name="holidaySupplementary" accept="image/*" capture="environment").holidaySupplementary
+  button.uploadimage.sms2 Upload image.

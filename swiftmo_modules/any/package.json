@@ -1,0 +1,8 @@
+{
+  "name": "Any",
+  "version": "1.0.0",
+  "description": "It's a wrapper for array includes to avoid using multiple && in an if e.g. let poo = 'bear' any(['fecal mater', 'bear'], poo) //true",
+  "main": "any.js",
+  "license": "MIT license",
+  "author": "Tomás Swift-Metcalfe"
+}

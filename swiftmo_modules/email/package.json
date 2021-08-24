@@ -1,0 +1,8 @@
+{
+  "name": "Interface for nodemailer",
+  "version": "1.0.0",
+  "description": "sends email",
+  "main": "email.js",
+  "author": "Tomás Swift-Metcalfe",
+  "license": "no license"
+}

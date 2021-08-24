@@ -1,0 +1,50 @@
+h3 Validation:
+h4.originalh4 Are you human?:
+form(action='/guide/guideClientPhoneValidation').guideClientPhoneValidation 
+  div.emphasis
+    p Click on the captcha bellow if you're human.  
+  div.alert
+    p You will be able to change your order once you validate only by reloading and reordering.
+  .oneEmWhiteSpace
+  //.g-recaptcha.rentalGuideClient(data-callback='runActivate')
+  .g-recaptcha(data-callback='runActivate')#inPageRecaptcha
+  span.arrow-captcha.valArrow  
+    img(src='/images/arrow-look-down.svg' alt='arrow pointing down').arrow-look-down
+  .oneEmWhiteSpace
+      
+  .countryCode.hide  
+    h4.originalh4 Enter your contact details:  
+    .infodiv.
+      This phone number will only be used if required. Where possible we use
+      browser push notifications to keep into touch about your order.
+    div.emphasis
+      p Country code:
+    .oneEmWhiteSpace
+    span.match
+      include ./phoneCodes.pug
+    span.glyphicon.glyphicon-ok.conftick2
+    span.arrow-countrycode.valArrow  
+      img(src='/images/arrow-look-down.svg' alt='arrow pointing down').arrow-look-down
+    .oneEmWhiteSpace
+  
+  .phonenumber.hide    
+    div.emphasis
+      p Phone number bellow:
+    input(type="tel" length="20")#clientNumber.bookguide.conftickDisplayNoSave.dataToSave
+    button.btn.sms2.bounceOnHover.emailAfterPhone.hide next
+    span.glyphicon.glyphicon-ok.conftick2
+    span.arrow-phonenumber.valArrow  
+      img(src='/images/arrow-look-down.svg' alt='arrow pointing down').arrow-look-down
+    .oneEmWhiteSpace
+       
+  .email.hide  
+    div.emphasis
+      p E-mail: 
+    .infodiv You will recieve your order confirmation and invoice to this e-mail address. 
+    input(type="email" length="40" data-invalid="That e-mail doesn't seem right.")#clientEmail.bookguide.conftickDisplayNoSave.dataToSave
+    span.glyphicon.glyphicon-ok.conftick2
+    .oneEmWhiteSpace
+    span.arrow-button.valArrow  
+      img(src='/images/arrow-look-down.svg' alt='arrow pointing down').arrow-look-down.rotate-right
+    div.alignRight.validationbutton.hide
+      button#phoneval.btn.sms2.bounceOnHover.btnnext.center(type='button' data-nextpage='8') next  

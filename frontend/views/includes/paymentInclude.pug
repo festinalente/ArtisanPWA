@@ -1,0 +1,28 @@
+//
+  .paymentOptions.itemGroup.singleitem(data-cartcode=cartcode)
+    form(action="/globalPayment" method="post").payment-form.paybutton.payment-form-2.col1
+      span.paynowarrow.paynowNew
+        .glyphicon.glyphicon-ok.customarrow(aria-hidden="true")
+      .weDoOurBest Secured with AES-256 encryption
+        .glyphicon.glyphicon-ok.weDoOurBest
+      .form-row.itemGroupColumn.center  
+        .payment-form-label.col1.
+          Pay now,
+        label(for="card-element").payment-form-label.col1.
+          credit or debit card:
+        .card-errors(role="alert").col1
+        .card-element.col1
+        -var value = "Submit Payment of €" + (finalFullPrice /100).toFixed(2);
+        #phone-number
+        #email
+        button.guidePaymentBtn.btn.sms2.bounceOnHover(type="submit") #{value}
+    .paybutton.payment-form-2.col1
+      span.paynowarrow.paynowNew
+        .glyphicon.glyphicon-ok.customarrow(aria-hidden="true")
+      .weDoOurBest 
+      .form-row.itemGroupColumn.center
+        .payment-form-label.col1 Or add to cart 
+        .payment-form-label.col1 &amp; continue shopping:
+        img(src="/images/Swiftmo_Shopping_cart_icon.svg" alt="Shopping cart").addToCart.col1
+        button.btn.sms2.bounceOnHover.addToCartBtn(type="button") Add to cart
+ 

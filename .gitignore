@@ -1,0 +1,21 @@
+# Ignore node_modules folder
+/node_modules
+/frontend/css
+
+#images
+/static/images/*
+# !/static/images/entity
+# /static/images/logos
+# /static/images/models
+# /static/images/stock
+
+/static/video/*
+
+# Ignore files related to keys
+*.env
+
+# Conf files:
+*.conf
+
+# Docs:
+/out

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/frontendStatic/css/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Redressed Regular";
+  src: url("/frontendStatic/css/fonts/Redressed-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Belleza Regular";
+  src: url("/frontendStatic/css/fonts/Belleza-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+/**
+  * @funtion makeShaddow
+  * @param blurRadius bigger means bigger, lighter shaddow
+  * @param spread This is the size of shaddow (0 === same size as element), (10px === el.height, width + 10px)
+  * @param the offsets basically control how box fits relative to the element
+  * Drop shadow lays outside an elemen
+  */
+@font-face {}

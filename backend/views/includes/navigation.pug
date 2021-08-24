@@ -1,0 +1,24 @@
+
+nav.itemGroupColumn(role='navigation')
+  .itemGroup.backendMenu
+    .itemGroupColumn.logocol
+      .logo.bounceOnHover SwiftMo Artisan
+        em.version version 1.1.0-alpha
+    .itemGroupColumn
+      .itemGroup(style="justify-content: left")
+        a.backendMenuItem.backendMenuItemFont#entity.noMargin.littlepadding Entity
+        a.backendMenuItem.backendMenuItemFont#shop.noMargin.littlepadding Shop
+        a.backendMenuItem.backendMenuItemFont#sales.noMargin.littlepadding Sales
+        //a.backendMenuItem.backendMenuItemFont#jobs.noMargin.littlepadding jobs
+        a.backendMenuItem.backendMenuItemFont#addstock.noMargin.littlepadding Add new
+        a.backendMenuItem.backendMenuItemFont#viewstock.noMargin.littlepadding Stock control
+        //a(href="/prices").backendMenuItem.backendMenuItemFont#prices.noMargin.littlepadding prices
+        //a.backendMenuItem.backendMenuItemFont#logistics.noMargin.littlepadding logistics
+        a.backendMenuItem.backendMenuItemFont#blog.noMargin.littlepadding Blog  
+        //a.backendMenuItem.backendMenuItemFont#invoicing.noMargin.littlepadding invoicing
+        a.backendMenuItem.backendMenuItemFont#docs.noMargin.littlepadding Docs
+    .itemGroupColumn.userControl
+      -//.col1
+      -let provider = (user && user.provider) ? user.provider : 'new provider'
+      p#profile(data-provider=provider data-location= location).noMargin.littlepadding Logged in as #{user.user}
+      button.btnbackend.sms2.bounceOnHover.logout(type="button") Log Out

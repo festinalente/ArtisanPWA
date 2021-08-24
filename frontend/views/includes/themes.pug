@@ -1,0 +1,4 @@
+.itemGroup.mainBody
+  each theme, i in themes
+    -let sp = theme.name.split(' - ')[0];
+    +cardAjaxTheme(themename, sp, 3, 'placeHolderTheme', theme.name)

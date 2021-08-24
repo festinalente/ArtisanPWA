@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/js/miscelaneusPageFunctions.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/js/miscelaneusPageFunctions.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">//mobile menu, does it exist? Do stuff.
+//window.onresize = nav();
+
+window.onload = nav();
+
+function formatDate(d){
+  let date = new Date(d);
+  let formated = date.getFullYear() + '-' +
+  (date.getMonth() + 1) + '-' +
+  date.getDate();
+  return formated;
+}
+
+function any(testsubjects, keyvalue){
+  return testsubjects.includes(keyvalue);
+};
+
+function setOption(select, val){
+  select.querySelectorAll('option').forEach((item, i) => {
+    if(item.textContent === val){
+      item.setAttribute('selected', 'selected');
+    }
+  });
+}
+
+/**
+  * Got tired of writing "document.querySelector('')"
+  * @function $
+  * @param {string} CSS querySelector
+  * @description "document.querySelector('')" looked messy in some code.
+  * @todo Could pass n element to chain them, but don't tink I'll bother.
+  */
+function $(e){
+  return document.querySelector(e);
+};
+
+function nav(){
+
+  if(document.querySelector('.navColapseBtn')){
+    document.querySelector('.navColapseBtn').classList.add('scaled');
+    document.querySelector('.navColapseBtn').addEventListener('click', function(e){
+      let t = document.querySelector('.navColapseDiv');
+      if(t.classList.contains('shownav')){
+        t.classList.remove('shownav');
+        e.target.classList.remove('navColapseBtnX');
+      }else{
+        t.classList.add('shownav');
+        e.target.classList.add('navColapseBtnX');
+      }
+    });
+  }
+}
+
+function selectElementContents(el) {
+  var range = document.createRange();
+  range.selectNodeContents(el);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+// Resize reCAPTCHA to fit width of container
+// Since it has a fixed width, we're scaling
+// using CSS3 transforms
+// ------------------------------------------
+// captchaScale = containerWidth / elementWidth
+
+function scaleCaptcha(elementWidth) {
+  // Width of the reCAPTCHA element, in pixels
+  var reCaptchaWidth = 304;
+  // Get the containing element's width
+	var containerWidth = document.querySelector('#inPageRecaptcha').width();
+  // Only scale the reCAPTCHA if it won't fit
+  // inside the container
+  if(reCaptchaWidth > containerWidth) {
+    // Calculate the scale
+    var captchaScale = containerWidth / reCaptchaWidth;
+    // Apply the transformation
+    document.querySelectorALL('.g-recaptcha').forEach(function(e){
+      e.style.transform = 'scale('+captchaScale+')';
+    });
+  }
+}
+
+if(document.getElementsByClassName('addToCartBtn').length !== 0){
+  document.getElementsByClassName('addToCartBtn')[0].addEventListener('click', function(){
+    this.parentElement.querySelector('.yestick').classList.add('paynowAnimate');
+  });
+}
+
+//clearchildren
+function clearchildren(elem){
+  var target = document.querySelector(elem);
+  while (target.firstChild) {
+    target.removeChild(target.firstChild);
+  }
+}
+
+var swiftmoAlert = {
+  set : function(){
+    toggle.setinst('.alertmodal');
+    document.querySelector('.circleClose').addEventListener('click', function(e){
+      toggle.tog('.alertmodal', 'none');
+      e.stopPropagation();
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.code === 'Space' &amp;&amp; document.querySelector('.alertmodal').style.display === 'block'){
+        toggle.tog('.alertmodal', 'none');
+        e.stopPropagation();
+      }
+    });
+    return this;
+  },
+  toggle : function(){
+    toggle.tog('.alertmodal');
+    return this;
+  },
+  setContent : function(content){
+    document.querySelector('.alertmodalcontentP').textContent = content;
+    return this;
+  },
+  /** Takes an object: {iftrue: callbackFntrue, iffalse: callbackFnfalse}
+    * with a function to call if confirmed and another if not.
+    */
+  confirm : function(iftruefalse){
+    var btn = document.createElement('button');
+        btn.textContent = 'confirm';
+    var btn1 = document.createElement('button');
+        btn1.textContent = 'cancel';
+    document.querySelector('.alertmodalcontentP').append(btn);
+    document.querySelector('.alertmodalcontentP').append(btn1);
+        btn.addEventListener('click', function(){
+          swiftmoAlert.toggle();
+          iftruefalse.iftrue();
+        });
+        btn1.addEventListener('click', function(){
+          swiftmoAlert.toggle();
+          iftruefalse.iffalse();
+        });
+
+    return this;
+  },
+  /*TODo*/
+  swiftMoAffirm : function(){
+    //document.querySelector('.alertmodalcontentP')
+    //domadd.append('button', 'yes', '#');
+  }
+};
+
+
+function SwiftmoAlert(){
+  var instance = new toggle();
+  var p;
+  var count = 1;
+  this.test = function(){
+    alert('spin');
+  };
+
+  this.clear = function(targetElement){
+    clearchildren(targetElement);
+    return this;
+  };
+
+  this.targetAndDeploy = function(targetElement){
+    instance.setinst(targetElement);
+    p = document.createElement('p');
+    p.classList.add('alertdiv');
+    document.querySelector(targetElement).appendChild(p);
+    document.querySelector(targetElement).style.display = 'none';
+    return this;
+  };
+
+  this.message = function(message){
+    p.textContent = message;
+    return this;
+  };
+
+  this.toggle = function(targetElement){
+    count++;
+    
+    if(count % 2 === 0){
+      
+      instance.tog(targetElement, 'block');
+      document.querySelector(targetElement).scrollIntoView({block: 'start',  behavior: 'smooth' });
+      window.setTimeout( function(){document.querySelector(targetElement).classList.add('bounce', 'bounce-4');}, 500);
+    }
+    else{
+      
+      instance.tog(targetElement, 'none');
+    }
+    return this;
+  };
+}
+
+(function scopeItIn() {
+	var instances = [];
+	var states = [];
+	//div is target, type is style, e.g. flex or block
+	return toggle = {
+		tog: function(div, type) {
+      
+      
+      
+			if (typeof div === 'string') {
+				if (states[instances.indexOf(div)] % 2 ) {
+					
+					if (!type) {
+						document.querySelector(div).style.display = 'block';
+					} else {
+						document.querySelector(div).style.display = type;
+					}
+				} else {
+					document.querySelector(div).style.display = 'none';
+				}
+			} else if (typeof div === 'object') {
+				if (states[instances.indexOf(div)] % 2) {
+					
+					if (!type) {
+						div.style.display = 'block';
+					} else {
+						div.style.display = type;
+					}
+				} else {
+					div.style.display = 'none';
+				}
+			}
+			states[instances.indexOf(div)]++;
+			return this;
+		},
+		setinst: function(div) {
+			if (instances.includes(div) === false) {
+				instances.push(div);
+				states.push(1);
+				return this;
+			} else {
+				return this;
+			}
+		}
+	};
+})();
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

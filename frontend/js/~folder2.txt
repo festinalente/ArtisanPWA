@@ -1,0 +1,203 @@
+/*
+Quick docs:
+
+This is instantiated with folder2()
+and takes the option progressive (boolean) e.g. folder2(true); which basically means that the divs
+are shown one by one on task completion as opposed to all being accessible.
+
+The folder currently has 8 pages, but this can be extented to n. these are hidden
+reducing their height with a class toggle. Tabs are rendered on the server, taking an
+array of tab names.
+
+NOTA BENE, the folder is controlled *always* via foldercontinue and interupt, so when the
+client or server response is correct, "allow" the folder to go to the next page with
+folder2.foldercontinue();
+E.g.
+
+xhr(bookingDetails, 'rentals/bikes-available', function(callback){
+  document.querySelector('#bikeSelection').innerHTML = callback;
+  //response recieved, show it to the client:
+  folder2.foldercontinue();
+});
+
+So:
+
+Extend ../../folder.pug, insert your pages, then when you render the html, provide
+the tab names.
+
+If you want to block execution of the folder (this in )
+*/
+
+//this is a hack to get dynamically created button in leaflet to work:
+
+
+const folder2 = {
+  //@param {number}
+  scrollToPage : (number)=>{
+    if(typeof number !== 'number'){
+      number = parseInt(number);
+    }
+    for(var i = 0; i < pages.length; i++){
+      if(i === number){
+        pages[i].classList.add('reduce', 'focus');
+      }
+      else{
+        document.querySelector(target).classList.remove('reduce');
+        document.querySelector(target).style.display = 'block';
+      }
+    }
+
+  }
+}
+
+/*
+function displayNextPage(thisid){
+  
+  var target = '.page' + thisid;
+  var tab = '.tab' + thisid;
+
+
+}
+document.addEventListener('click', function(e){
+  folder2.reattachEvents();
+});
+
+(function scopeItIn(){
+  //this way a keyword (here folder2) is added to the global namespace and can then be called:
+  //scoped persistent var;
+  var interupt;
+  var classes = document.getElementsByClassName('tab');
+  var pages = document.getElementsByClassName('page');
+  var btns = document.getElementsByClassName('btnnext');
+  /**
+   * @class folder2 drives the front end folder.
+   */
+  folder2 = {
+    reset : function resetFolder(){
+      document.querySelectorAll('.tab').forEach(function(e, i){e.style.display = 'none';});
+      document.querySelectorAll('.page').forEach(function(e){e.style.display = 'none';});
+      document.querySelector('.page0').style.display = 'block';
+      document.querySelector('.page0').classList.remove('reduce');
+      document.querySelector('.tab0').style.display = 'block';
+      //folder2.reattachEvents();
+      return this;
+    },
+    interupt : function folderInterupt(){
+      interupt = true;
+    },
+    foldercontinue : function folderContinue(){
+      interupt = false;
+    },
+    folderForceContinue : function(e){
+      var el = document.getElementById(e);
+      displayNextPage(el.dataset.nextpage);
+      document.querySelector('.folder').scrollIntoView({block: 'start',  behavior: 'smooth' });
+      return this;
+    },
+
+    shortcut : function shortcut(n){
+
+      //write a function that can scroll based on user interaction and not an explicit btn click
+      displayNextPage(n);
+      var target = '.tab' + n;
+      setTimeout(
+        function(){
+          document.querySelector(target).scrollIntoView({block: 'start',  behavior: 'smooth' });
+        },400);
+      interupt = true;
+    },
+
+    reattachEvents : function reattach(){
+      var btns = document.getElementsByClassName('btnnext');
+      for(var i = 0; i < btns.length; i++){
+        attachScroll(btns[i]);
+      }
+      function attachScroll(btn){
+        btn.addEventListener('click', function(event){
+
+          if(interupt === true){
+            return;
+          }
+
+          displayNextPage(event.target.dataset.nextpage);
+          var thisid = event.target.dataset.nextpage;
+          var target = '.tab' + thisid;
+          setTimeout(
+            function(){
+              document.querySelector(target).scrollIntoView({block: 'start',  behavior: 'smooth' });
+            },400);
+          interupt = true;
+        });
+      }
+      return this;
+    },
+
+    folderMain : function folder(progressive){
+      //automatically display first page:
+      document.querySelector('.tab0').classList.add('tabHighlight');
+      document.querySelector('.page0').style.display = 'block';
+
+      for(var i= 0; i <classes.length; i++){
+        attachclick(classes[i]);
+      }
+      //same as the next function in folder1
+      if(progressive === true){
+        progressiveReveal();
+      }
+
+      function progressiveReveal(){
+          //hide all except first tab .: 1
+        for(var i = 1; i < classes.length; i++){
+          classes[i].style.display = 'none';
+        }
+        //reattach();
+        //
+        folder2.reattachEvents();
+      }
+
+      function scrollBackToMenu(){
+        document.querySelector('.folder').scrollIntoView({block: 'start',  behavior: 'smooth' });
+      }
+
+      document.querySelector('.scrollToMenu').addEventListener('click', function() {
+        scrollBackToMenu();
+      });
+      return this;
+    }
+
+    };
+
+
+
+  function attachclick(target){
+    
+    target.addEventListener('click', function(){
+      var num = parseInt(target.classList[1].slice(3,4));
+      var pages = document.getElementsByClassName('page');
+      for(var i = 0; i < pages.length; i++){
+        
+        if(i === num){
+          
+          var page = document.querySelector('.page'+num);
+          //This can be animated with the old effect:
+          page.classList.remove('reduce');
+          page.classList.add('focus');
+          setTimeout(function(){
+            document.querySelector('.tab'+num).scrollIntoView({block: 'start',  behavior: 'smooth' });
+          },400);
+          document.querySelector('.tab'+num).classList.add('tabHighlight');
+        }
+        else{
+          
+          if(document.querySelector('.page'+i) !== null){
+            document.querySelector('.page'+i).classList.add('reduce');
+          }
+          if(document.querySelector('.tab'+i) !== null){
+            document.querySelector('.tab'+i).classList.remove('tabHighlight');
+          }
+        }
+      }
+    });
+  }
+  return this;
+})();

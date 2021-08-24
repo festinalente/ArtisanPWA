@@ -1,0 +1,37 @@
+-let menu = ['shop', 'about', 'blog'];
+-let tagline = entity.title
+  .mobileMenuTop.navmob
+    .arrowBack.hideInSight.sticktopleft
+    a(href='/').brandMobile
+      h2 #{entity.name}
+    .navColapseDiv
+      .menubody
+        a(href='/').brandMobile
+          h2 #{entity.name}
+        each item, i in menu 
+          a(href='/'+item class=item).menuItemFont #{item}
+    .itemGroupColumn.sticktopright
+      nav(role='navigation')
+        span.navColapseBtn
+          div 
+          div
+          div
+        span
+          include ../shoppingCart/mixins/carticon.pug        
+              
+  .desktopMenuTop
+    .itemGroup.menuTablet
+      .branddiv
+        a(href='/').brandMobile
+          h2 #{entity.name}
+      each item, i in menu   
+        .itemGroupColumnSmall.center 
+          a(href='/'+item class=item).tabletMenu #{item}
+        if i === menu.length -1
+          .itemGroupColumnSmall.center   
+    
+    
+      .itemGroupColumn.sticktopright
+        span
+          include ../shoppingCart/mixins/carticon.pug            
+    

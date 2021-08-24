@@ -1,0 +1,9 @@
+{
+  "name": "JSON-LD",
+  "version": "1.0.0",
+  "description": "Project specific module that generates JSON-LD from existing information on an item.",
+  "main": "jsonld.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

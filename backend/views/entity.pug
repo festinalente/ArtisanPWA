@@ -1,0 +1,55 @@
+mixin paragraph(field, content, originalName)
+  p.flex
+    span.bold #{field}
+    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
+      span.flexrow.controlParent(data-type=originalName data-values=content tabindex='0').editContol      
+
+-{entity}
+include ../microdocs.pug  
+h3 Entity details:
+.alertdiv 
+  h3 This page is being built, please leave the information as it is or contact me to change anything.
+.microdocs All fields "auto save" when they are altered except shop times. 
+.itemprofile.backendbox
+  .itemGroup
+    .itemGCtable
+        +microdocs("The person or business who trades using this platform").tabindex
+        +paragraph('Business entity name', entity.provider, 'provider')
+    
+        +microdocs("The trading name of the business").tabindex
+        +paragraph('Trading name', entity.name, 'name') 
+    
+        +microdocs("Fiscal number or 'VAT' number").tabindex
+        +paragraph('Fiscal number', entity['fiscal number'], 'fiscal number')    
+        
+        +microdocs("This is used in to title the website.").tabindex
+        +paragraph('Slogan or tag line', entity.title, 'title')
+      
+        +microdocs("Phone code with no leading \"+\" or spaces or zeros").tabindex
+        +paragraph('Country code', entity['country code'], 'country code')  
+      
+        +microdocs("Phone with no spaces and no leading spaces or zeros").tabindex
+        +paragraph('Phone', entity.phone, 'phone')
+      
+        +microdocs("Enter the main entity email").tabindex
+        +paragraph('Email', entity.email, 'email')  
+
+        +microdocs("This address should correspond to your fiscal address").tabindex
+          -let keys = Object.keys(entity.PostalAddress);
+          -let values = Object.values(entity.PostalAddress);
+          each item, i in keys
+            -let uncammeled =  item.replace(/([A-Z][a-z]+)/g, ' $1').replace(/([A-Z]{2,})/g, ' $1').replace(/\s{2,}/g, ' ').trim().toLowerCase();
+            +paragraph(uncammeled, values[i], "PostalAddress."+keys[i])
+            .itemGroup.backendParentDiv#shopdiv
+      .item    
+        h4 Set opening times:
+        .microdocs 
+          p.
+            If you only trade online, leave this blank. This calendar allows fine grained
+             setting of the shop timetable and allows rapid changes to be published. Note that
+             normal opening hours are assertained when "Set times for all #[em day of week]" 
+             checkbox is checked for a particular day.
+        br 
+        #shopTimeTable
+        br
+        .btngreen.bounceOnHover.saveShopTimes.center Save opening times   

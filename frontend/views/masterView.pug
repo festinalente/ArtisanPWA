@@ -1,0 +1,105 @@
+doctype html
+-{language, entity, path}
+html(lang="en-EU" xml:lang="en-EU")
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    //meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name="theme-color" content="#ecf3fb")
+    link(rel="preload" href="/frontendStatic/css/fonts/glyphicons-halflings-regular.woff2" as="font" type="font/woff2" crossorigin)
+    link(rel="preload" href="/frontendStatic/css/fonts/Belleza-Regular.ttf" as="font" type="font/woff2" crossorigin)
+    link(rel="stylesheet" href="/frontendStatic/css/production/master.min.css" async)
+    link(rel="manifest", href="/frontendPWA/manifest.json")
+    link(rel="apple-touch-icon", href="/images/logos/favicons/favicon-P_48.ico")
+    link(rel="canonical", href=path)
+    -//$('link[rel="canonical"]').attr('href', 'NEW_HREF_GOES_HERE');
+
+    block otherstyles
+
+    block description
+    meta(name="description" content=entity.title)
+
+    block robots
+      meta(name="robots", content= "index")
+    block title
+      title #{entity.name} | #{entity.title} | home
+  body
+    .offline.warning 
+      p You are browsing in offline mode, certain functions like purchases are not possible in offline mode.
+    include ./includes/navigation.pug
+    include ./mixins/folderComponents.pug
+    
+    .itemGroup#werepwa
+      .col1
+        a.btn.btn-primary.sms1.btn-lg#addpwa(role="button") Install the #{entity.name} webapp
+    .itemGroup    
+      .gutters
+      .guttersBody#main
+        block jsonld
+          -let stJson = JSON.stringify(jsonld);
+          script(type="application/ld+json").
+            !{stJson}
+        block bodycontent
+          .itemGroup
+            +cardLink('/shop', 'shop', 'placeHolderShop')
+            +cardLink('/blog', 'blog', 'placeHolderBlog')
+            +cardLink('/our-story', 'my story', 'placeHolderStory')            
+      .gutters
+    //-footer
+    .itemGroup.col1.whitespace
+       
+    .itemGroup.contactSpace.contacts
+      a(itemprop="telephone" href="tel:00"+entity['country code'] + entity.phone).item.center phone: 00#{entity['country code']}#{entity.phone}
+      a(itemprop="email" href="mailto:"+entity.email).item.center email: #{entity.email}
+    br
+    if entity.otherPointsOfSale[0].PostalAddress.name  
+      a(href="https://www.google.pt/maps/dir//"+entity.location.lat + ',' +entity.location.lng target="_blank").item.center.hideForPrint Directions
+    #footer.itemGroup
+      .itemGroup.emphasis
+      if entity.otherPointsOfSale[0].PostalAddress.name
+        .itemGroupColumnSmall.emphasis
+          h4 Address:
+          div(itemprop="address" itemscope itemtype="http://schema.org/PostalAddress")
+          -let address = Object.keys(entity.otherPointsOfSale[0].PostalAddress)
+            each val, i in address
+              -if(entity.otherPointsOfSale[0].PostalAddress[val] !== '')
+                p(itemprop=val) #{entity.otherPointsOfSale[0].PostalAddress[val]}
+        .itemGroupColumnSmall.emphasis
+          -console.warn('check schema for times')
+          h4 Opening hours:
+          -let keys = Object.keys(entity.otherPointsOfSale[0].openingHours);
+          each val, i in entity.otherPointsOfSale[0].openingHours
+            -let times = val.join('-');
+            -let schemaname = (keys[i]) ? keys[i].slice(0,2) : "09:00-18:00";
+            span(itemprop="openingHours" content=schemaname + times)
+              b #{keys[i]}:
+              p times
+    div.copyright.itemGroup
+      p 
+        span This website uses one nessesary session cookie, no tracking cookie, no 3rd party cookies. No explicit user consent is required under EU law. 
+        a(href="/personal-data-and-cookies") Cookies and privacy policy, 
+        a(href="/terms") Terms &amp; Conditions, 
+        a(href="/website-terms") Website terms of use.    
+    div.copyright.itemGroup
+      p.
+        Any client facing code <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-only</a> by <a href="swiftmo.com">Tomás Swift-Metcalfe</a>, website content <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a> #{entity.provider}.
+      //- sitemap
+    //- script(src="/js/ext.min.js")
+    block modals
+    
+    .modal.alertmodal
+      .alertmodalcontent.alertdiv
+        .circle.sms2.circleClose
+          .before
+          .after      
+        p.alertmodalcontentP
+    .modal.loadingGif
+      .gif
+        h2 Wait a sec...
+        br
+        //img(src='/images/platePainting.gif')
+
+    script(src="/frontendStatic/productionJS/master.min.js")
+    //script(src="https://unpkg.com/dexie@latest/dist/dexie.js")
+    block pagespecificscripts

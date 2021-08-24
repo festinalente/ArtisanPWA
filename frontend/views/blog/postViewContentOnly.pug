@@ -1,0 +1,29 @@
+include ./mixins.pug
+.itemGroup.mainBody
+  script(type="application/ld+json")
+    !=jsonldpage 
+    
+  h2 #{post.title}
+  .post
+    each val, index in post.content  
+      case val.el
+        when 'p'
+          p #{val.cont}
+        when 'h1'
+          h1 #{val.cont}
+        when 'h2'
+          h2 #{val.cont}  
+        when 'h3'
+          h3 #{val.cont}
+        when 'h4'
+          h4 #{val.cont}      
+        when 'img' 
+          -//+imgMixin(val.cont, post.content[index+1].cont, val)
+          if post.content[index+1] && post.content[index+1].el === 'figcaption' && post.content[index+1].cont
+            +imgMixin(val.cont, post.content[index+1].cont, val)
+          else
+            +imgMixin(val.cont, 'no caption', val)
+.fullrowBottom
+  .yestick
+  .bigYellowBtn.btnnext.center(data-nextpage=next)
+    h2 Continue

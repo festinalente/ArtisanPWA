@@ -1,0 +1,140 @@
+@import "variables.scss";
+.basedimensions {
+  display: flex;
+  flex-direction: row;
+}
+
+.basedimensions > .main {
+  width: 60%;
+  overflow: hidden;
+  padding: 0.5em;
+}
+
+.basedimensions > .left, .right {
+  width: 30%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.basedimensions > .right > * {
+  //transform: scale(0.7);
+  margin-left: 15%;
+  border-radius: 1em;
+  @include dropShaddow(0px, 0px, 7px, 4px, $standard-grey);
+}
+
+.basedimensions >  .left > * {
+  margin-left: -15%;
+  border-radius: 1em;
+  @include dropShaddow(0px, 0px, 7px, 4px, $standard-grey);
+}
+
+.basedimensions {
+  /*.main::before {
+    content: "\e096";
+    color: $secondary-color;
+    font-family: 'Glyphicons Halflings';
+    font-size: 1.5em;
+    top: 2em;
+    right: -1em;
+    position: relative;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-style: solid;
+    border-radius: 2em;
+    border-width: 0;
+    padding: 0.5em;
+    pointer-events: none;
+  }*/
+
+  .scrollerArrowLeft::after {
+    content: "\e095";
+    font-family: 'Glyphicons Halflings';
+    color: $secondary-color;
+    font-size: 1em;
+    top: 2.5em;
+    right: 2em;
+    position: relative;
+    margin: auto;
+    background-color: rgba(0,0,0,.3);
+    border-style: solid;
+    border-radius: 2em;
+    border-width: 0;
+    padding: .5em;
+    pointer-events: none;
+    transform: rotateX(180deg) rotateZ(45deg);
+  }
+
+  .scrollerArrowRight::after {
+    content: "\e095";
+    font-family: 'Glyphicons Halflings';
+    color: #4167b1;
+    font-size: 1em;
+    top: 2.5em;
+    right: 18em;
+    position: relative;
+    margin: auto;
+    background-color: rgba(0,0,0,.3);
+    border-style: solid;
+    border-radius: 2em;
+    border-width: 0;
+    padding: .5em;
+    pointer-events: none;
+    transform: rotateX(0deg) rotateZ(-145deg);
+  }
+}
+
+.imgScroller > * {
+  width: 100%;
+  opacity: 0.2;
+  transition: all 0.25s ease-in;
+}
+
+.basedimensions > .main > img, video{
+  border-radius: 2em;
+  @include dropShaddowGrey();
+}
+
+.smooth {
+  opacity: 1;
+  transtion: none;
+}
+
+.fullScreenImg {
+  width: 100vw;
+  height: 100vh;
+  box-shadow: none;
+  border-radius: initial;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  overflow: auto;
+  background: $primary-shaddow;
+  display: flex;
+  padding: 0;
+}
+
+.fullScreenImg > img {
+  width: auto;
+  margin: auto;
+  height: auto;
+}
+
+/*.fullScreenImg::before {
+  content: "\e097";
+  color: $secondary-color;
+  font-family: 'Glyphicons Halflings';
+  font-size: 1.5em;
+  top: 20vh;
+  right: 85vw;
+  position: absolute;
+  margin: auto;
+  background-color: rgba(0,0,0,.3);
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0;
+  padding: .5em;
+  pointer-events: none;
+}*/

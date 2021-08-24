@@ -1,0 +1,7 @@
+{
+  "name": "Request Validator",
+  "version": "1.0.0",
+  "description": "A project specific module that checks requests meet certain criteria like type, length and character type.",
+  "main": "reqVal.js",
+  "private": "true"
+}

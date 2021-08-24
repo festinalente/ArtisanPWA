@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/backend/js/events.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/backend/js/events.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+  * Backend event delegation
+  * @namespace backendEventDelegation
+  */
+
+/**
+  * Dropdown select and edit
+  * @namespace selectAndEdit
+  * @memberof backendEventDelegation
+  * @description
+    The select and edit namespace refers to functions which work with data that
+    takes the form of objects in arrays in the DB such as 'theme', 'producer' or
+    'item type'. The entire functionality derives from the 'item type' and
+    adapted for other uses.
+  * @todo Make whipe() work for all select and edits
+  */
+
+/**
+  * Main menu
+  * @namespace mainMenu
+  * @memberof backendEventDelegation
+  * @description The main menu name space refers to actions associated with
+    the main menu which doesn't change.
+  */
+
+
+  /**
+    * Onload event
+    * @event DOMContentLoaded
+    * @summary fires alert constructor, warns if not on a HTTPS connection and
+    * @fires SwiftCal#calendar
+    * @fires swiftmoAlert#set
+    * @todo Check why it does use xhr module.
+    * @memberof backendEventDelegation
+    */
+window.addEventListener('DOMContentLoaded', (event) => {
+  swiftmoAlert.set();
+  if (location.protocol !== 'https:' ) {
+    //swiftmoAlert.setContent('Reminder, make sure you connect over https for testing.').toggle();
+    console.warn('not over https');
+  }
+});
+
+document.addEventListener('click', function(e){
+
+  /**
+    * Login
+    * @event Login button click
+    * @summary Simply authenticates with the server and reloads the page.
+    * @todo Check why it does use xhr module.
+    * @memberof backendEventDelegation
+    */
+  if(e.target.classList.contains('loginButton')){
+    e.preventDefault();
+    let data = {
+      username: document.querySelector('#username').value,
+      password: document.querySelector('#password').value,
+    };
+
+    let request = new XMLHttpRequest();
+    request.open('POST', '/backend/backendlogin', true);
+    request.setRequestHeader('Content-Type', "application/json");
+    request.send(JSON.stringify(data));
+    request.onreadystatechange = function (callback) {
+      if(request.readyState === XMLHttpRequest.DONE &amp;&amp; request.status === 200) {
+        location.reload();
+      }
+      if(request.status === 401){
+        document.querySelector('.loginError').innerHTML =
+        "Unauthorized. Please check your username and password.";
+      }
+
+    };
+  }
+
+  if(e.target.id === 'docs'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/docs', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+    });
+  }
+
+  if(e.target.classList.contains('toggleDocs')){
+    e.preventDefault();
+    let docs = document.querySelectorAll('.microdocs');
+    for (let i = 0; i &lt; docs.length; i++) {
+      if(any(['block',''], docs[i].style.display)){
+        docs[i].style.display = 'none';
+        
+      }else{
+        docs[i].style.display = 'block';
+      }
+    }
+  }
+
+  /**
+    * Clone Item
+    * @event Clones the specified number of a particular item type with a particular pattern
+    */
+  if(e.target.classList.contains('cloneType')){
+    e.preventDefault();
+    let itemref = JSON.parse(e.target.parentElement.parentElement.dataset.items)[0].itemref;
+    let count = e.target.parentElement.querySelector('.numberInput').value;
+    xhr({itemref: itemref, count: count}, '/backend/cloneItem', function callback(response){
+      if(response === 'OK'){
+        let countdisplay = e.target.parentElement.querySelector('.countval');
+        countdisplay.textContent = parseInt(countdisplay.textContent) + parseInt(count);
+      }else{
+        alert('oops an error occured');
+      }
+    });
+  }
+
+  /**
+    * Clone Item
+    * @event Clones the specified number of a particular item type with a particular pattern
+    */
+  if(e.target.classList.contains('removeItems')){
+    e.preventDefault();
+
+    let itemrefs = JSON.parse(e.target.parentElement.parentElement.dataset.items);
+    let count = e.target.parentElement.querySelector('.numberInput').value;
+    let itemtype = e.target.parentElement.parentElement.dataset.itemtype;
+
+    let toDelete = ()=> {
+      if(count &lt; itemrefs.length){
+        return itemrefs.slice(itemrefs.length - count);
+      }else{
+        return itemrefs
+      }
+    }
+    if(confirm("Are you sure you want to delete " + count + " " + itemtype + ", note if you remove the zeroth item, the entire item type is removed")){
+      xhr({itemtype: itemtype, itemrefs: toDelete()}, '/backend/removestock', function callback(response){
+        if(response === 'OK'){
+          let countdisplay = e.target.parentElement.querySelector('.countval');
+          let val = parseInt(countdisplay.textContent) - parseInt(count);
+          let card = e.target.parentElement.parentElement;
+          let page = document.querySelector('.maincontent');
+          if(val === 0){
+            page.removeChild(card);
+          }else{
+            countdisplay.textContent = val
+          }
+        }else{
+          alert('oops an error occured');
+        }
+      });
+    }
+  }
+
+  /**
+    * Reset Filters
+    * @event Reset Filters
+    * @summary Toggle all stock elements to visible (removes "hide" class, adds "displayFlex" class)
+    * @memberof backendEventDelegation
+    */
+  if(e.target.classList.contains('resetFilters')){
+    document.querySelectorAll('.stockItems').forEach((item, i) => {
+      item.classList.remove('hide');
+      item.classList.add('displayFlex');
+    });
+  }
+
+  if(e.target.id === 'sales'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/sales', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+    });
+  }
+
+  /**
+    * Toggle entity view
+    * @event Load Entity view
+    * @summary Loads and toggle entity view
+    * @fires SwiftCal#calendar
+    * @memberof backendEventDelegation
+    */
+  if(e.target.id === 'entity'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/entity', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+      shopCalendar = new SwiftCal().calendar('#shopTimeTable', null, 12, true, false, false, true);
+      entityAlterEvents();
+    });
+  }
+
+  if(e.target.id === 'viewstock'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/viewstock', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+      addStockChangeEvents();
+    });
+  }
+  /**
+    * Add stock
+    * @event Stock add app.
+    * @summary Loads a providers "add stock" view.
+    * @description
+      Loads provider stock view into maincontent and sets core functionality
+    * @todo Change name to addStock
+    * @memberof backendEventDelegation
+    */
+  if(e.target.id === 'addstock'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/addstock', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+      attachImageLoadEvent();
+      addStockChangeEvents();
+
+      document.querySelectorAll('.currency').forEach((item, i) => {
+        new CurrencyInput(item, 'EUR');
+      });
+
+      document.querySelectorAll('.fuzzySearch').forEach((item, i) => {
+        new FuzzySearch(item.nextSibling);
+      });
+
+
+      document.querySelectorAll('.tax').forEach((item, i) => {
+        new PercentInput(item);
+      });
+
+      document.querySelectorAll('.arraymodaltype').forEach((e)=>{
+        toggle.setinst(e);
+        e.querySelectorAll('.circleClose').forEach((item, i) => {
+          item.addEventListener('click', ()=>{
+            toggle.tog(document.querySelector('.itemtypesuccess'), 'none');
+            toggle.tog(e, 'none');
+          });
+        });
+
+        e.querySelectorAll('.save').forEach((el)=>{
+          el.addEventListener('click', ()=>{
+            saveFn(el)
+          });
+        });
+      });
+    });
+  }
+
+  /**
+    * Expand
+    * @event Show the next relevant content
+    * @memberof backendEventDelegation
+    * @summary Remove the class ".hide" which sets display property to 'none'.
+    */
+  if(e.target.classList.contains('expand')){
+    e.target.closest('p').nextSibling.classList.remove('hide');
+    e.target.style.display = 'none';
+    e.target.parentElement.querySelector('.contract').style.display = 'block';
+  }
+
+  /**
+    * Contract
+    * @event Hide the next relevant content
+    * @memberof backendEventDelegation
+    * @summary Adds the class ".hide" which sets display property to 'none'.
+    */
+  if(e.target.classList.contains('contract')){
+    e.target.closest('p').nextSibling.classList.add('hide');
+    e.target.style.display = 'none';
+    e.target.parentElement.querySelector('.expand').style.display = 'block';
+  }
+
+  /**
+    * Remove a thing
+    * @event Delete a thing, e.g. an item type
+    * @memberof backendEventDelegation.selectAndEdit
+    * @todo Check if whipe to clear fields in all eventualities. Check what
+    happens to FuzzySearch.
+    * @see FuzzySearch
+    * @summary Maps relevant content from button position to the containing
+     modal then deletes the thing the view pertains to. Finally, it removes the
+     deleted thing name from the drop down select.
+    */
+  if(e.target.classList.contains('remove')){
+    let _id = e.target.parentElement.dataset._id,
+        type = e.target.parentElement.dataset.type,
+        modal = document.querySelector('#addNewModal-'+type),
+        values = JSON.parse(modal.dataset.values),
+        value = e.target.parentElement.previousSibling.textContent,
+        parent = e.target.parentElement.parentElement,
+        parentParent = e.target.parentElement.parentElement.parentElement;
+
+        parentParent.removeChild(parent);
+        values.splice(values.indexOf(value), 1);
+        modal.dataset.values = JSON.stringify(values);
+
+    let saveob = {_id: _id, [type]: values};
+      xhr(saveob, '/backend/updateArrayItem', function(res){
+        if(res === 'success'){
+          //alter select list
+          swiftmoAlert.setContent(type + 'successfully updated.').toggle();
+          whipe();
+          let select = document.querySelector('#select-'+_id);
+          let opt = select.querySelector("option[value='"+value+"']")
+              select.removeChild(opt);
+        }
+        else{
+          modal.document.querySelector('.warning').textContent = 'An error occured';
+          modal.document.querySelector('.warning').style.display = 'block';
+        }
+      });
+  };
+
+  /**
+    * Edit item type (modal dialog toggle)
+    * @event Toggle edit modal
+    * @description
+      It opens the modal dialog for a particular thing, then loads the data into
+       the relevant fields in the modal from a data attribute in the previous
+       select option.
+    * @memberof backendEventDelegation.selectAndEdit
+    */
+  if(e.target.classList.contains('editmodal')){
+    let field = e.target.parentElement.dataset.field,
+        /**
+          * @var {string} fieldCss
+          * @description
+            fieldCss is used in HTML attributes replacing spaces with underscores.
+             Where possible though spaces are maintained.
+          * @example 'item type' becomes 'item_type'
+          */
+        fieldCss = field.replace(' ', '_'),
+        targetField = document.querySelector('#editmodal-' + fieldCss),
+        filtered = e.target.parentElement.previousSibling,
+        itemType = filtered.value,
+        data = (filtered[filtered.selectedIndex].dataset.iteminfo) ?
+          JSON.parse(filtered[filtered.selectedIndex].dataset.iteminfo) :
+          {dimensions: [0,0,0], weight: 0, name: ''};
+
+    targetField.style.display = 'block';
+    document.querySelector('#itemNewName-'+fieldCss).textContent = data.name;
+    document.querySelector('#itemNewName-'+fieldCss).dataset.newname = data.name;
+
+    if(field === 'item type'){
+      document.querySelector('.x').textContent = data.dimensions[0];
+      document.querySelector('.y').textContent = data.dimensions[1];
+      document.querySelector('.z').textContent = data.dimensions[2];
+      document.querySelector('.itemNewWeight:not(.parent)').textContent = data.weight;
+    }
+
+    if(field === 'producer'){
+      document.querySelector('.producerIntro').textContent = data['quick intro'];
+      document.querySelector('.producerType').textContent = data.type;
+    }
+
+    if(field === 'theme'){
+      let post = document.querySelector('#editmodal-theme').querySelector('#select-blogPost');
+
+      if(data.colours){
+        data.colours.forEach((item, i) => {
+          let collection = targetField.querySelector('.colours').querySelectorAll('.array');
+          collection[i].textContent = item;
+        });
+      }
+      if(data['meta description']){
+        $('.themeDescription').textContent = data['meta description'];
+      }
+      if(data['linked post']){
+        setOption(post, data['linked post']);
+      }
+    }
+
+    //any thing with images:
+    if(any(['theme','producer'], field)){
+      targetField.querySelectorAll('.distinctImage')[0].querySelector('.title').textContent = data.name + ' images';
+
+      let input = targetField.querySelector('.characterCountInput'),
+          display = targetField.querySelector('.characterCount');
+
+      characterCount(input, display, 160);
+
+      rightpics(targetField, data);
+
+      addTabIndex(targetField);
+
+      addImageEvent(targetField);
+    }
+  }
+
+  /**
+    * Add theme
+    * @event Add theme
+    * @fires resetImages
+    * @fires resetItemFields
+    * @description Whipes image and text fields in the same modal dialog as the
+    * click event on the element on to which this is listening.
+    * @memberof backendEventDelegation
+    */
+  if(e.target.classList.contains('add-theme')){
+    
+    resetImages(e.target, 'theme');
+    resetItemFields(e.target, 'theme');
+  }
+
+  /**
+    * Add producer event
+    * @event  Add producer
+    * @fires resetImages
+    * @fires addItemType
+    * @description Whipes field, highlights field (changes css class), sets
+    * contentEditable === 'true'
+    * @memberof backendEventDelegation.selectAndEdit
+    */
+  if(e.target.classList.contains('add-producer')){
+    resetImages(e.target, 'producer');
+    addItemType([ document.querySelector('#itemNewName-producer'),
+                  document.querySelector('.producerIntro'),
+                  document.querySelector('.producerType')
+                ]);
+
+  }
+
+  /**
+    * Add item type event
+    * @event Add item type
+    * @fires whipe - whipes item_type text fields
+    * @fires addItemType - sets editable "true" on each field passed.
+    * @description whipes item type modal fields, then makes editable
+    * @memberof backendEventDelegation.selectAndEdit
+    */
+  if(e.target.classList.contains('add-item_type')){
+    whipe();
+    addItemType([
+                  document.querySelector('#itemNewName-item_type'),
+                  document.querySelector('.itemNewWeight')
+                ]);
+    editDimensions(e.target);
+  }
+
+  /**
+    * Edit dimensions event
+    * @event Edit dimensions
+    * @fires editDimensions
+    * @summary - Whipe and sets editable "true" on each field with the .dimensions
+    * class within the div.
+    * @description
+      - The dimensions class could be used to save any array like data.
+    * @see Add item type, dimensions are a property of an item type.
+    * @memberof backendEventDelegation.selectAndEdit
+    */
+  if(e.target.classList.contains('editdimensions')){
+    editDimensions(e.target);
+  }
+
+  /**
+   * Delete image:
+   * @event Delete image
+   * @fires deleteImage
+   * @see deleteImage
+   * @memberof backendEventDelegation
+   */
+  if(e.target.classList.contains('deleteImage')){
+    deleteImage(e.target);
+    updateData(e.target);
+  }
+
+  /**
+   * Delete item type:
+   * @event Delete item type
+   * @see deleteImage
+   * @description It collects the the name of the thing to delete and the type
+    then for it to delete, then removes the relevant select option field.
+   * @memberof backendEventDelegation.selectAndEdit
+   * @todo Might be a duplicate of "remove"
+   */
+  if(e.target.classList.contains('deleteItemType')){
+    let modal = e.target.closest('.stockModal');
+    let name = modal.querySelector('.itemNewName').textContent;
+    let _id = e.target.dataset._id;
+    let type = e.target.dataset.itemtype;
+    let saveob = {name: name, type: type};
+
+    xhr(saveob, '/backend/deleteItemType', function(res){
+      if(res === 'success'){
+        //successDiv.innerHTML = res;
+        resetImages(e.target, type.replace(' ', '_'));
+        resetItemFields(e.target, type.replace(' ', '_'));
+        toggle.tog(modal.parentElement, 'none');
+
+        swiftmoAlert.setContent(res + ' deleting ' + name + ' ' + type).toggle();
+        //whipe();
+        //toggle.setinst(successDiv);
+        //toggle.tog(successDiv, 'block');
+
+        let select = document.querySelector('#select-'+type.replace(' ', '_'));
+            select.removeChild(select.options[select.selectedIndex]);
+      }
+      else{
+        modal.querySelector('.warning').textContent = 'An error occured';
+        modal.querySelector('.warning').style.display = 'block';
+      }
+    });
+
+  }
+
+  if(e.target.classList.contains('savestock')){
+    savenew(e.target);
+  }
+
+  if(e.target.classList.contains('saveitemtype')){
+
+    if(e.target.dataset.itemtype === 'item type'){
+      let data = [];
+      data.push(parseInt(document.querySelector('.x').textContent));
+      data.push(parseInt(document.querySelector('.y').textContent));
+      data.push(parseInt(document.querySelector('.z').textContent));
+      let name = document.querySelector('#itemNewName-item_type').textContent;
+      let weight = parseInt(document.querySelector('.itemNewWeight').textContent);
+      let _id = e.target.parentElement.dataset._id;
+
+      let updates = {dimensions: data, weight: weight, name: name, itemtype: 'item type'};
+
+      let saveob = {_id: _id, updates};
+
+      save(saveob);
+      writeThemeChanges(updates, 'item_type');
+    }
+    if(e.target.dataset.itemtype === 'producer'){
+      let _id = e.target.parentElement.dataset._id,
+          name = document.querySelector('#itemNewName-producer').textContent,
+          intro = document.querySelector('.producerIntro').textContent,
+          type = document.querySelector('.producerType').textContent,
+          updates = { Producer: 'artist',
+                      '@type': 'person',
+                      name: name,
+                      'quick intro': intro,
+                      type: type,
+                      itemtype: 'producer'},
+          saveob = {_id: _id, updates};
+
+      save(saveob);
+
+
+      document.querySelector('#editmodal-theme').style.display = 'none';
+    }
+    if(e.target.dataset.itemtype === 'theme'){
+
+      let _id = e.target.parentElement.dataset._id,
+          name = document.querySelector('#itemNewName-theme').textContent,
+          description = document.querySelector('#itemNewIntro-theme').textContent,
+          post = document.querySelector('#editmodal-theme').querySelector('#select-blogPost'),
+          bespoke = document.querySelector('[data-fieldname="for bespoke"]').querySelector('[type="checkbox"]').checked,
+          updates = {
+                      name: name,
+                      colours: getArrayTypeInput($('.colours')),
+                      itemtype: 'theme',
+                      'meta description': description,
+                      'linked post': JSON.parse(optData(post, 'iteminfo')).title,
+                      'for bespoke': bespoke
+                    },
+          saveob = {_id: _id, updates};
+
+      save(saveob);
+      writeThemeChanges(updates, 'theme');
+
+      document.querySelector('#editmodal-theme').style.display = 'none';
+    }
+
+  }
+
+  if(e.target.classList.contains('viewEdit')){
+    let _id = e.target.parentElement.dataset._id,
+        type = e.target.parentElement.dataset.type,
+        values = JSON.parse(e.target.parentElement.dataset.values);
+        toggle.setinst(e.target.parentElement.parentElement.nextElementSibling);
+        toggle.tog(e.target.parentElement.parentElement.nextElementSibling, 'block')
+
+    //e.target.parentElement.parentElement.nextElementSibling.classList.remove('hide');
+  }
+
+  /*if(e.target.id === 'blog'){
+    e.preventDefault();
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/blognew', function callback(message){
+      document.querySelector('.maincontent').innerHTML = message;
+    });
+  }*/
+
+  if(e.target.id === 'blog'){
+    let query = {};
+    makeBlog(query);
+    attachImageLoadEvent();
+  }
+
+});
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

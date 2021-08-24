@@ -1,0 +1,84 @@
+mixin clientDetails(dets)
+  h3 Client details, shipping & invoice.
+  .itemgroup.displayFlex
+    .col1
+      b Contact: 
+      p Name: #{dets.clientname}
+      p Phone: #{dets.countrycode} #{dets.phone}
+      p Email: #{dets.email}
+      p Retain client details: #{dets.savedetails}
+      b Client code: #{dets.clientcode}
+    .col1
+      b Postal address:
+      p #{dets.addressline1}
+      p #{dets.addressline2}
+      p #{dets.addresscity}
+      p #{dets.addressprovince}
+      p #{dets.addresspostcode}
+      p #{dets.country}
+    .col1
+      b Invoice address:
+      p #{dets.clientinvoicename}
+      p VAT number: #{dets.clientvatnumber}
+      p #{dets['addressline1-invoice']}
+      p #{dets['addressline2-invoice']}
+      p #{dets['addresscity-invoice']}
+      p #{dets['addressprovince-invoice']}
+      p #{dets['addresspostcode-invoice']}
+      p #{dets['country-invoice']}
+      
+mixin cartItems(d, i, currency)
+  h3 Item #{i}
+  -const price = (d.price / 100).toFixed(2)
+  -const vat = (d.price * ( d.tax / 100 ) / 100).toFixed(2);
+  -let image = (d.image && d.image[0]) ? d.image[0]: 'no image';
+  -if(d.name === 'Item(s) no longer in DB')
+    .itemprofile.stockItems.displayFlex.backendbox
+      h4 Item(s) no longer in DB
+  -else
+    -if(d._id)
+      .itemprofile.stockItems.displayFlex.backendbox(data-pattern=d._id.pattern data-itemType=d._id.type data-items=JSON.stringify(d.items))
+        img.viewstock(src=image[0] alt="Image of "+d._id.type +" with " +d._id.pattern)
+        -let dimensions = (d['item type'].dimensions) ? d['item type'].dimensions.toString().replace(/,/g, ' x ') + ' mm' : null; 
+        div
+          p #{d.name} with #{d.theme.name} design | weight ~#{d['item type'].weight} g | dimensions ~#{dimensions}
+          p 
+            em Price: #{currency} #{price} with #{currency} #{vat} charged at #{d.tax}%
+    -else
+      .itemprofile.stockItems.displayFlex.backendbox
+        h4 Item has been delete from DB        
+           
+mixin summary(summary, currency, status)
+  
+  
+  h3 Summary
+  if status.checkOut
+    .warning.shippingAlert Pending Shipping
+    button.btngreen.bounceOnHover.setAsShipped Set as Shipped
+  else
+    .affirmation Shipped status.shipped
+  -const price = (summary.price / 100).toFixed(2)
+  .itemprofile.stockItems.displayFlex.backendbox
+    h4 Total: #{currency} #{price} with tax.
+  
+-{sales}
+h2 Sales
+.microdocs
+  .question 
+  p.
+    This app displays all orders that are finalized (paid for) and pending shipping. 
+each cart, i in sales
+  -//+microdocs('docs')
+  p.togglemodal.add Order placed: #{cart.cart.summary.orderPlaced} 
+  .modal.arraymodaltype
+    .stockModal
+      .circle.sms2.circleClose
+        .before
+        .after
+      .block  
+            
+      +clientDetails(cart.clientDetails)
+      each item, j in cart.cartItems
+        +cartItems(item, j+1, cart.entity.currency)
+      +summary(cart.cart.summary, cart.entity.currency, cart.cart.status)
+      

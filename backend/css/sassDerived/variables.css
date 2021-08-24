@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Glyphicons Halflings";
+  src: url("/backendStatic/css/fonts/glyphicons-halflings-regular.ttf") format("truetype");
+  font-style: normal; }
+
+/**
+  * @funtion makeShaddow
+  * @param blurRadius bigger means bigger, lighter shaddow
+  * @param spread This is the size of shaddow (0 === same size as element), (10px === el.height, width + 10px)
+  * @param the offsets basically control how box fits relative to the element
+  * Drop shadow lays outside an elemen
+  */
+@keyframes bounce {
+  0% {
+    transform: scale(0.9); }
+  50% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }

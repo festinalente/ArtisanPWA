@@ -1,0 +1,9 @@
+{
+  "name": "Mongo",
+  "version": "1.0.0",
+  "description": "Project specific mongo db end points and functions",
+  "main": "mongo.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

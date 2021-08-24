@@ -1,0 +1,18 @@
+{
+  "name": "deletes shit",
+  "version": "1.0.0",
+  "description": "deletes shit recursively",
+  "main": "deleteFolderAndContents.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "queries"
+  ],
+  "dependencies": {
+    "fs": "*"
+  },
+  "author": "Tomás Swift-Metcalfe",
+  "license": "WTFPL"
+}

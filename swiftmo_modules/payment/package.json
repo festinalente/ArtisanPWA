@@ -1,0 +1,9 @@
+{
+  "name": "Global payment module",
+  "version": "1.0.0",
+  "description": "A project specific module wrapping stripe payments and functionality",
+  "main": "paymentModule.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

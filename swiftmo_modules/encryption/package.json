@@ -1,0 +1,9 @@
+{
+  "name": "Ecryption wrapper",
+  "version": "1.0.0",
+  "description": "A project specific module wrapping an encrypt/decript 'aes-256-cbc' cyphers",
+  "main": "encryption.js",
+  "private": "true",
+  "license": "no license",
+  "author": "Tomás Swift-Metcalfe"
+}

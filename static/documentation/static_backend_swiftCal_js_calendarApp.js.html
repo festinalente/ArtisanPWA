@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>SwiftMo Artistan Source: static/backend/SwiftCal/js/calendarApp.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">SwiftMo Artistan</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html">backendEventDelegation</a></li><li><a href="backendEventDelegation.mainMenu.html">backendEventDelegation.mainMenu</a></li><li><a href="backendEventDelegation.selectAndEdit.html">backendEventDelegation.selectAndEdit</a></li><li><a href="clientEventDelegation.html">clientEventDelegation</a></li><li><a href="clientEventDelegation.modalMethods.html">clientEventDelegation.modalMethods</a></li><li><a href="imagesAPI.html">imagesAPI</a></li><li><a href="module-Database%2520interaction-stockAPI.html">Database interaction~stockAPI</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="CurrencyInput.html">CurrencyInput</a></li><li><a href="FuzzySearch.html">FuzzySearch</a></li><li><a href="SwiftCal.html">SwiftCal</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="backendEventDelegation.html#.event:Addtheme">backendEventDelegation.event:Add theme</a></li><li><a href="backendEventDelegation.html#.event:Deleteimage">backendEventDelegation.event:Delete image</a></li><li><a href="backendEventDelegation.html#.event:DOMContentLoaded">backendEventDelegation.event:DOMContentLoaded</a></li><li><a href="backendEventDelegation.html#.event:Filtersthestockitemsonthepagebyitem">backendEventDelegation.event:Filters the stock items on the page by item</a></li><li><a href="backendEventDelegation.html#.event:Hidethenextrelevantcontent">backendEventDelegation.event:Hide the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:LoadEntityview">backendEventDelegation.event:Load Entity view</a></li><li><a href="backendEventDelegation.html#.event:Loginbuttonclick">backendEventDelegation.event:Login button click</a></li><li><a href="backendEventDelegation.html#.event:ResetFilters">backendEventDelegation.event:Reset Filters</a></li><li><a href="backendEventDelegation.html#.event:Showthenextrelevantcontent">backendEventDelegation.event:Show the next relevant content</a></li><li><a href="backendEventDelegation.html#.event:Stockaddapp.">backendEventDelegation.event:Stock add app.</a></li><li><a href="backendEventDelegation.selectAndEdit.Delete%2520a%2520thing,%2520e.g.html#.event:anitemtype">backendEventDelegation.selectAndEdit.Delete a thing, e.g.event: an item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Additemtype">backendEventDelegation.selectAndEdit.event:Add item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Addproducer">backendEventDelegation.selectAndEdit.event:Add producer</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Deleteitemtype">backendEventDelegation.selectAndEdit.event:Delete item type</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Editdimensions">backendEventDelegation.selectAndEdit.event:Edit dimensions</a></li><li><a href="backendEventDelegation.selectAndEdit.html#.event:Toggleeditmodal">backendEventDelegation.selectAndEdit.event:Toggle edit modal</a></li><li><a href="global.html#event:Clonesthespecifiednumberofaparticularitemtypewithaparticularpattern">event:Clones the specified number of a particular item type with a particular pattern</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#$">$</a></li><li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#bookDay">bookDay</a></li><li><a href="global.html#dateOnClickEvents">dateOnClickEvents</a></li><li><a href="global.html#fieldCss">fieldCss</a></li><li><a href="global.html#generateTimesOnly">generateTimesOnly</a></li><li><a href="global.html#getArrayTypeInput">getArrayTypeInput</a></li><li><a href="global.html#Humandate">Human date</a></li><li><a href="global.html#makeDate">make Date</a></li><li><a href="global.html#makeQuestion">makeQuestion</a></li><li><a href="global.html#MakeScroller2">MakeScroller2</a></li><li><a href="global.html#makeTimeElements">makeTimeElements</a></li><li><a href="global.html#optData">optData</a></li><li><a href="global.html#range">range</a></li><li><a href="global.html#rangeSelect">rangeSelect</a></li><li><a href="global.html#releaseBookedDay">releaseBookedDay</a></li><li><a href="global.html#releaseDayOfWeekG">releaseDayOfWeekG</a></li><li><a href="global.html#removeTime()">removeTime()</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/backend/SwiftCal/js/calendarApp.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+Notes:
+
+Think of it as method to post availability for something in a particular time on a
+particular day.
+
+The calendar is designed so that one user, the "provider" can post dates and times and another user,
+the "client" can select these dates and times. It's designed with events in mind but could be used for
+other things like rentals.
+
+It doesn't use the JS date object as it assumes events occur in a specific physical place, date and time,
+thus saves faffing about with timezone offsets and other peculiarities of
+the JS date object. If it were really needed another function could be added
+where it takes the date, start and end and produces two dates.
+
+Currently only one event or (time gap, e.g. 16:00 till 18:00) is supported: visuality another day modal or
+what not would be required to display multiple windows of time in a day, this could be done
+extending the time picker.
+
+How to:
+
+*Instantiate calendar*
+
+  SwiftCal.calendar(targetId, datesObject, numberOfMonthsToDisplay, time, endUser);
+
+  where:
+    * targetId is the id attribute of an element in which the calendar is to be generated.
+    * datesObject is an array of *objects* with pre-selected dates in the following format:
+
+      [{day: "2018-10-24", end: "12:00", start: "09:00"}]
+
+      Or just  the day:
+
+      [{day: "2018-10-24"}]
+
+      where month is a "javascript" month (i.e. january is month 0, Feb month 1 and so on) .
+
+    * N.b. call div with the calendar target anything but #calendar, to avoid confusion as this is used internally in this script.
+
+    * numberOfMonthsToDisplay is how many months you want to display, this could quite easilly be "lazilly" loaded on scroll,
+      but it's just as easy to make overflow scrollable and put in however many months you need that way.
+    * time option (true, or false, or no option defaults to false), this allows a user to select times.
+    * endUser takes a Boolean, defaults to false and basically means the calendar will only accept date selection
+      where these have been made available for selection by having the ".available" class attached. endUser disables the calendar
+      too so that it *only* alows end user selection. Dates are then retrieved via SwiftCal.collectEndUserSelection();
+    * endUserDurationChoice === true allows an end user to pickk a duration in Hours for a particular day. If false
+      the user will only be able to pick a day.
+
+To get a blank calendar just leave out the pre-selected dates object:
+
+  SwiftCal.calendar(targetId);
+
+Once instantiated you may wise to select dates by range:
+
+  This allows one range of dates to be selected only.
+  **for correct behaviour call with blocked "booked" dates instantiate this before the calendar**
+
+  e.g.
+    SwiftCal.range();
+    ... then...
+    SwiftCal.calendar('rentalCalendar', dates.dates, 12, null);
+
+Get chosen dates like this, note that these are the dates from the "provider":
+
+  SwiftCal.datesSelected();
+
+If the calendar is in end user mode dates from the "client" can be collected:
+
+ SwiftCal.collectEndUserSelection();
+
+*See the last param in the calendar instantiation for more info.
+
+To disable a calendar (e.g. for display) use
+
+  SwiftCal.disable();
+
+*currently there is no function to reenable it, if needed disable() can be rewritten to
+  toggle enabledness.
+
+*Things to improve*
+
+Revise preloadedDatesFn and the timeChooser function, they are a mess of event
+delegation rather than single function objects
+
+Return each function.
+
+Split up logic in the calendar generator so as not to include anything other than
+calendar generation and events.
+
+Either use different IDs for different calendars when more than one is added to the
+same page, or use classes to have nice WC3 valid HTML.
+
+Please attribute to Tomas Metcalfe from https://swiftmo.com
+*/
+
+(function scopeItIn(){
+  var disabled;
+  var datesSelectedArrayObjects;
+  var endUserSelection;
+  var endUserSelectionTrackingArray;
+  var datesSelectedArray;
+  var selectRange;
+  var keyDay;
+  var clickCount = 1;
+  //var timepickers = [];
+
+
+  function SwiftCal(){
+    /*Public methods*/
+    var SwiftCal = {
+      collectEndUserSelection: function() {
+        return endUserSelection;
+      },
+      datesSelected: function() {
+        return datesSelectedArrayObjects;
+      },
+      datesSelectedTracker: function() {
+        return datesSelectedArray;
+      },
+      clearSelection: function(){
+        datesSelectedArrayObjects.forEach(function(e, i){
+          document.getElementById(e.day).style.backgroundColor = '#fff';
+          datesSelectedArrayObjects.splice(1, i);
+        });
+      },
+      disable: function(){
+        disabled = true;
+      },
+      range: function(){
+        selectRange = true;
+        return this;
+      },
+      makeCalendar: function(parentDiv, preloadedDates, numberOfMonthsToDisplay,
+        displayTime, endUser, endUserDurationChoice, backend) {
+
+        //var preloadedDates = [{"day":"2018-11-28"},{"day":"2018-11-29"}];
+        //strings, easier to compare:
+        datesSelectedArray = [];
+        //disable:
+        disabled = false;
+        //things we use:
+        datesSelectedArrayObjects = [];
+        //dates chosen by end user (if any)
+        endUserSelection = [];
+        //simply tracks the above array:
+        endUserSelectionTrackingArray = [];
+        //End user date selection:
+        function attach(elem){
+          elem.addEventListener('click', function(){
+            if(endUserSelectionTrackingArray.includes(elem.id)){
+              elem.style.borderStyle = 'none';
+              endUserSelection.splice(endUserSelectionTrackingArray.indexOf(elem.id), 1);
+              endUserSelectionTrackingArray.splice(endUserSelectionTrackingArray.indexOf(elem.id), 1);
+            }
+            else{
+              elem.style.borderStyle = 'solid';
+              elem.style.borderColor = 'blue';
+              var timeConstraint = elem.children[0].textContent.split(' ');
+              //min should be user defined by the guide in a data attribute:
+              var min = 1;
+              var max = parseInt(timeConstraint[1]) - parseInt(timeConstraint[0]);
+              var times = document.getElementById(elem.id).firstChild.nextSibling.textContent;
+
+              endUserSelection.push({day: elem.id, duration: min, timeGap: times, humanDate: humandate(elem.id)});
+
+              endUserSelectionTrackingArray.push(elem.id);
+              //toggle duration
+              if(endUser === true &amp;&amp; endUserDurationChoice === true){
+                
+                toggleDuration(elem.id, min, max);
+                adjustPosition('durationChooser');
+                document.addEventListener('click', function(event) {
+                  var isClickInside = document.getElementById('durationInput').contains(event.target);
+                  if(isClickInside){
+                    saveClientDateDuration();
+                  }
+                  if (!isClickInside &amp;&amp; event.target === document.getElementById('durationChooserModal')){
+                    document.getElementById('durationChooserModal').style.display = 'none';
+                    saveClientDateDuration();
+                  }
+                });
+              }
+            }
+          });
+        }
+
+        function durationChooser() {
+          var modal = document.createElement('div');
+            modal.classList.add('timeChooserModal');
+            modal.id = 'durationChooserModal';
+
+          var durationChooser = document.createElement('div');
+            durationChooser.classList.add('timeChooser');
+            durationChooser.id = 'durationChooser';
+            modal.appendChild(durationChooser);
+            calendar.appendChild(modal);
+
+          var deleteDiv = document.createElement('div');
+            durationChooser.appendChild(deleteDiv);
+            deleteDiv.textContent = 'Duration:';
+            deleteDiv.classList.add('deleteDiv');
+
+            makeDeleteButton(deleteDiv);
+
+          var Container = document.createElement('div');
+            Container.classList.add('timeContainer');
+
+          var Label = document.createElement('label');
+            Label.setAttribute('id', 'calendarLabel');
+            Label.setAttribute('for', 'hourSelect');
+            Label.textContent = 'hours:';
+            Container.appendChild(Label);
+
+          var hourSelect = document.createElement('input');
+            hourSelect.setAttribute('type', 'number');
+            hourSelect.id = 'durationInput';
+            hourSelect.classList.add('hour');
+            Container.appendChild(hourSelect);
+            durationChooser.appendChild(Container);
+        }
+
+        function toggleDuration(day, min, max) {
+          document.getElementById('durationInput').setAttribute('min', min);
+          document.getElementById('durationInput').setAttribute('max', max);
+          document.getElementById('durationInput').value = '1';
+          document.getElementById('durationChooserModal').style.height =
+          document.getElementById('calendar').clientHeight + "px";
+          document.getElementById('durationChooserModal').style.width =
+          document.getElementById('calendar').clientWidth + "px";
+          document.getElementById('durationChooserModal').style.display = 'inline';
+        }
+
+        function saveClientDateDuration(){
+          var duration = document.getElementById('durationInput').value;
+          endUserSelection[endUserSelection.length-1].duration = duration;
+        }
+
+        //afterCalendarInit CALL SwiftCal() range before instantiating the caledar
+        function preloadDatesFn() {
+          if (preloadedDates !== null &amp;&amp; preloadedDates !== undefined &amp;&amp; preloadedDates.length > 0) {
+            //this is an exception if in range select, again this could be tidied up a bit
+            // the rest of this function has nothing to do with this.
+            if(selectRange === true){
+              
+              for (var i = 0; i &lt; preloadedDates.length; i++) {
+                //if a date referes to a time outside the calendar instantiation (might be worth getting rid of these)
+                if(document.getElementById(preloadedDates[i].day) !== null &amp;&amp;
+                document.getElementById(preloadedDates[i].day).classList.contains('filler') === false) {
+                  //use preloaded dates directly blocked.push(preloadedDates[i].day);
+                  document.getElementById(preloadedDates[i].day).style.backgroundColor = '#333';
+                  document.getElementById(preloadedDates[i].day).classList.add('blocked');
+                  document.getElementById(preloadedDates[i].day).title = 'No availability on this day';
+                  var soldOut = document.createElement('p');
+                  soldOut.classList.add('calendarTime');
+                  soldOut.textContent = 'Sold out';
+                  document.getElementById(preloadedDates[i].day).appendChild(soldOut);
+                }
+              }
+              return;
+            }
+            datesSelectedArrayObjects = preloadedDates;
+            
+            for (var i = 0; i &lt; preloadedDates.length; i++) {
+              
+              //if a date referes to a time outside the calendar instantiation (might be worth getting rid of these)
+              if(document.getElementById(preloadedDates[i].day) !== null) {
+                
+                datesSelectedArray.push(preloadedDates[i].day);
+                
+                document.getElementById(preloadedDates[i].day).style.backgroundColor = '#fc3';
+                document.getElementById(preloadedDates[i].day).classList.add('available');
+                //endUser option with durations!
+                if(endUser === true){
+                  attach(document.getElementById(preloadedDates[i].day));
+                  //end user duration Chooser, rest of code at top of file
+                  durationChooser();
+                }
+                if(displayTime === true){
+                  generateTimesOnly(preloadedDates[i].times, preloadedDates[i].day);
+                  /*var time = document.createElement('p');
+                  time.classList.add('calendarTime');
+                  time.textContent = preloadedDates[i].start + " " + preloadedDates[i].end;
+                  document.getElementById(preloadedDates[i].day).appendChild(time);*/
+                }
+              }
+            }
+          }
+          else{
+            return;
+          }
+        }
+
+        if(numberOfMonthsToDisplay === undefined){
+          numberOfMonthsToDisplay = 4;
+        }
+        //if multiple calendars are instanciated, does using a # instead of . cause issue?
+        //probably not in practice, but should be id less!
+        var calendar = document.createElement('div');
+        document.getElementById(parentDiv).appendChild(calendar);
+        calendar.id = 'calendar';
+        if(backend === true){
+          
+          var dayblock = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var dayblockrow = document.createElement('div');
+              dayblockrow.classList.add('dayblockrow');
+
+          var title = document.createElement('h4');
+              title.textContent = 'Select days of week to block:';
+              dayblockrow.appendChild(title);
+
+          dayblock.forEach(function(e, i){
+            var input = document.createElement('input');
+                input.setAttribute('type', 'checkbox');
+                input.classList.add('block');
+                input.name = e;
+                input.dataset.block = dayblock.indexOf(e);
+
+                dayblockrow.appendChild(input);
+
+            var label = document.createElement('label');
+                label.for = e;
+                label.textContent = e;
+
+                dayblockrow.appendChild(label);
+          });
+
+          calendar.appendChild(dayblockrow);
+
+            //FUNCTION FOR BLOCKING ALL DAYS OF A TYPE:
+            if(backend){
+              var daysToBlock = document.getElementsByClassName('block');
+              for(i = 0; i &lt; daysToBlock.length; i++){
+                daysToBlock[i].addEventListener('click', function(e){
+                  
+                  var blockTheseDays = document.querySelectorAll("[data-dayofweek='" + e.target.dataset.block + "']");
+                  if(e.target.checked){
+                    for(i = 0; i &lt; blockTheseDays.length; i++){
+                      blockTheseDays[i].classList.add('widthShape', 'filler');
+                    }
+                  }
+                  else{
+                    for(i = 0; i &lt; blockTheseDays.length; i++){
+                      blockTheseDays[i].classList.remove('filler');
+                    }
+                  }
+                });
+              }
+            }
+        }
+
+        var months = [];
+        var dateNow = new Date();
+        var monthNow = dateNow.getMonth();
+        var yearNow = dateNow.getFullYear();
+        var monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ];
+
+        //Helpers:
+        //gets month in JS ((monthNow + i + 1)% 12)
+        //gets days in month  getDaysInMonth(((monthNow + i + 1)% 12), new Date().addMonths(i).getFullYear())
+        //gets month in human new Date().addMonths(i).getFullYear())
+        //gets year new Date().addMonths(i).getFullYear())
+        //get first day of month new Date(new Date().addMonths(i).getFullYear()), ((monthNow + i + 1)% 12));
+
+        var getDaysInMonth = function(month, year) {
+          return new Date(year, month, 0).getDate();
+        };
+
+        Date.prototype.addMonths = function(m) {
+          var d = new Date(this);
+          var years = Math.floor(m / 12);
+          var months = m - years * 12;
+          if (years) d.setFullYear(d.getFullYear() + years);
+          if (months) d.setMonth(d.getMonth() + months);
+          return d;
+        };
+
+        function makeDate(year, month, day) {
+          var date = year + '-' + month + '-' + day;
+          return date;
+        }
+        //This basically just gives each day a unique index to make for easier
+        //comparison. Useless outside this context.
+        var uniqueDayIndex = 0;
+        //make months
+        for (var i = 0; i &lt; numberOfMonthsToDisplay; i++) {
+          months.push(document.createElement('div'));
+          calendar.appendChild(months[i]);
+          months[i].style.width = '15em';
+          months[i].style.backgroundColor = '#f15925';
+          months[i].classList.add('month');
+
+          //make month name
+          var month = document.createElement('div');
+          month.textContent = monthNames[(monthNow + i) % 12];
+          month.classList.add('monthName');
+          months[i].appendChild(month);
+
+          //make week row
+          var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var weekrow = document.createElement('div');
+          weekrow.classList.add('weekrow');
+          months[i].appendChild(weekrow);
+          days.forEach(function(e) {
+            var day = document.createElement('div');
+            weekrow.appendChild(day);
+            day.textContent = e;
+            day.classList.add('dayName', 'widthShapeDays');
+          });
+          //make days:
+          var pegholes = [];
+          var weekrow1 = document.createElement('div');
+          months[i].appendChild(weekrow1);
+          weekrow1.classList.add('weekrow');
+
+          //Days and date information:
+          var yearCalc = new Date().addMonths(i).getFullYear();
+          var monthCalc = (monthNow + i) % 12;
+          var startDayOfMonth = new Date(yearCalc, monthCalc).getDay();
+          var datenow = new Date().getDate();
+          var daysinMonth = getDaysInMonth(
+            (monthNow + i + 1) % 12,
+            new Date().addMonths(i).getFullYear()
+          );
+          months[i].dataset.year = yearCalc;
+          months[i].dataset.month = monthCalc;
+          months[i].id = monthCalc + '-' + yearCalc;
+          //Day count:
+          var count = 1;
+          var dayofweek = 0;
+          //p accounts for "spilage" off days into incomplete weeks (6 therefore 42 slots, some empty).
+          for (p = 0; p &lt;= 41; p++) {
+            if (p &lt; startDayOfMonth) {
+              pegholes.push(document.createElement('div'));
+              pegholes[p].classList.add('widthShape', 'filler');
+              weekrow1.appendChild(pegholes[p]);
+              pegholes[p].style.backgroundColor = 'white';
+              //pegholes[p].dataset.dayofweek = dayofweek;
+              dayofweek++;
+            }
+
+            //New edit. Blocks past dates in month 0. Make it an option to select past dates?
+            //i referes to month (current month) the limit at the end is date now, plus the empty
+            //boxes at the start of the month, minus one to give today as available
+            if (i === 0 &amp;&amp;  p >= startDayOfMonth &amp;&amp; p &lt; (datenow + startDayOfMonth -1)) {
+              pegholes.push(document.createElement('div'));
+              pegholes[p].classList.add('widthShape', 'filler');
+              weekrow1.appendChild(pegholes[p]);
+              pegholes[p].style.backgroundColor = 'white';
+            }
+
+            if (p >= startDayOfMonth &amp;&amp; p &lt; daysinMonth + startDayOfMonth) {
+              pegholes.push(document.createElement('div'));
+              pegholes[p].textContent = count;
+              pegholes[p].dataset.day = count;
+              pegholes[p].dataset.dayofweek = dayofweek;
+              pegholes[p].dataset.dayindex = uniqueDayIndex;
+              weekrow1.appendChild(pegholes[p]);
+              pegholes[p].classList.add('widthShape', 'dayTime');
+              //doing
+              pegholes[p].id = yearCalc + '-' + monthCalc + '-' + count;
+              pegholes[p].addEventListener('click', toggleTime, false);
+              count++;
+              dayofweek++;
+              uniqueDayIndex++;
+            }
+            if (p >= daysinMonth + startDayOfMonth) {
+              pegholes.push(document.createElement('div'));
+              pegholes[p].classList.add('widthShape', 'filler');
+              weekrow1.appendChild(pegholes[p]);
+              pegholes[p].style.backgroundColor = 'white';
+            }
+            if ((p + 1) % 7 === 0) {
+              weekrow1 = document.createElement('div');
+              months[i].appendChild(weekrow1);
+              weekrow1.classList.add('weekrow');
+              dayofweek = 0;
+            }
+          }
+
+          if(i === numberOfMonthsToDisplay -1){
+            //Time chooser element:
+            preloadDatesFn();
+            makeTimePicker();
+          }
+        }
+        return this;
+      },
+
+      //toggle time is a bit of a misnomer, it delegated events to each date... Not ideal.
+      calendarAttachEvents: function toggleTime() {
+        clickCount++;
+        if(this.classList.contains('blocked')){
+          return;
+        }
+
+        document.getElementById('timeChooserModal').style.height = document.getElementById('calendar').clientHeight + "px";
+        document.getElementById('timeChooserModal').style.width = document.getElementById('calendar').clientWidth + "px";
+
+        var day = this.dataset.day;
+        var month = this.parentElement.parentElement.dataset.month;
+        var year = this.parentElement.parentElement.dataset.year;
+        var date = makeDate(year, month, day);
+
+        if(disabled === true){
+          return;
+        }
+        //this deals only with ranges, if not returned the following code deals
+        //with individual days.
+        if(selectRange === true){
+          /*multiple selections can be made by disabling this part of the code.*/
+          //n.b. originaly bug meant this evaluated as true.
+          if(clickCount % 2 === 0){
+            datesSelectedArray.length = 0;
+            datesSelectedArrayObjects.length = 0;
+
+            var dayToWhite = document.getElementsByClassName('dayTime');
+            for(var i = 0; i &lt; dayToWhite.length; i++){
+              
+              if(!dayToWhite[i].classList.contains('blocked')){
+                dayToWhite[i].style.backgroundColor = 'white';
+              }
+            }
+            this.style.backgroundColor = '#fc3';
+            bookDay(this, date);
+          }
+
+
+          if(clickCount % 2 === 1){
+            bookDay(this, date);
+            rangeSelect();
+          }
+          return;
+        }
+
+          if(datesSelectedArray.includes(date) === false) {
+            
+            bookDay(this, date);
+
+            /***Code belongs to HourMinutes*/
+            timepickers[timepickers.length-1].setKeyDay(this);
+            /***Code belongs to HourMinutes*/
+
+            //display time picker
+            if(displayTime === true) {
+              document.getElementById('timeChooserModal').style.display = 'inline';
+              adjustPosition('timeChooser');
+            }
+          }
+          else {
+            //this all deletes a day selectiong: n.b. not in separate function like range
+            // select which just reset the entire selection pertaining to it.
+            this.style.backgroundColor = 'white';
+
+            datesSelectedArray.splice(datesSelectedArray.indexOf(date), 1);
+            datesSelectedArrayObjects.splice(datesSelectedArray.indexOf(date), 1);
+
+            //removes any time divs on deselect
+            if(displayTime === true){
+              while(this.firstChild){
+                
+                
+                this.removeChild(this.children[0]);
+              }
+            }
+
+          }
+        },
+
+
+      time: function HourMinutes(target){
+              swiftmoAlert.set();
+              var times = {indexes: [], values: []};
+              var time = {};
+
+              var inst = 0;
+                /**
+                 * @description Takes a time string like '10:00'
+                 */
+                this.setTime = function(hhmm){
+                  var splitHHMM = hhmm.split(':');
+                  
+                  time = {hh: splitHHMM[0], mm: splitHHMM[1]};
+                  document.querySelector('.hh').value = splitHHMM[0];
+                  document.querySelector('.mm').value = splitHHMM[1];
+                  return this;
+                };
+
+                this.getTime = function(){
+                  return time.hh + ':' + time.mm;
+                };
+
+                this.getKeyDay = function(){
+                  return keyDay;
+                };
+
+                this.setKeyDay = function(div){
+                  keyDay = div;
+                  return;
+                };
+
+                this.getAllTimeValues = function(){
+                  return times;
+                };
+
+                this.addTimeDisplay = function(dayInPoint, type){
+                  return addTimeDisplay(dayInPoint, type);
+                };
+
+                this.makeElements = function makeElements(){
+                  //Base:
+                  var timeChooserModal = document.createElement('div');
+                    timeChooserModal.classList.add('timeChooserModal');
+                    timeChooserModal.id = 'timeChooserModal';
+                    calendar.appendChild(timeChooserModal);
+
+                var timeCont = document.createElement('div');
+                    timeCont.classList.add('timeCont');
+                    timeCont.id = 'timeCont';
+                    timeChooserModal.appendChild(timeCont);
+
+                  var timeChooser = document.createElement('div');
+                      timeChooser.classList.add('timeChooser');
+                      timeChooser.id = 'timeChooser';
+                      timeCont.appendChild(timeChooser);
+
+                  var deleteDiv = document.createElement('div');
+                      deleteDiv.classList.add('deleteDiv');
+                      //makeButton(parent, id, character, title, fn)
+                      makeButton(deleteDiv, 'addTime', '+', 'add a time', innerComponents);
+                      makeButton(deleteDiv, 'removeTime', '-', 'remove last time', removeTime);
+                      makeButton(deleteDiv, 'deleteButton', 'x', 'close', closeModal);
+                      timeChooser.appendChild(deleteDiv);
+
+                  return this;
+                };
+
+                //finishebd
+                function closeModal(){
+                  //hide display modal
+                  deleteButton.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
+                  resetTimesAndGlobal();
+                }
+
+                //finished, on modal close it is reset
+                function resetTimesAndGlobal(){
+                  for(var i = 0; i &lt; times.indexes.length; i++){
+                    document.getElementsByClassName(times.indexes[i] + '-hh')[0].selectedIndex = 0;
+                    document.getElementsByClassName(times.indexes[i] + '-mm')[0].selectedIndex = 0;
+                  }
+
+                  for(var j = times.indexes.length; j >=0; j--){
+                    times.indexes.splice(j,1);
+                    times.values.splice(j,1);
+                  }
+                  //don't remove first element, time chooser redefined:
+                  var timeChooser = document.getElementById('timeChooser');
+                  for(var p = timeChooser.children.length-1; p > 0; p--){
+                    timeChooser.removeChild(timeChooser.children[p]);
+                    
+                  }
+                }
+
+                function releaseDayOfWeekG(dayId){
+                  //change dayId to key day
+                  var weekday = keyDay.dataset.dayofweek;
+                  var blockTheseDays = document.querySelectorAll("[data-dayofweek='" + weekday + "']");
+
+                    for(var i = 0; i &lt; blockTheseDays.length; i++){
+                      var blockDay = document.getElementById(blockTheseDays[i].id);
+                      
+                      
+                      if(blockDay !== keyDay){
+                        releaseBookedDay(blockDay, blockTheseDays[i].id);
+                        removeTimeDisplay(blockTheseDays[i].id);
+                      }
+                      if(blockDay === keyDay){
+                        //do nothing
+                      }
+                    }
+
+                }
+
+                function bookDayOfWeekG(dayId, inst){
+                  var weekday = document.getElementById(dayId).dataset.dayofweek;
+                  var blockTheseDays = document.querySelectorAll("[data-dayofweek='" + weekday + "']");
+                  blockTheseDays.forEach(function(e, i){
+                    if(e.classList.contains('filler') === false){
+                      var day = document.getElementById(e.id);
+                      bookDay(day, e.id);
+                      addTimeDisplay(e.id, inst);
+                    }
+                  });
+                }
+
+                //applies
+                function removeTime(){
+                  var timeChooser = document.getElementById('timeChooser');
+                  //remove one or two times depending:
+                  if(times.indexes.length > 2){
+                    if(timeChooser.children.length > 1){
+                      timeChooser.removeChild(timeChooser.children[timeChooser.children.length-1]);
+                    }
+                    if(times.indexes.length % 2 === 0){
+                      times.indexes.splice(times.indexes.length-2, 2);
+                      times.values.splice(times.values.length-2, 2);
+                    }
+                    else{
+                      times.indexes.splice(times.indexes.length-1, 1);
+                      times.values.splice(times.values.length-1, 1);
+                    }
+                  }else{
+                    
+                    resetTimesAndGlobal();
+                    //hacky way to return to desired state
+                    document.getElementById('makeTimeRuleGlobal-0').click();
+                  }
+                  //hacky way to return to desired state
+                  document.getElementById('makeTimeRuleGlobal-0').click();
+                  document.getElementById('makeTimeRuleGlobal-0').click();
+                }
+
+                //DOM
+                function innerComponents(){
+                  var timeChooser = document.getElementById('timeChooser');
+                  var timePickerContainer = document.createElement('div');
+                      timeChooser.appendChild(timePickerContainer);
+
+                  var deleteDiv = document.createElement('div');
+                      deleteDiv.textContent = 'Add time:';
+                      deleteDiv.classList.add('deleteDiv');
+                      timePickerContainer.appendChild(deleteDiv);
+
+                  var instInternal = inst;
+
+                      maketime('Start', timePickerContainer, instInternal);
+                      maketime('End', timePickerContainer, instInternal);
+                      tickboxes();
+                      inst++;
+                }
+                //
+                function tickboxes(){
+                  var timeCont = document.getElementById('timeCont');
+                  var dow = parseInt(keyDay.dataset.dayofweek);
+                  var daysInFull = ['Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur'];
+
+                  if(inst === 0){
+                    var labelfor = document.createElement('p');
+                        labelfor.textContent = 'Set these times for all ' + daysInFull[dow] + 'days';
+                        labelfor.classList.add('timeSelectP');
+                        labelfor.id = 'timeSelectP';
+
+                        timeCont.appendChild(labelfor);
+
+                    var makeTimeRuleGlobal = document.createElement('input');
+                        makeTimeRuleGlobal.setAttribute('type', 'checkbox');
+                        makeTimeRuleGlobal.name = 'makeTimeRuleGlobal';
+                        makeTimeRuleGlobal.id = 'makeTimeRuleGlobal-' + inst;
+
+                        timeCont.appendChild(makeTimeRuleGlobal);
+
+                    makeTimeRuleGlobal.addEventListener('click', function(e){
+                      if(makeTimeRuleGlobal.checked === false){
+                        releaseDayOfWeekG(keyDay.id);
+                      }
+                      else{
+                        bookDayOfWeekG(keyDay.id, inst);
+                      }
+                    });
+                  }
+                  else{
+                    document.querySelector('#timeSelectP').textContent = 'Set these times for all ' + daysInFull[dow] + 'days';
+                    return;
+                  }
+                }
+
+                //DOM
+                function maketime(startEnd, appendTo, instInternal){
+                  var startContainer = document.createElement('div');
+                      startContainer.classList.add('timeContainer');
+
+                  var startLabel = document.createElement('p');
+                      //startLabel.setAttribute('for', startEnd+'Hour');
+                      startLabel.classList.add('timeSelectP');
+                      startLabel.textContent = startEnd + ':';
+                      startContainer.appendChild(startLabel);
+
+                  var hourSelect = document.createElement('div');
+                      hourSelect.id = startEnd + '-' + instInternal;
+                      if(instInternal){
+                        hourSelect.classList.add(instInternal);
+                      }
+                      hourSelect.classList.add('hour', 'times', startEnd);
+                      startContainer.appendChild(hourSelect);
+                      makeSelector('hh', 24, hourSelect.id, hourSelect, startEnd, instInternal);
+                      makeSelector('mm', 59, hourSelect.id, hourSelect, startEnd, instInternal);
+
+                  appendTo.appendChild(startContainer);
+                }
+
+                //DOM
+                function makeSelector(type, limit, id, parent, startEnd, instInternal){
+                  time[type] = '00';
+
+                  var h = document.createElement('select');
+                      h.classList.add(type, id + '-' + type, 'timeSelect');
+
+                  var i = 0;
+                  var placeholder = document.createElement('option');
+                      placeholder.textContent = type;
+                      placeholder.value = '00';
+                      h.appendChild(placeholder);
+
+                  while (i &lt;= limit){
+                    var hour = document.createElement('option');
+                    //leading zero on single digit numbers:
+                    var text = i.toString();
+                    if (text.length === 1){
+                      text = '0' + i;
+                    }
+
+                    hour.value = text;
+                    hour.textContent = text;
+                    h.appendChild(hour);
+                    i++;
+                  }
+
+                  h.addEventListener('click', function(){
+                    time[type] = h.value;
+                    if(type === 'hh'){
+                      time.mm = '00';
+                      h.nextSibling.selectedIndex = '1';
+                    }
+
+                    if(!times.indexes.includes(startEnd+ '-' + instInternal)){
+                      times.indexes.push(startEnd+ '-' + instInternal);
+                      times.values.push(time.hh + ':' + time.mm);
+                    }
+                    else{
+                      var index = times.indexes.indexOf(startEnd+ '-' + instInternal);
+                      times.values[index] = time.hh + ':' + time.mm;
+                    }
+
+                    addTimeDisplay(null, instInternal);
+                  });
+
+                  parent.appendChild(h);
+                }
+
+                function getSpecificTimeGap(count){
+                  var ar = [];
+                  if(times.indexes.length % 2 === 0){
+                    times.indexes.forEach(function(e, i){
+                      if(e.split('-')[1] === count.toString()){
+                        ar.push(times.values[i]);
+                      }
+                    });
+                    return ar;
+                  }
+                }
+
+                function addTimeDisplay(dayInPoint, inst){
+                  if(dayInPoint === null &amp;&amp; inst >= 0){
+                    
+                    if(document.getElementById('makeTimeRuleGlobal-0').checked){
+                      bookDayOfWeekG(keyDay.id, inst);
+                    }
+                    else{
+                      generateTimesOnCal(times.values, keyDay);
+                    }
+
+                  }
+                  if(dayInPoint &amp;&amp; inst >= 0){
+                    var target = document.getElementById(dayInPoint);
+                    generateTimesOnCal(times.values, target);
+                  }
+                }
+
+                function generateTimesOnCal(timeValues, dayInPoint){
+                  for(i = dayInPoint.children.length-1; i >= 0; i--){
+                    dayInPoint.children[i].remove();
+                  }
+
+                  var index = datesSelectedArray.indexOf(dayInPoint.id);
+                  datesSelectedArrayObjects[index].times = timeValues;
+
+                  var textinternal = '';
+                  //var dayInPoint = document.getElementById('dayInPoint');
+                  timeValues.forEach(function(e, i){
+                    textinternal += e + ' ';
+
+                    var time = document.createElement('p');
+                        time.classList.add('calendarTime');
+                        time.style.marginBottom = '0px';
+                        time.textContent = textinternal;
+                    if(dayInPoint.classList.contains('filler') === false){
+                      dayInPoint.style.backgroundColor = '#fc3';
+                      if(i % 2 === 1){
+                        time.style.borderBottomStyle = 'solid';
+                        dayInPoint.appendChild(time);
+                        textinternal = '';
+                      }
+                      else{
+                        dayInPoint.appendChild(time);
+                        textinternal = '';
+                      }
+                    }
+                  });
+                }
+
+                function removeTimeDisplay(dayInPoint){
+                  for(var i = 0; i &lt; times.indexes.length; i++){
+                    //document.getElementsByClassName(times.indexes[i] + '-hh')[0].selectedIndex = 0;
+                    //document.getElementsByClassName(times.indexes[i] + '-mm')[0].selectedIndex = 0;
+                  }
+                  if(!dayInPoint){
+                   dayInPoint = document.getElementById(datesSelectedArrayObjects[datesSelectedArrayObjects.length -1].day);
+                  }
+                  else{
+                   dayInPoint = document.getElementById(dayInPoint);
+                  }
+                  //var dayInPoint = getDayFromId(divId);
+                  for(i = dayInPoint.children.length-1; i >= 0; i--){
+                    dayInPoint.children[i].remove();
+                  }
+
+                }
+             }
+
+    };
+    return SwiftCal;
+  }
+
+})();
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Thu Nov 5th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

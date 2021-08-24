@@ -1,0 +1,29 @@
+{
+  "name": "JewelKat",
+  "short_name": "JewelKat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#dab3aa",
+  "description": "PWA caching views and serving notifications where permited.",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [{
+    "src": "/images/logos/favicons/favicon-16x16.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  }, {
+    "src": "/images/logos/favicons/favicon-32x32.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  }, {
+    "src": "/images/logos/android-chrome-192x192.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }, {
+    "src": "/images/logos/android-chrome-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

@@ -1,0 +1,732 @@
+@import "variables.scss";
+
+h1 {
+  font-family: $title-fonts;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100;
+  //text-shadow: 2px 2px 2px #0d2647;
+  color: $title-color;
+  font-weight: 400;
+  margin-top: 0.2em;
+}
+
+h2 {
+  font-family: $title-fonts;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3em;
+  font-style: normal;
+  font-variant: normal;
+  color: $title-color;
+  font-weight: 400;
+  //line-height: calc(3em*1.1);
+}
+
+h4 {
+  font-family: $reading-font;
+  font-size: 1.6em;
+  margin: 0.2em 0;
+  color: $secondary-color;
+}
+
+
+.hide {
+  display: none !important;
+}
+
+.branddiv {
+  margin-left: 1em;
+}
+
+.microdocs {
+  width: calc(10em + 1.2em);
+  margin-right: -10em;
+
+  question:after {
+    content: "\e085";
+    font-family: 'Glyphicons Halflings';
+    color: $title-color;
+    font-size: 1.2em;
+    padding-right: 0em;
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.menuItemFontSmall {
+  font-family: $font-stack;
+  font-size: 1em;
+  color: $primary-color;
+}
+
+h3 {
+  font-family: $font-stack;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-style: normal;
+  font-variant: normal;
+  color: $primary-shaddow;
+  font-weight: 400;
+}
+
+.name {
+  font-family: $reading-font;
+  text-align: center;
+  font-size: 1.8em;
+  font-style: normal;
+  font-variant: normal;
+  color: $title-color;
+  font-weight: 100;
+  margin: auto;
+  display: block;
+}
+
+.phoneicon::after {
+  font-family: 'Glyphicons Halflings';
+  content:"\e183";
+  text-align: center;
+  font-size: 4em;
+  color: $primary-shaddow;
+}
+
+.emailicon::after {
+  font-family: 'Glyphicons Halflings';
+  content:"\2709";
+  text-align: center;
+  font-size: 4em;
+  color: $primary-shaddow;
+}
+
+.routeicon::after {
+  font-family: 'Glyphicons Halflings';
+  content:"\e062";
+  text-align: center;
+  font-size: 4em;
+  color: $primary-shaddow;
+}
+
+blockquote {
+  //@include readingFontSize('21px', '30px');
+}
+
+pre {
+  //@include readingFontSize('13px', '18.57px');
+}
+
+select {
+  max-width: 95%;
+}
+
+p, li, select {
+  @include standardFont();
+  //@include readingFontSize('18px', '20px');
+}
+
+em {
+  font-family: $reading-font;
+  font-size: 24px;
+  font-style: italic;
+  color: #333;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.quote {
+  border-left-style: solid;
+  border-left-width: 2px;
+  border-left-color: $title-color;
+  background-color: $darker-primary;
+  padding-left: 1em;
+}
+
+.quote::before {
+  content: '"';
+  font-weight: 900;
+}
+
+.quote::after {
+  content: '"';
+  font-weight: 900;
+}
+
+html, body {
+  margin:0; /*Add this*/
+  min-height: 100vh;
+  background-color: $base-color;
+}
+
+body:not(.mobileMenuTop, .desktopMenuTop) {
+  //console.warn('check items don't overflow: ):
+  /*contain: content;*/
+}
+
+.guttersBody {
+  //contain: content;
+}
+
+img[alt] {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.copyright {
+  p {
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    margin:0;
+  }
+
+  a {
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    font-weight: 400;
+  }
+}
+
+.postInfoBox {
+  margin-top: 1em;
+  width: 15em;
+
+  p, span, li {
+    background-color: #fff;
+    color: $title-color;
+    font-family: $reading-font;
+    font-size: 1.2em;
+    line-height: 2em;
+    margin:0;
+  }
+
+  img {
+    width: 6em;
+    border-radius: 3em;
+    float: right;
+  }
+
+  a {
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    font-weight: 400;
+  }
+
+  ul {
+    padding-left: 0.25em;
+    margin: 0;
+  }
+
+  .breadcrumbs {
+    display: inline-block;
+  }
+
+  ul.breadcrumbs > li {
+    display: inline;
+  }
+
+  ul.breadcrumbs > li:before {
+    content: ' / ';
+    font-size: 1em;
+    font-weight: 700;
+  }
+
+  ul.breadcrumbs > li > a{
+    display: inline-block;
+    color:$secondary-color !important;
+  }
+
+}
+
+@mixin footerFont {
+  color: $title-color;
+  font-size: 1.2em;
+  background-color: #fff;
+  line-height: 2em;
+  margin: 0;
+}
+
+#footer {
+  p {
+    @include footerFont();
+    /*
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    margin: 0;*/
+  }
+
+  b {
+    @include footerFont();
+    font-weight: 700;
+    /*
+    color: $primary-shaddow;
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    font-weight: 500;*/
+  }
+
+  a {
+    @include footerFont();
+    font-weight: normal;
+    /*
+    background-color: #fff;
+    color: $secondary-color;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    line-height: 2em;
+    font-weight: 400;
+    */
+  }
+
+  h4 {
+    @include footerFont();
+    font-weight: 700;
+    font-size: 1.2em;
+    /*
+    background-color: #fff;
+    color: $primary-shaddow;
+    font-family: $reading-font;
+    font-size: 0.9em;
+    */
+  }
+}
+
+
+a {
+  font-size: 1em;
+  color: $title-color;
+}
+
+a:hover {
+  color: 	$secondary-color;
+}
+
+
+
+.pseudoLink {
+  color: $title-color;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pseudoLink:hover{
+  color: 	$secondary-color;
+}
+
+.itemModal h3 {
+  margin: 0.7em;
+}
+
+.contactSpace{
+  width: 100%;
+  background-color: $base-color;
+  color: $title-color;
+  margin-left: 0px;
+  height: 3.6em;
+  font-size: 1.2em;
+  font-weight: 700;
+  height: auto;
+
+  //@include footerFont();
+
+  a {
+    color: $title-color;
+    font-family: sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: large;
+    color: $title-color;
+  }
+}
+
+.yestick {
+  float: right;
+  @include dropShaddowBlue();
+  content: "\e013";
+  color: #f2f2f2;
+  font-family: 'Glyphicons Halflings';
+  font-size: 2em;
+  opacity: 0;
+  font-size: 2em;
+  border-radius: 4em;
+  margin-left: -1em;
+  background: #ffffff66;
+  transition: all 1s ease;
+}
+
+.sticktopright {
+  min-width: 7em;
+  position: fixed;
+  top: 0;
+  width: 7em;
+  right: 0;
+  z-index: 1003;
+}
+
+.sticktopleft {
+  position: fixed;
+  top: 3em;
+  width: 7em;
+  left: 1em;
+  color: #333;
+  z-index: 3;
+}
+
+.opacityOne {
+  opacity: 1;
+}
+
+.incard {
+  position: absolute;
+  z-index: 1;
+}
+
+.incard > a > h1 {
+  background: $primary-shaddow;
+  height: 1em;
+  font-size: 3em;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.scaled {
+  transform: scale(0.3); /* Equal to scaleX(0.7) scaleY(0.7) */
+  margin-top: -1.75em;
+}
+
+.attentionBorder {
+  @include atentionBorder();
+}
+
+/**Checkout**/
+#checkout {
+  .attention {
+    border-top-right-radius: 1em;
+    width: max-content;
+    padding-right: 1em;
+  }
+
+  h2 {
+    pointer-events: none;
+  }
+
+  h3 {
+    margin-bottom: 0.2em
+  }
+
+  .standardBoxRight > img {
+    width: 100%;
+  }
+
+  input, select {
+    @include uniformBorder();
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    width: 94%;
+    min-width: 94%;
+    height: 2em;
+    margin-bottom: 0.4em;
+  }
+
+  .emphasis > .container > label {
+    //color: white !important;
+  }
+
+  label {
+    font-family: "Times New Roman";
+    font-size: 1.5em;
+    color: $primary-shaddow;
+    margin-bottom: 0.4em;
+    display: inline-block;
+  }
+
+
+  .emphasis {
+    padding: 0;
+  }
+
+  .emphasis > h2 {
+    color: white !important;
+  }
+
+  .container {
+    display: block;
+    position: inherit;
+    margin: 1em;
+  }
+
+  .circle{
+    transform: rotate(45deg);
+  }
+}
+
+
+
+.swiftmoShoppingCart{
+  //filter: invert(1);
+}
+
+/***Shopping cart modal ***/
+.shoppingCartModal {
+
+
+  .borderbox {
+    flex-direction: column;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .btnwarn {
+    @include btn();
+    @include lrGradient($orange, $warning-color);
+  }
+
+  .btngrey {
+    @include btn();
+    @include lrGradient($standard-grey, $darker-primary);
+    @include verticalCenter();
+    margin-left: auto;
+    margin-right: 0.2em;
+  }
+
+  .standardBoxShipping {
+    color: $primary-shaddow;
+    margin: 0.2em;
+    display: flex;
+    flex: 1 1 400px;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    min-width: 30vw;
+    width: 100%;
+  }
+
+  .shippingDestinationLabel {
+    font-size:1em;
+  }
+
+  .standardBoxRight > img {
+    width: 100%;
+  }
+
+  .buttonContainer > p {
+    flex-basis: 10em;
+    flex-grow: 1;
+    padding: 1em;
+  }
+
+  .buttonContainer > .itemButton {
+    flex-basis: 17em;
+    padding: 1em;
+  }
+
+  .buttonContainer > img {
+    max-width: 17em;
+    height: auto;
+    border-radius: 2em;
+    -webkit-box-shadow: 0 0 5px 1px #00000066;
+    -moz-box-shadow: 0 0 5px 1px #00000066;
+    box-shadow: 0 0 5px 1px #00000066;
+    margin: 1em;
+  }
+
+
+
+
+
+}
+
+
+
+
+
+.price {
+  height: 2em;
+  text-decoration: underline;
+  text-decoration-color: #3c763d;
+}
+
+.plusPoints > * {
+  white-space: nowrap;
+}
+
+.standardBoxLeft {
+  @include standardBox('left');
+  //width: calc(75% - 0.4em);
+  //min-width: 30vw;
+}
+
+.standardBoxRight {
+  @include standardBox('right');
+  //min-width: 0;
+  //min-width: 40vw;
+}
+
+.standardBoxRight > p {
+  text-align: justify;
+  max-width: 400px;
+  width: 70vw;
+}
+
+.standardBoxLeft > p {
+  text-align: justify;
+  max-width: 400px;
+  width: 70vw;
+}
+
+.menuItemFont {
+  color: $primary-color;
+}
+
+.typebox {
+  font: 100% $font-stack;
+  color: $primary-color;
+  padding: $globalpad;
+  background-image: linear-gradient(to top,$primary-color,$primary-shaddow)
+}
+
+.center {
+  @include verticalCenter();
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.loginform {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  button {
+    margin-top: 1em;
+    border-radius: .2em;
+  }
+
+}
+
+.attention {
+  background-color: $attention-color;
+}
+
+.emphasis {
+  border-left-style: solid;
+  border-left-color: $primary-shaddow;
+  padding: 0.5em;
+  margin-top: 1em;
+}
+
+
+#footer {
+
+}
+
+.paragraph {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  background-color: $primary-shaddow;
+  color: white;
+  padding: 0.5em;
+  border-style: hidden;
+  border-radius: 0.2em;
+  box-shadow: inset 0 0 4px #fff;
+  width: 95%
+}
+
+
+.shaddow {
+  -webkit-box-shadow: 0px 0px 8px 3px $primary-shaddow;
+  -moz-box-shadow: 0px 0px 8px 3px $primary-shaddow;
+  box-shadow: 0px 0px 8px 3px $primary-shaddow;
+}
+
+.btn {
+  -webkit-box-shadow: inset 0px 0px 8px 3px $secondary-color;
+  -moz-box-shadow: inset 0px 0px 8px 3px $secondary-color;
+  box-shadow: inset 0px 0px 8px 3px $secondary-color;
+  max-height: 3em;
+  display: block;
+  padding: 6px 12px;
+  margin: 0.5em;
+  font-size: 14px !important;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  /*white-space: nowrap;*/
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+/*COPIED BOOTSTRP BTNS*/
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+  text-decoration: bold;
+  -ms-transform: scale(1.1,1.1); /* IE 9 */
+  -webkit-transform: scale(1.1,1.1); /* Safari */
+  transform: scale(1.1,1.1);
+}
+
+.btn:active,
+.btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+}

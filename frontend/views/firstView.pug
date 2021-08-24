@@ -1,0 +1,85 @@
+doctype html
+-{language, entity}
+html(lang="en-EU" xml:lang="en-EU")
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name="theme-color" content="#3366cc")
+    link(rel="stylesheet" href="/backendStatic/css/production/master.min.css" async)
+
+    block otherstyles
+
+    block description
+
+    block robots
+
+    block title
+
+  body  
+    nav.itemGroupColumn(role='navigation')
+      .itemGroup.backendMenu.appsetupmenu
+        .itemGroupColumn.logocol
+          .logo.bounceOnHover SwiftMo Artisan
+            em.version version 1.0.0-alpha
+        .itemGroupColumn    
+    block bodycontent
+    .itemGroupColumn.backendPage
+      .col1
+        .itemGroupColumn
+          .itemGroup
+            .fullrowAlign.backendParentDiv.titleDiv
+              -//h3 Add new stock: 
+              button.btnbackend.sms2.bounceOnHover.toggleDocs toggle inline help
+              .maincontent
+                include ./microdocs.pug  
+                mixin paragraph(field, content, originalName)
+                  p.flex
+                    span.bold #{field}:
+                    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
+                      span.flexrow.controlParent(data-type=originalName data-values=content tabindex='0').editContol      
+
+                .itemGroupColumn
+                  h1 App set up 
+                  -//.microdocs All fields "auto save" when they are altered except shop times. 
+                  form#providerDetails(action='/register-seed-user' method='POST')
+                    h2 Enter your user name and password:  
+                    .item
+                      +microdocs("Enter a user name for this platform").tabindex
+                      -let userName = (entity && entity.username) ? entity.username :'enter your desired user name for this app'
+                      p.flex
+                        span.bold App user name:
+                        input.inlineBlock.fieldEditable(type="text" name="username" data-fieldname=username).tabindex 
+                        -//#{userName}
+                        -//span.flexrow.controlParent(data-type=username data-values=userName tabindex='0').editContol      
+                    .item
+                      +microdocs("Enter a password for this platform").tabindex
+                      -let password = (entity && entity.password) ? entity.password :'enter your desired password for this app'
+                      p.flex
+                        span.bold Password:
+                        input.inlineBlock.fieldEditable(type="password" name="password" data-fieldname="password").tabindex 
+                    .item
+                      +microdocs("Repeat your password to check it matches").tabindex
+                      p.flex  
+                        span.bold Repeat password:
+                        input.inlineBlock.fieldEditable(type="password" name="passwordCheck" data-fieldname="password").tabindex 
+                    .item
+                      p.flex    
+                        input(type='submit' value='Save user details').btngreen.bounceOnHover.center.submitNewUser
+                
+    .itemGroup#footer
+      p.
+        Any backend code and server side code is published with no licence granted by Tomás Swift-Metcalfe unless otherwise stated.  
+        #[a(href="/documentation") software documentation]
+    block modals
+    .modal.alertmodal
+      .alertmodalcontent.alertdiv
+        .circle.sms2.circleClose
+          .before
+          .after      
+        p.alertmodalcontentP
+    .modal.loadingGif
+      .gif
+        h2 Wait a sec...
+    block pagespecificscripts
+      script(src='/backendStatic/productionJS/backendmaster.min.js')

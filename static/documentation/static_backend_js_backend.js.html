@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DocStrap Source: static/backend/js/backend.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">DocStrap</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-Database%2520interaction.html">Database interaction</a></li><li><a href="module-multerFileUpload.html">multerFileUpload</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="FuzzySearch.html">FuzzySearch</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:Additemtype">event:Add item type</a></li><li><a href="global.html#event:Addproducer">event:Add producer</a></li><li><a href="global.html#event:Addtheme">event:Add theme</a></li><li><a href="global.html#event:deleteImage">event:deleteImage</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#addItemType">addItemType</a></li><li><a href="global.html#reqVal%2522requestvalidation%2522">reqVal "request validation"</a></li><li><a href="global.html#resetImages">resetImages</a></li><li><a href="global.html#resetItemFields">resetItemFields</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: static/backend/js/backend.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">const maincontent = document.querySelector('.maincontent');
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  swiftmoAlert.set();
+});
+
+document.addEventListener('click', function(e){
+  let parent = e.target.closest('.itemprofile');
+  let renderedDivs = [];
+  let p;
+
+  if(e.target.classList.contains('loginButton')){
+    e.preventDefault();
+    let data = {
+      username: document.querySelector('#username').value,
+      password: document.querySelector('#password').value,
+    };
+
+    let request = new XMLHttpRequest();
+    request.open('POST', '/backend/backendlogin', true);
+    request.setRequestHeader('Content-Type', "application/json");
+    request.send(JSON.stringify(data));
+    request.onreadystatechange = function (callback) {
+      if(request.readyState === XMLHttpRequest.DONE &amp;&amp; request.status === 200) {
+        location.reload();
+      }
+      if(request.status === 401){
+        document.querySelector('.loginError').innerHTML =
+        "Unauthorized. Please check your username and password.";
+      }
+
+    };
+  }
+
+  if(e.target.id === 'stock'){
+    e.preventDefault();
+    //xhr({'provider': document.getElementById('profile').dataset.user}, '/backend/newstockTEST', function callback(message){
+    xhr({'user': document.getElementById('profile').dataset.user}, '/backend/stock', function callback(message){
+      maincontent.innerHTML = message;
+      attachImageLoadEvent();
+      addStockChangeEvents();
+      //fuz = new FuzzySearch(parentSelect);
+      document.querySelectorAll('.fuzzySearch').forEach((item, i) => {
+        new FuzzySearch(item.nextSibling);
+      });
+
+      document.querySelectorAll('.arraymodaltype').forEach((e)=>{
+        toggle.setinst(e);
+        e.querySelectorAll('.circleClose').forEach((item, i) => {
+          item.addEventListener('click', ()=>{
+            toggle.tog(document.querySelector('.itemtypesuccess'), 'none');
+            toggle.tog(e, 'none');
+          });
+        });
+
+        e.querySelectorAll('.save').forEach((el)=>{
+          el.addEventListener('click', ()=>{
+            saveFn(el)
+          });
+        });
+      });
+    });
+  }
+
+  if(e.target.classList.contains('expand')){
+    e.target.parentElement.parentElement.nextSibling.classList.remove('hide');
+  }
+
+  if(e.target.classList.contains('contract')){
+    e.target.parentElement.parentElement.nextSibling.classList.add('hide');
+  }
+
+  if(e.target.classList.contains('remove')){
+    let _id = e.target.parentElement.dataset._id,
+        type = e.target.parentElement.dataset.type,
+        modal = document.querySelector('#addNewModal-'+type),
+        values = JSON.parse(modal.dataset.values),
+        value = e.target.parentElement.previousSibling.textContent;
+        parent = e.target.parentElement.parentElement;
+        parentParent = e.target.parentElement.parentElement.parentElement;
+        parentParent.removeChild(parent);
+        
+        values.splice(values.indexOf(value), 1);
+        modal.dataset.values = JSON.stringify(values);
+        
+    let saveob = {_id: _id, [type]: values};
+      
+      xhr(saveob, '/backend/updateArrayItem', function(res){
+        if(res === 'success'){
+          //alter select list
+          whipe();
+          let select = document.querySelector('#select-'+_id);
+          let opt = select.querySelector("option[value='"+value+"']")
+              select.removeChild(opt);
+        }
+        else{
+          modal.document.querySelector('.warning').textContent = 'An error occured';
+          modal.document.querySelector('.warning').style.display = 'block';
+        }
+      });
+  };
+
+  /**
+   * Delete image:
+   * @fires deleteImage
+   */
+  if(e.target.classList.contains('deleteImage')){
+    deleteImage(e.target);
+  }
+
+  /**
+    * Edit item type (modal dialog toggle)
+   name is a universal attribute,
+  */
+  if(e.target.classList.contains('editmodal')){
+    let field = e.target.parentElement.dataset.field,
+        fieldCss = field.replace(' ', '_'),
+        targetField = document.querySelector('#editmodal-' + fieldCss),
+        filtered = e.target.parentElement.previousSibling,
+        itemType = filtered.value;
+
+    targetField.style.display = 'block';
+
+    let data = (filtered[filtered.selectedIndex].dataset.iteminfo) ?
+      JSON.parse(filtered[filtered.selectedIndex].dataset.iteminfo) :
+      {dimensions: [0,0,0], weight: 0, name: ''};
+
+    document.querySelector('#itemNewName-'+fieldCss).textContent = data.name;
+
+    if(field === 'item type'){
+      document.querySelector('.x').textContent = data.dimensions[0];
+      document.querySelector('.y').textContent = data.dimensions[1];
+      document.querySelector('.z').textContent = data.dimensions[2];
+      document.querySelector('.itemNewWeight:not(.parent)').textContent = data.weight;
+    }
+    if(field === 'theme'){
+      targetField.querySelectorAll('.distinctImage')[0].querySelector('.title').textContent = data.name + ' images';
+
+      function removepics(){
+        let promise = new Promise((resolve, reject)=>{
+          let targets = targetField.querySelectorAll('img');
+          if(targets.length === 0){
+            resolve();
+          }else{
+            targets.forEach((item, i) => {
+              item.remove();
+              if(i === targets.length-1){
+                resolve();
+              }
+            });
+          }
+        }); return promise;
+      }
+
+      function addpics(){
+        let promise = new Promise((resolve, reject)=>{
+          let images = data['image links'];
+          if (images){
+            for (var i = 0; i &lt; images.length; i++) {
+              let name = data['image links'][i].split('-')[1].split('.')[0]
+              if(i === 0){
+                let img = document.createElement('img');
+                img.setAttribute('src', data['image links'][i]);
+                targetField.querySelectorAll('.distinctImage')[i]
+                  .querySelector('.imagetype').value = name;
+                targetField.querySelectorAll('.distinctImage')[i]
+                  .querySelector('.displayImage').appendChild(img);
+              }else{
+                makeAddImage(targetField.querySelectorAll('.distinctImage')[0], name, data['image links'][i]);
+              }
+              if(i === images.length-1){
+                resolve();
+              }
+            }
+          }
+        }); return promise;
+      }
+
+      removepics().then(addpics);
+
+      targetField.querySelectorAll('.distinctImage')[0]
+        .querySelector('.addimage').addEventListener('click', (e)=>{
+          makeAddImage(targetField.querySelectorAll('.distinctImage')[0], name, '');
+        });
+
+    }
+
+  }
+
+  /**
+    * Add theme
+    * @event Add theme
+    * @fires resetImages
+    * @fires resetItemFields
+    * @description whipes item type fields typically on button element in modal
+    */
+  if(e.target.classList.contains('add-theme')){
+    resetImages(e.target, 'theme');
+    resetItemFields(e.target, 'theme');
+  }
+
+  /**
+    * Add producer event
+    * @event  Add producer
+    * @fires resetImages
+    * @fires addItemType
+    * @description whipes field, highlights field (changes css class), sets
+    * contentEditable === 'true'
+    */
+  if(e.target.classList.contains('add-producer')){
+    resetImages(e.target, 'theme');
+    addItemType([ document.querySelector('#itemNewName-producer'),
+                  document.querySelector('.producerIntro'),
+                  document.querySelector('.producerType')
+                ]);
+  }
+
+  /**
+    * Add item type event
+    * @event Add item type
+    * @fires whipe#whipe item_type
+    * @fires addItemType#add item_type
+    * @description whipes item type modal fields, then makes editable
+    */
+  if(e.target.classList.contains('add-item_type')){
+    whipe();
+    addItemType([ document.querySelector('#itemNewName-item_type'),
+                  document.querySelector('.x'),
+                  document.querySelector('.y'),
+                  document.querySelector('.z'),
+                  document.querySelector('.itemNewWeight')
+                ]);
+  }
+
+
+  if(e.target.classList.contains('editdimensions')){
+    Array.from(document.querySelectorAll('.dimensions')).forEach((e)=>{
+      e.classList.add('fieldEditableUp');
+      e.classList.remove('warning');
+      e.contentEditable = 'true';
+    });
+    document.querySelector('#edititemtypemodal').style.display = 'block'
+  }
+
+
+  if(e.target.classList.contains('deleteItemType')){
+    let modal = e.target.closest('.stockModal');
+    let name = modal.querySelector('.itemNewName').textContent;
+    let _id = e.target.dataset._id;
+    let type = e.target.dataset.itemtype;
+    let saveob = {name: name, type: type};
+    let successDiv = modal.querySelector('.itemtypesuccess');
+
+    xhr(saveob, '/backend/deleteItemType', function(res){
+      if(res === 'success'){
+        successDiv.innerHTML = res;
+
+        toggle.setinst(successDiv);
+        toggle.tog(successDiv, 'block');
+
+        let select = document.querySelector('#select-'+type.replace(' ', '_'));
+            select.removeChild(select.options[select.selectedIndex]);
+      }
+      else{
+        modal.querySelector('.warning').textContent = 'An error occured';
+        modal.querySelector('.warning').style.display = 'block';
+      }
+    });
+
+  }
+
+/**
+  * Save item type: save function for select elements with fuzzy search
+  */
+
+  if(e.target.classList.contains('saveitemtype')){
+
+    if(e.target.dataset.itemtype === 'item type'){
+      let data = [];
+      data.push(parseInt(document.querySelector('.x').textContent));
+      data.push(parseInt(document.querySelector('.y').textContent));
+      data.push(parseInt(document.querySelector('.z').textContent));
+      let name = document.querySelector('#itemNewName-item_type').textContent;
+      let weight = parseInt(document.querySelector('.itemNewWeight').textContent);
+      let _id = e.target.parentElement.dataset._id;
+
+      let updates = {dimensions: data, weight: weight, name: name, itemtype: 'item type'};
+
+      let saveob = {_id: _id, updates};
+
+      save(saveob);
+      writeThemeChanges(updates, 'item_type');
+    }
+    if(e.target.dataset.itemtype === 'producer'){
+      let _id = e.target.parentElement.dataset._id,
+          name = document.querySelector('#itemNewName-producer').textContent,
+          intro = document.querySelector('.producerIntro').textContent,
+          type = document.querySelector('.producerType').textContent,
+          updates = { Producer: 'artist',
+                      '@type': 'person',
+                      name: name,
+                      'quick intro': intro,
+                      type: type,
+                      itemtype: 'producer'},
+          saveob = {_id: _id, updates};
+
+      save(saveob);
+
+
+      document.querySelector('#editmodal-theme').style.display = 'none';
+    }
+    if(e.target.dataset.itemtype === 'theme'){
+      let _id = e.target.parentElement.dataset._id,
+          name = document.querySelector('#itemNewName-theme').textContent,
+          updates = {name: name, itemtype: 'theme'},
+          saveob = {_id: _id, updates};
+
+      save(saveob);
+      writeThemeChanges(updates, 'theme');
+
+      document.querySelector('#editmodal-theme').style.display = 'none';
+    }
+
+    function writeThemeChanges(updates, type){
+      
+      
+
+      let select = document.querySelector('#select-'+type),
+          option = document.createElement("option"),
+          name = updates.name,
+          imagedivs = document.querySelector('#editmodal-'+type).querySelectorAll('.distinctImage');
+
+      let dataatr = updates;
+          dataatr['image links'] = [];
+
+      if(type === 'theme'){
+        imagedivs.forEach((item, i) => {
+          let imgname = item.querySelector('.imagetype').value;
+          let imgext = item.querySelector('.imageInput').files[0].name.split('.')[1];
+
+          dataatr['image links'].push('/images/stock/'+type+'/'+name+'/'+name+'-'+imgname +'.'+imgext);
+
+          if(i === imagenames.length -1){
+            option.dataset.iteminfo = JSON.stringify(dataatr);
+            option.value = name;
+            option.textContent = name;
+            select.appendChild(option);
+            option.setAttribute('selected', 'selected');
+          }
+        });
+      }else{
+        option.dataset.iteminfo = JSON.stringify(dataatr);
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+        option.setAttribute('selected', 'selected');
+
+      }
+
+    }
+
+
+    function save(saveob){
+      xhr(saveob, '/backend/updateItemType', function(res){
+        if(res === 'success'){
+          toggle.setinst(document.querySelector('.itemtypesuccess'));
+          toggle.tog(document.querySelector('.itemtypesuccess'), 'block');
+
+          function close(){
+            document.querySelectorAll('.arraymodaltype').forEach((item, i) => {
+              toggle.tog(item, 'none');
+            });
+          }
+          window.setTimeout(close, 500);
+        }
+        else{
+          modal.document.querySelector('.warning').textContent = 'An error occured';
+          modal.document.querySelector('.warning').style.display = 'block';
+        }
+      });
+    }
+
+  }
+  console.warn('check disable weight line 334');
+/*
+  if(e.target.classList.contains('saveweight')){
+    let data = [];
+    data.push(parseInt(document.querySelector('.x').textContent));
+    data.push(parseInt(document.querySelector('.y').textContent));
+    data.push(parseInt(document.querySelector('.z').textContent));
+    let name = document.querySelector('.itemNewName').textContent;
+    let weight = parseInt(document.querySelector('.itemNewWeight').textContent);
+
+    let updates = {dimensions: data, weight: weight, name: name};
+
+    let saveob = {_id: e.target.parentElement.dataset._id, updates};
+    
+    //return;
+    xhr(saveob, '/backend/updateItemType', function(res){
+      if(res === 'success'){/*
+        modal.style.display = 'none';
+        let select = document.querySelector('#select-'+_id);
+        let option = document.createElement("option");
+        makeAddBox(value,_id,type,values);
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option)
+        option.setAttribute('selected', 'selected');
+      }
+      else{
+        modal.document.querySelector('.warning').textContent = 'An error occured';
+        modal.document.querySelector('.warning').style.display = 'block';
+      }
+    });
+
+  }*/
+
+  if(e.target.classList.contains('viewEdit')){
+    let _id = e.target.parentElement.dataset._id,
+        type = e.target.parentElement.dataset.type,
+        values = JSON.parse(e.target.parentElement.dataset.values);
+        toggle.setinst(e.target.parentElement.parentElement.nextElementSibling);
+        toggle.tog(e.target.parentElement.parentElement.nextElementSibling, 'block')
+
+    //e.target.parentElement.parentElement.nextElementSibling.classList.remove('hide');
+  }
+
+
+});
+
+function makeAddImage(parentEl, name, link){
+  
+  let clone = parentEl.cloneNode(true);
+  parentEl.parentElement.appendChild(clone);
+  clone.querySelector('.imagetype').value = '';
+  clone.querySelector('img').setAttribute('src', link);
+  clone.querySelector('.uploadimage').dataset.value = name;
+  attachImageLoadEvent(clone);
+}
+
+function makeAddBox(val,id,field,contentArray){
+  
+  let p = document.createElement('p');
+      p.classList.add('flex');
+  let s1 = document.createElement('span');
+      s1.classList.add('fieldEditable');
+      s1.textContent = val
+  p.appendChild(s1);
+  let s2 = document.createElement('span');
+      s2.classList.add('flexrow');
+      s2.dataset._id = id;
+      s2.dataset.type = field;
+      s2.dataset.values = contentArray;
+  p.appendChild(s2);
+  let s3 = document.createElement('span');
+      s3.classList.add('remove', 'editContol');
+      s3.setAttribute('title','remove this entry');
+  s2.appendChild(s3);
+  let s4 = document.createElement('span');
+      s4.classList.add('edit', 'editContol');
+      s4.setAttribute('title','edit this entry');
+  s2.appendChild(s4);
+  let s5 = document.createElement('span');
+      s5.classList.add('save', 'editContol');
+      s5.setAttribute('title','save this edit');
+      s5.addEventListener('click', ()=>{
+        saveFn(s5)
+      });
+  s2.appendChild(s5);
+  let t = document.querySelector('#list'+id);
+    t.insertBefore(p, t.children[t.childElementCount-1]);
+}
+
+function whipe(){
+  document.querySelector('.x').textContent = 0;
+  document.querySelector('.y').textContent = 0;
+  document.querySelector('.z').textContent = 0;
+  document.querySelector('#itemNewName-item_type').textContent = "";
+  document.querySelector('.itemNewWeight').textContent = 0;
+  document.querySelector('.nameedit').classList.remove('hide');
+  document.querySelector('#editmodal-item_type').style.display = 'block';
+  /*
+  */
+}
+
+function saveNewTheme(id, name){
+  let saveob = {_id: id, theme: {name: name, 'image links': []}};
+  xhr(saveob, '/backend/updateArrayItem', function(res){
+    if(res === 'success'){
+      alert('hurrah');
+    }
+  });
+}
+
+function saveFn(target){
+  
+  let value = target.parentElement.previousSibling.textContent;
+  let values = JSON.parse(target.parentElement.dataset.values);
+  let _id = target.parentElement.dataset._id;
+  let type = target.parentElement.dataset.type;
+  let modal = target.closest('.modal');
+  values.push(value);
+  let saveob = {_id: _id, [type]: values};
+  
+  //return;
+  xhr(saveob, '/backend/updateArrayItem', function(res){
+    if(res === 'success'){
+
+      modal.style.display = 'none';
+      let select = document.querySelector('#select-'+_id);
+      let option = document.createElement("option");
+      makeAddBox(value,_id,type,values);
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option)
+      option.setAttribute('selected', 'selected');
+
+    }
+    else{
+      modal.document.querySelector('.warning').textContent = 'An error occured';
+      modal.document.querySelector('.warning').style.display = 'block';
+    }
+  });
+}
+
+/**
+  * Add item type function
+  * @function addItemType
+  * @param {object[]} array of HTML elements to be set as editable
+  * @description This function essentially sets editable attribute to true,
+  * the first element in the provided array is focused
+  */
+function addItemType(fields){
+  fields.forEach((item, i) => {
+    item.textContent = '';
+    item.classList.add('fieldEditableUp');
+    item.contentEditable = 'true';
+  });
+  fields[0].focus();
+};
+
+/**
+  * Delete image
+  * @event deleteImage
+  * @type {object}
+  * @param {HTMLelement} node - Element
+  * @description -Deletes the closest "add image".
+  * @todo return an error if the image isn't deleted
+  */
+function deleteImage(target){
+  let imglink = target.closest('.distinctImage').querySelector('img').src.split('/images')[1];
+  xhr({link: '/images'+imglink}, '/backend/deleteImage', (res)=>{
+    swiftmoAlert.setContent('Image deleted').toggle();
+    target.closest('.distinctImage').remove();
+  })
+}
+
+/**
+  * Reset Images
+  * @function resetImages
+  * @param {HTMLelement} button -Element on which click is attached.
+  * @param {string} type - The type of thing the image upload belongs to
+  * ('theme', 'item type', 'produced')
+  * @summary Clear field in the image adder, removes all extra image adders.
+  */
+function resetImages(eventTarget, type){
+  let imgname = eventTarget.closest('.stockModal').querySelector('.imagetype');
+      imgname.value = '';
+      imgname.classList.add('fieldEditableUp');
+      imgname.contentEditable = 'true';
+
+  let title = eventTarget.closest('.stockModal').querySelector('.distinctImage').querySelector('.title');
+      title.textContent = 'Add images:'
+
+  let extraImageDivs =  eventTarget.closest('.stockModal').querySelectorAll('.distinctImage');
+  //Leave first image upload div ∴ a for loop:
+  for (var i = 1; i &lt; extraImageDivs.length; i++) {
+    extraImageDivs[i].remove();
+  }
+
+  eventTarget.closest('.stockModal').querySelector('.editImages')
+    .addEventListener('click', (e)=>{
+      let themetitle = e.target.closest('.stockModal').querySelector('.title');
+      if(themename.textContent === ''){
+        swiftmoAlert.setContent('Enter a name first.').toggle();
+        themetitle.textContent = 'images';
+      }
+      else{
+        themetitle.textContent = themename.textContent + ' images';
+      }
+  });
+
+  let img = eventTarget.parentElement.parentElement.querySelector('.displayImage');
+
+  img.childNodes.forEach((item, i) => {
+    img.removeChild(item);
+  });
+
+}
+
+/**
+  * Reset Item Fields
+  * @function resetItemFields
+  * @param {HTMLelement} button -Element on which click is attached.
+  * @param {string} type - The type of thing the image upload belongs to
+  * ('theme', 'item type', 'produced')
+  * @summary Clears all the edit fields in the closest stock modal to the
+  * event target.
+  */
+function resetItemFields(eventTarget, type){
+  eventTarget.closest('.stockModal').querySelectorAll('.edit').forEach((item, i) => {
+    item.textContent = '';
+  });
+
+  let themename = document.querySelector('#itemNewName-'+type);
+      themename.textContent = '';
+      themename.classList.add('fieldEditableUp');
+      themename.contentEditable = 'true';
+      themename.focus();
+}
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+	
+		on Tue May 26th 2020
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

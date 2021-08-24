@@ -1,0 +1,157 @@
+@import "variables.scss";
+@import "include-media.scss";
+//Tablet fablet
+@include media("<=tablet") {
+
+  body {
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .guttersBody {
+    width: 95%;
+  }
+
+  .flex {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .desktopMenuTop {
+    display: none;
+  }
+
+  .post > figure > img{
+    margin: 0;
+  }
+
+  .basedimensions .main::before{
+    font-size: 1em;
+  }
+
+  .post > figure {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .navColapseBtn {
+    display: inline-block;
+  }
+
+  .mobileMenuTop {
+    h1 {
+      background-color: transparent;
+    }
+  }
+
+  .brandMobile {
+
+    width: 70%;
+    text-decoration: none;
+    margin-top: .4em;
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+      line-height: 0.9em;
+      text-shadow: none;
+    }
+    h2 {
+      margin: 0;
+      color: $secondary-color;
+      font-size: 3em;
+      line-height: 0.9em;
+      text-shadow: none;
+      margin-top: 0.2em;
+    }
+  }
+
+  #contactsdiv {
+    background-color: #fc30;
+  }
+
+  .flexrow {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    margin-left: auto;
+    background: aliceblue;
+    border-style: solid;
+    border-radius: 1em;
+    padding: 0.1em;
+    border-color: #d9534f;
+    padding: 2px;
+    height: fit-content;
+  }
+
+  .itemButton {
+    flex-basis: 17em;
+    padding: 1em;
+    cursor: pointer;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 2em;
+      @include dropShaddowGrey();
+    }
+  }
+
+  .itemGCtable > p {
+    margin-top: .15em;
+    margin-bottom: .15em;
+    line-height: normal;
+    border-style: solid;
+    border-radius: 0.5em;
+    background-color: #333;
+    color: #f2f2f2;
+    padding: 0.3em;
+  }
+
+  .itemname {
+    border-bottom-style: solid;
+    border-bottom-color: #428bca;
+    margin-bottom: 0.2em;
+  }
+
+  .fieldEditable, .fakeFieldEditable {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    background-color: #f0f8ff;
+    flex-grow: 1;
+    z-index: 200;
+    margin-right: 1em;
+    margin-left: 1em;
+    color: #333;
+    padding: 0.2em;
+    border-radius: 0.2em;
+    min-height: 1em;
+    word-break: break-all;
+  }
+
+  .backendPage {
+    padding-left: 0;
+  }
+
+  .backendbox {
+    padding: 0;
+    margin-bottom: 2em;
+  }
+
+  .divRadioBtns > p{
+    color: #f2f2f2;
+  }
+
+  .itemGCtable {
+    /*border-left-style: none;*/
+    padding-left: 0;
+  }
+
+  .potBespoke {
+    font-size: 1.5em !important;
+  }
+
+}

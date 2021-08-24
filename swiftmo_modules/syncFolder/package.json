@@ -1,0 +1,8 @@
+{
+  "name": "syncFolder",
+  "version": "1.0.0",
+  "description": "Gets all the contents of a folder (full file paths)",
+  "main": "syncFolder.js",
+  "license": "MIT license",
+  "author": "Tomás Swift-Metcalfe"
+}

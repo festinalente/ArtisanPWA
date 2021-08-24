@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/frontendStatic/css/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Redressed Regular";
+  src: url("/frontendStatic/css/fonts/Redressed-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Belleza Regular";
+  src: url("/frontendStatic/css/fonts/Belleza-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+/**
+  * @funtion makeShaddow
+  * @param blurRadius bigger means bigger, lighter shaddow
+  * @param spread This is the size of shaddow (0 === same size as element), (10px === el.height, width + 10px)
+  * @param the offsets basically control how box fits relative to the element
+  * Drop shadow lays outside an elemen
+  */
+@font-face {}/**
+  * Decosnstucted pancake
+  *
+  */
+.itemGroupColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1 1 280px; }
+
+.itemGroupColumnSmall {
+  flex: 1 1 100px; }
+
+.itemGroupColumnMedium {
+  flex: 1 1 400px; }
+
+.simpleFlexRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.item {
+  flex: 0 1 150px; }
+
+.itemGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto; }
+
+.fullrow {
+  flex: 0 0 100%; }
+
+.fullrowTopRight {
+  flex: 0 0 100%;
+  align-content: flex-end;
+  width: 100%; }
+
+.fullrowAlign {
+  flex: 1 1 100%; }
+
+/*
+  * What proportion of the screen should be covered relative to other
+  * Divs on the same row?
+  */
+.col1 {
+  flex: 1 1 0px;
+  flex-wrap: wrap; }
+
+.col2 {
+  flex: 2 2 0px;
+  flex-wrap: wrap; }
+
+.col3 {
+  flex: 3 3 0px;
+  flex-wrap: wrap; }
+
+.col4 {
+  flex: 4 4 0px;
+  flex-wrap: wrap; }
+
+.col5 {
+  flex: 5 5 0px;
+  flex-wrap: wrap; }

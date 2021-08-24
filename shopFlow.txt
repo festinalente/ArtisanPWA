@@ -1,0 +1,28 @@
+digraph {
+    "/*" -> "/fetchCartData"[color=red,penwidth=1.0];
+    "/fetchCartData"  -> "evalutates against:\n sessionID, \n !checkOut"[color=blue,penwidth=1.0];
+    "/shop" -> "/fetchCartData"[color=red,penwidth=1.0];
+    "/stockQuery"
+
+    "/*"[color=red];
+    "/fetchCartData"[color=red];
+    "/shop"[color=red];
+    "/stockQuery"[color=red];
+
+
+ subgraph shopProcess {
+        label="Shop process";
+        "/shop" -> "designs";
+        "/shop" -> "shapes";
+        "/shop" -> "special";
+        "/shop" -> "tiles";
+        "designs" -> "/stockQuery"[color=red,penwidth=1.0];
+        "/stockQuery" -> "evalutates against:\n 'theme.name',\n !'cart.status.checkOut',\n !'master item type'"[color=blue,penwidth=1.0];
+    }
+
+    "/stockQuery" -> "/updateCart"[color=red,penwidth=1.0];
+
+    subgraph cartProcess {
+        "/updateCart"[color=red];
+    }
+}

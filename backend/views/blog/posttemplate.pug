@@ -1,0 +1,41 @@
+-{blog_id}
+include ../microdocs.pug
+.col1.postview(data-_id=blog_id)
+  h3 Post title: 
+  br
+  +microdocs('A title must be unique, you may be asked to alter it. Ideal length 120 characters.')
+  input(type='text').title 
+  br
+  h3 Post topics:
+  br
+  +microdocs('For multiple topics seperate each by a comma and a space. E.g. majolica, algarve, history. The first topic will be the main topic of the post. One to three topics is ideal.')
+  input(type='text').topicInput
+  br
+  h3 Post content: 
+  br
+  +microdocs(`<p>Special characters or code will cause the post to be rejected. 
+    These may be included as unicode codes like so: "\\u XXXX" where XXXX
+     is the 4 digit unicode reference for the character you want: 
+     <a href=\'http0s://home.unicode.org/\' target=\'_blank\'> 
+     https://home.unicode.org/ </a>. 
+     Please note, you have no control over styles unlike a WYSIWYG editor. 
+     Ideal content length is about 500 words with three key points made.</p>`)
+  br 
+  .content
+  -//this holds the controls, currently just buttons:
+  .controls
+  .imageupload
+    h3 Add an Image:
+    br
+    input(type="file" name="blogimages" accept="image/*" capture="environment").blogImage
+    button.uploadimage.btnbackend Upload image.
+    
+  .videoupload
+    h3 Add a Video:
+    br
+    input(type="file" name="vlog" accept="video/*" capture="environment").blogVideo
+    button.uploadvideo.btnbackend Upload video.  
+  h3 Post description: 
+  br
+  +microdocs('This is what search engines usually display in the searh results <span class="alertdiv">Ideal length is 120-180 characters.</span>')
+  input(type='text').postdescription

@@ -1,0 +1,32 @@
+mixin distinctType(data, class2, name)
+  
+  -let unique = [];
+  -let unique2 = [];
+  select(class=class2 id=name.toLowerCase().replace(/\s/g, '')+'filter')
+    each val, index in data
+      
+      
+      
+      //-unique.push(val[name]);
+      
+      -if(val && val.topics){val.topics.forEach((e)=>{
+        -unique.push(e);
+      -})}
+    
+      -if(index === data.length-1)
+        -let unique2 = [... new Set(unique)];
+          option(value='null') Ignore this aspect
+        each val in unique2
+          
+          if val 
+            option(data-attribute=val)= val
+
+mixin imgMixin(img, caption, val)
+  -let src = (img && img.includes('8080')) ? img.split('8080')[1] : img;
+  figure
+    img(src=src)
+    figcaption.emphasis #{caption}
+
+mixin videoMixin(video)
+  -let src = (video && video.includes('8080')) ? video.split('8080')[1] : video;
+  video(src=src autoplay controls)

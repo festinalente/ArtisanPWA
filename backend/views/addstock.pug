@@ -1,0 +1,511 @@
+-
+  function checkFieldType(field, d){
+    if(field === 'dimensions'){
+      return 'dimensions'
+    }
+    if(field === 'theme'){
+      return 'theme'
+    }
+    if(field === 'item type'){
+      return 'item type'
+    }
+    if(field === 'posts'){
+      return 'posts'
+    }
+
+    else{
+      return field
+    }
+  }
+  
+include ./microdocs.pug  
+
+mixin newArrayItem(field, id, contentArray)
+  +microdocs("Click the pencil icon to add a new type, then the box with an arrow to save it.")
+  p.flex
+    span.fieldEditable Add new option
+    span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray)
+      span.edit(title='edit this entry' tabindex='0').editContol
+      if field === 'theme'
+        span.saveNewTheme(title='save this edit' tabindex='0').editContol
+      else  
+        span.save(title='save this edit' tabindex='0').editContol
+    +images(null, field, 'new')      
+    
+mixin options(field, contentArray)
+  div.optionsContainer
+    +expandHeader('Add an option')
+    .hide.arrayDiv
+      div.optionContainer
+        p.flex
+          span.fieldEditable.edit.optionName(contenteditable="false") Option name
+          span.flexrow(data-type="option" data-values="undefined")        
+        div.choiceContainer  
+          p.flex
+            span.fieldEditable.edit.choice(contenteditable="false") Add an option choice
+            span.add(title="Add another choice").addAnotherChoice
+            //p Add an option choice image if applicable:             
+            //+images(null, 'option choice image', 'new')
+        div  
+          p.flex
+            span.fakefieldEditable(contenteditable="false") Add another option
+            span.add(title="Add another option").addAnotherOption
+
+mixin boolean(field, value)
+  +microdocs('Check the box is the given condition is true.')
+  p.flex(data-fieldname=field ) #[span.itemname.bold #{field}:] 
+    span.fakeFieldEditable 
+      span if #{field} item check: 
+      span 
+        input(type="checkbox" class=field name=field value="false") 
+      span itemref: #{template[0].itemref}
+    
+//*field/posts is an array of objects: [ { title: 'About SwiftMo®' } ]]*/
+mixin selectPost(posts)    
+  +microdocs('Check the box is the given condition is true.')
+  p.flex(data-fieldname='blogPost') 
+    span.bold link a blog post:
+    input(type='text' placeholder='filter blog posts by title:').fuzzySearch.fakeFieldEditable.tabindex
+    select(id='select-blogPost').fakeFieldEditable.filtered.tabindex
+      option(disabled) Select a blog post bellow
+      if posts && posts.length > 0
+        each val, index in posts
+          option(value=val.name data-iteminfo=val) #{val.title}
+    //    
+      span.flexrow.controlParent(data-field='blogPost')
+        span(class='editmodal' title='edit this entry').editContol.add
+      
+mixin price()
+  +microdocs('Double click/tap to edit price.')
+  p.flex(data-fieldname='price') 
+    span.bold item price:
+    span(type='text' placeholder='enter price').currency.price.fakeFieldEditable.itemFeature.edit
+  
+    span.bold tax:
+    span.taxCalc.fakeFieldEditable.itemFeature.edit
+
+mixin tax()
+  +microdocs('Enter the percentage tax due on the item.')
+  p.flex(data-fieldname='taxrate') 
+    span.bold item tax rate:
+    input.percent(type='text' value='23%' maxlength='6' pattern="[0-9]*").fakeFieldEditable.tax.itemFeature
+
+mixin quantity()
+  +microdocs('If there is more than one item enter how many.')
+  p.flex(data-fieldname='quantity') 
+    span.bold quantity:
+    input(type='number' placeholder='1' value='1').fakeFieldEditable.quantity     
+
+
+mixin itemtype(field, contentArray, id)
+  
+  -let fieldCss = field.replace(' ', '_');
+  -
+    let longst = '<p>Filter an item name (n.b. this is case sensitive), then select'+
+     ' it in the dropdown adjacent.</p><p> To add a new '+ field +' click the plus'+
+     ' sign at the end of the row and fill out the details.'
+  +microdocs(longst)
+  p.flex(data-fieldname=field) #[span.bold #{field}:]
+    input(type='text' placeholder='filter '+field ).fuzzySearch.fakeFieldEditable
+    if contentArray
+    select(id='select-'+fieldCss).fakeFieldEditable.filtered.itemFeature
+      option(value='null' disabled selected) select a #{field}
+      each val, index in contentArray
+        option(value=val.name data-iteminfo=val) #{val.name}
+    span.flexrow.controlParent(data-field=field)
+      span(class='editmodal' title='edit this entry' tabindex='0').editContol.add
+
+  
+  .modal(id='editmodal-'+ fieldCss).arraymodaltype.editmodal
+    .stockModal
+      .circle.sms2.circleClose
+        .before
+        .after
+      .block  
+      h3.flex(data-fieldname='add new' ) Add or alter #{field}:
+      br      
+      .itemGroupColumn
+        +microdocs("This button whipes the form fields so you can add a new item type. If you wish to just edit the current item just click the pencil icon after the relevant field. Altering the item name creates a new item type").tabindex
+        button.btnbackend.sms2.btnbackend.bounceOnHover(type="button" class="add-"+fieldCss).tabindex Add new #{field}
+      div
+        +microdocs("The name field isn't editable, if you wish to add a new name, add a new " + field).tabindex
+        div.warning.hide
+        p.flex
+          span.bold #{field} name:
+          span.fieldEditable(id=fieldCss).itemNewName.uneditable.tabindex #{(contentArray.name) ? contentArray.name : 'new name'}
+          span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray).nameedit
+            //span(title='edit this entry').editContol
+
+                                  
+      -if(field === 'producer')
+        div
+          +microdocs("Write a short paragraph about the person in the context of their job.").tabindex
+          p.flex
+            span.bold Quick intro (<500 words)
+            span.fieldEditable(id=fieldCss).producerIntro.edit.tabindex Quick intro
+              span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray tabindex='0').editContol
+        div
+          +microdocs("Label the specific artist type, e.g. ceramic decorator, potter, jeweler.")
+          p.flex
+            span.bold Job type
+            span.fieldEditable(id='itemNewType-'+fieldCss).producerType.edit.tabindex Job type
+              span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray tabindex='0').editContol      
+        //      
+          div
+            +microdocs("Write a short description of the theme.").tabindex
+            p.flex
+              span.bold Quick description (<#[span.characterCount 160] characters)
+              span.inlineBlock.edit.fieldEditable(id=fieldCss).themeDescription.characterCountInput.tabindex Quick description
+                span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray).editContol
+        +images(null, field, 'new')
+        
+      -if(field === 'theme')
+        +images(null, field, 'new')    
+        .parent.colours
+          p.flex      
+            +microdocs("Double click a field to enter or edit the main theme colours:").tabindex
+            span.bold colours:
+            p.flex
+              span.bold 1
+              span.fieldEditable.array.edit.tabindex blue
+            p.flex  
+              span.bold 2
+              span.fieldEditable.array.edit.tabindex
+            p.flex
+              span.bold 3
+              -//warning don't leave whitespace
+              span.fieldEditable.array.edit.tabindex
+              
+        div
+          +microdocs("Write a short description of the theme.").tabindex
+          p.flex
+            span.bold Quick description (<#[span.characterCount 160] characters)
+            span.inlineBlock.edit.fieldEditable(id=fieldCss).themeDescription.characterCountInput.tabindex Quick description
+              span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray tabindex='0').editContol
+        div(data-fieldname="for bespoke")
+          +boolean('for bespoke (custom orders, tile commissions)', field)
+        +selectPost(template[0].posts)    
+      -if(field === 'item type')
+        br
+        .parent
+          -//.dimensions
+          p.flex      
+            +microdocs("x, y and z describe a box which can contain the item.")
+            h4 dimensions:
+            -let dimensions = contentArray.dimensions
+            p.flex
+              span.bold x (mm)
+              span.fieldEditable.x.dimensions.edit(tabindex='0') #{(dimensions) ? dimensions[0] : 00}
+            p.flex  
+              span.bold y (mm)
+              span.fieldEditable.y.dimensions.edit(tabindex='0') #{(dimensions) ? dimensions[1] : 00}
+            p.flex
+              span.bold z (mm)
+              span.fieldEditable.z.dimensions.edit(tabindex='0') #{(dimensions) ? dimensions[2] : 00}
+            span.flexrow.controlParent(data-id=id)
+              span.editdimensions(title='edit this entry' tabindex='0').editContol
+              
+        br         
+        div.parent
+          p.flex
+            +microdocs("Enter the approximate weight in grams (g)")
+          p.flex  
+            span.bold weight (g)
+            span.fieldEditable.itemNewWeight.edit #{(contentArray.weight) ? contentArray.weight : 0}
+            span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray)
+              span(title='edit this entry').editContol
+              
+        br
+        div.parent
+          p.flex(data-fieldname='item_type.item_group') #[span.bold Select an item group:]
+            input(type='text' placeholder='filter item group').fuzzySearch.fakeFieldEditable
+            -
+            -let itemGroupArray = (contentArray && contentArray['item group']) ? contentArray['item group'] : []  
+            select(id='select-item_type.item_group').fakeFieldEditable.filtered.itemFeature
+              option(disabled) Selected an item group
+              each val, index in itemGroupArray
+                if val === contentArray['item group']
+                  option(value=val.name data-iteminfo=val selected) #{val}
+                else
+                  option(value=val.name data-iteminfo=val) #{val}  
+
+          +microdocs("Add a new item group bellow if needed.").tabindex
+          p.flex
+            span.bold Add new item group if needed
+            span.inlineBlock.edit.fieldEditable(id='item_type.item_group').tabindex 
+              span.flexrow.controlParent(data-_id=id data-type=field data-values=itemGroupArray tabindex='0').editContol  
+              
+      br      
+      .itemGroupColumn
+        +microdocs("This button saves or updates this item type, however adding an image also results in the item being saved.")
+        button.btngreen.sms2.savebtn.saveitemtype.bounceOnHover(type="button" data-itemtype=field data-type=itemtype data-value=value data-itemref=itemref) Save this #{field}
+
+        +microdocs("This button deletes the "+itemtype+", you will have to add it again manually if you wish to recover it.")
+        button.btnwarn.sms2.bounceOnHover(type="button" data-itemtype=field data-type=itemtype data-value=value data-itemref=itemref data-_id=id).deleteItemType Delete this #{field}
+
+      .itemtypesuccess.hide
+      .warning.hide    
+
+mixin normalEditableInfoExists(field, value, type)  
+  p.flex(data-fieldname=field ) #[span.itemname.bold #{field}] 
+    span.edit.fieldEditable #{value} 
+    span.flexrow.controlParent
+      //span.edit(title='edit this entry').editContol
+      //span.save(title='save this edit').editContol
+
+mixin expandHeader(field)
+  p.flex(data-fieldname=field) #[span.bold #{field}]
+    span.fakeFieldEditable
+    span.flexrow.controlParent  
+      span.expand.editContol.editDate(tabindex='0')
+      span.contract.editContol(tabindex='0')
+      
+mixin paragraph(field, contentArray, id)
+  -let fieldCss = field.replace(' ', '_');
+  +microdocs("Write a short description of the item.").tabindex
+  p.flex
+    span.bold Quick description (<#[span.characterCount 160] characters)
+    span.inlineBlock.edit.fieldEditable(id=fieldCss).themeDescription.characterCountInput.tabindex Quick description
+      span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray tabindex='0').editContol      
+
+mixin currency(field, contentArray, id)
+  -let fieldCss = field.replace(' ', '_');
+  +microdocs("Enter ISO name for item currency, e.g EUR, GBP, USD ").tabindex
+  p.flex
+    span.bold ISO currency 
+    span.inlineBlock.edit.fieldEditable(id=fieldCss).themeDescription.characterCountInput.tabindex #{contentArray}
+      span.flexrow.controlParent(data-_id=id data-type=field data-values=contentArray tabindex='0').editContol
+
+mixin dimensions(field, contentArray)
+  +expandHeader(field)
+  .hide.arrayDiv
+    -let dim = ['x', 'y', 'z'];
+    each val, index in dim
+      .parent(data-fieldname=field+'.'+val)
+        p.flex(data-fieldname=field+'.'+val) #[span.bold #{val} mm]
+          span.fieldEditable #{contentArray[index]}
+          span.flexrow.controlParent
+            span.edit(title='edit this entry' tabindex='0').editContol
+            span.save(title='save this edit' tabindex='0').editContol
+
+mixin programmatically(key, value)
+  p.flex(data-fieldname=key) #[span.bold #{key}] 
+    span(title='This item is uneditable.').fakeFieldEditable #{value}
+    span(title='Set programmatically.').uneditable Set programmatically            
+            
+mixin verbose(field, paragraphs)
+  +expandHeader(field + ' description')
+  .hide.arrayDiv
+    +microdocs('A hard limit of 10000 characters per paragraph exists, the recommended paragraph length is ~150 words or ~700 characters.') 
+    .arrayDiv 
+      if paragraphs
+        each val, index in paragraphs
+          .parent
+            p.flex(data-fieldname=field data-paragraph=index)
+              span.fieldEditable.paralength #{val}
+              span.flexrow.controlParent
+                span.edit(title='edit this entry' tabindex='0').editContol
+                span.savepara(title='save this edit' tabindex='0').editContol
+      else
+        -let n = 1; 
+        while n > 6     
+          .parent
+            p.flex(data-fieldname='verbose' data-paragraph=n) #[span.bold #{'paragraph' + ' ' + n}]
+              span.fieldEditable.paralength 
+              span.edit(title='edit this entry' tabindex='0').editContol
+              span.savepara(title='save this edit' tabindex='0').editContol
+          -n++
+
+
+mixin videos(itemref, itemtype, value, imagelink)
+  -
+  -//+images(d.itemref, 'stock', null, d[field])
+  +microdocs('<p>Click on the plus sign to open the video adder, the minus to close it.</p>') 
+  p.flex(data-fieldname='images' data-itemtype=itemtype) #[span.bold.itemname #{value} #{itemtype} videos:]
+    span.inlineBlock.fieldEditable
+      span.flexrow.controlParent    
+        span.expand.editContol.editImages(tabindex='0')
+        span.contract.editContol(tabindex='0')
+  .hide
+    .emphasis.itemGroupColumn.videos
+      .fullrowAlign
+        .distinctVideo
+          h3 Add a video about this item type:
+          .line
+          h4 Label video: 
+          input(type="text").fakeFieldEditable.tabindex.videolabel
+          .videoDisplay
+          .div(data-type=itemtype data-value=value data-itemref=itemref).videoupload
+            input(type="file" name="vlog" accept="video/*" capture="environment").blogVideo
+            button.uploadvideo.btnbackend Upload video.    
+            .line
+            +microdocs("This button deletes this video, it is not recoverable after deletion.").tabindex
+            button.btnwarn.sms2.bounceOnHover(type="button" data-type=itemtype data-value=value ).deleteVideo.tabindex Delete this image
+            +microdocs("<p>Click to add another video for this category.").tabindex
+            button.addimage.uploadimage.btnbackend.sms2.btnbackend.bounceOnHover(type="button" data-value=value).tabindex Add another image
+              
+mixin images(itemref, itemtype, value, imagelink)
+  -
+  -//+images(d.itemref, 'stock', null, d[field])
+  +microdocs('<p>Click on the plus sign to open the image adder, the minus to close it.</p>') 
+  p.flex(data-fieldname='images' data-itemtype=itemtype) #[span.bold.itemname #{value} #{itemtype} images:]
+    span.inlineBlock.fieldEditable
+      span.flexrow.controlParent    
+        span.expand.editContol.editImages(tabindex='0')
+        span.contract.editContol(tabindex='0')
+  .hide
+    .emphasis.itemGroupColumn.images
+      .fullrowAlign
+        .div(data-type=itemtype data-value=value data-itemref=itemref).distinctImage
+          +microdocs("<p>Choose an image, label it, then click upload and this image will be saved with that label in the file path.</p>").tabindex
+          h3.title #{value} #{itemtype} images
+          .line
+          h4 Label image: 
+          +microdocs("<p>It is good policy to keep names consistent between categories e.g. 'main', 'supplementary' and to use lowercase.</p>").tabindex
+          if imagelink
+            //-let imageName = imagelink.split('-')[1].split('.')[0];
+            
+            input(type="text" class='imagetype').fakeFieldEditable.tabindex
+          else
+            input(type="text" class='imagetype').fakeFieldEditable.tabindex
+          .line
+          .lazyImage.displayImage(data-image='main')
+          if imagelink && imagelink[0] 
+            img(src=imagelink)
+          .line
+          h4 Upload or alter image:
+          +microdocs("<p>When you select an image, it will be uploaded to the "+itemtype+" folder.</p><p>If an image exists with the same name it will get over written.</p>").tabindex
+          input(type="file" name="imageInput" accept="image/*").imageInput.tabindex
+          //button.uploadimage.sms2(data-type=itemtype data-value=value data-itemref=itemref).btngreen Upload image.
+          .line
+          +microdocs("This button deletes this image, it is not recoverable after deletion.").tabindex
+          button.btnwarn.sms2.bounceOnHover(type="button" data-type=itemtype data-value=value ).deleteImage.tabindex Delete this image
+          +microdocs("<p>Click to add another image for this category.").tabindex
+          button.addimage.uploadimage.btnbackend.sms2.btnbackend.bounceOnHover(type="button" data-value=value).tabindex Add another image
+    
+mixin miscImages(index, itemref, itemtype)
+  -let supplementaryImage = '/images/stock/' + itemtype + '/' + itemref + '/' + itemref + '-holidaySupplementary' + index +'.jpg';
+  -let inputClass = 'holidaySupplementary' + index;
+  -let imgDiv = inputClass + 'ImgDiv';
+  .distinctImage
+    h3 Supplementary image #{index} for holiday:
+    .lazyImage(data-image=supplementaryImage class=imgDiv)
+    h4 Upload or alter image: 
+    input(type="file" name="holidaySupplementary" accept="image/*" data-imagenumber=index class=inputClass).holidaySupplementary
+    button.uploadimage.sms2 Upload image.
+
+mixin genericArray(field, contentArray)
+  +expandHeader(field)
+  .hide.arrayDiv
+    each val, index in contentArray
+      .parent
+        p.flex
+          span.inlineBlock.edit.fieldEditable(id=field+index class=field tabindex='0' data-fieldname=field+'-listitem').themeDescription.characterCountInput #{contentArray[index]}
+  
+  
+  //
+    .parent(data-fieldname=field+'.'+val)
+      p.flex(data-fieldname=field+'.'+val) #[span.bold #{val} mm]
+        span.fieldEditable #{contentArray[index]}
+        span.flexrow.controlParent
+          span.edit(title='edit this entry' tabindex='0').editContol
+          span.save(title='save this edit' tabindex='0').editContol
+  
+mixin stockMixin(d, index)
+  -let stockKeys = Object.keys(d);
+  
+  -//not the cleanest, itemclass will be null, or "newitem"   
+  .div(class='profile-'+d.itemref class=d.size class=itemclass data-itemType=d['item type'] 
+  data-size=d.size data-itemref=d.itemref data-brandAndModel=d['brand and model']
+  data-canvasref='canvas'+d.itemref id='profile-'+d.itemref).backendbox.newitemprofile 
+    .itemGroup
+      .itemGCtable          
+        each field in stockKeys
+          case checkFieldType(field, d)
+            when 'master item type'
+              -break
+            when 'key characteristics'
+              +microdocs("<p>Enter the key characteristics of the item. Note that default values are loaded if you add no values.</p>").tabindex
+              +genericArray('key features', d[field])
+              -break
+              
+            when 'options'
+              +microdocs("<p>Enter any options available for this product:</p>").tabindex
+              +options('options', d[field])
+              -break
+            when 'dimensions'
+              +dimensions(field, d[field])
+              -break
+            when 'image links'
+              +images(d.itemref, 'stock', null, d[field])  
+              -break  
+            when 'video links'
+              +videos(d.itemref, 'stock', null, d[field])  
+              -break  
+            when '_id'
+              -break
+            when 'cart'
+              -break  
+            when '@type'
+              -break  
+            when '@context'
+              -break      
+            when 'itemref'
+              -break  
+            when 'linked post'
+              -break    
+            when 'special'
+              
+              
+              +boolean(field, d[field])
+              -break   
+            when 'item type'
+              +itemtype(field, d[field], d._id)
+              -break   
+              
+            when 'posts'
+              //*field is an array of objects: [ { title: 'About SwiftMo®' } ]]*/
+              
+              
+              +selectPost(d[field])
+              -break     
+            when 'theme'
+              +itemtype(field, d[field], d._id)
+              -break    
+            when 'price'
+              +price()
+              -break    
+            when 'currency'
+              +currency(field, d[field], d._id)
+              -break      
+            when 'tax'
+              +tax()
+              -break     
+            when 'producer'
+              +itemtype(field, d[field], d._id)
+              -break      
+            when 'description'
+              +paragraph(field, d[field], d._id)
+              -break
+            when 'verbose description'
+              +verbose(field, d[field])
+              -break  
+            default
+              +normalEditableInfoExists(field, d[field], itemref)    
+        //        
+          +quantity()    
+        div.itemGroupColumnSmall
+          +microdocs("This button saves or updates this item type, adding an image also results in the item being saved.").center
+          button.center.btngreen.sms2.savebtn.savestock.bounceOnHover(type="button" data-itemtype=field data-type=itemtype data-value=value data-itemref=itemref) Save this #{field}
+          
+-{template}
+h2 Add a new template item,
+h3 You can also add new producers, themes, or item types, item groups on this page. 
+h3 Template items need to be cloned in the stock control page to display on the front end. 
+
+ 
+-//button.btnbackend.sms2.bounceOnHover.toggleDocs toggle inline help icons
+if(template)
+  each item in template
+    +stockMixin(item)
+            

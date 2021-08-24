@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/frontendStatic/css/fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Redressed Regular";
+  src: url("/frontendStatic/css/fonts/Redressed-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+@font-face {
+  font-family: "Belleza Regular";
+  src: url("/frontendStatic/css/fonts/Belleza-Regular.ttf") format("truetype");
+  font-style: normal; }
+
+/**
+  * @funtion makeShaddow
+  * @param blurRadius bigger means bigger, lighter shaddow
+  * @param spread This is the size of shaddow (0 === same size as element), (10px === el.height, width + 10px)
+  * @param the offsets basically control how box fits relative to the element
+  * Drop shadow lays outside an elemen
+  */
+@font-face {}@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0; }
+  .gutterMargin {
+    margin-top: 149px; }
+  .guttersBody {
+    width: 95%; }
+  .mobileMenuTop {
+    display: none; }
+  .desktopMenuTop {
+    display: block; }
+  .desktopMenuTop {
+    display: block;
+    background: #ece2e1; }
+  .menuNotLink {
+    background-color: #ece2e1; }
+  .menuNotLink > img {
+    width: 90vh; }
+  .menuNotLink:hover {
+    background-color: #333; }
+  .gutters {
+    display: none; }
+  .itemButton {
+    flex-basis: 17em;
+    padding: 1em;
+    cursor: pointer;
+    border-radius: 1em;
+    -webkit-box-shadow: 0px 0px 5px 1px #00000066;
+    -moz-box-shadow: 0px 0px 5px 1px #00000066;
+    box-shadow: 0px 0px 5px 1px #00000066; }
+    .itemButton img {
+      max-width: 100%;
+      height: auto; } }

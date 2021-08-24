@@ -1,0 +1,51 @@
+@import "variables.scss";
+@import "include-media.scss";
+
+@media print {
+  #footer  {
+    display: none;
+  }
+
+  p, b {
+    line-height: 16px;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4 {
+    margin: 0.5em 0em;
+  }
+
+  h4 {
+    font-family: $reading-font;
+    font-size: 1em;
+    text-align: left;
+  }
+
+  h3 {
+    font-family: $reading-font;
+    font-size: 1.1em;
+    text-align: left;
+  }
+
+  .contactSpace {
+    height: 1.2em;
+    a {
+      font-family: $reading-font;
+      font-size: 16px;
+      color: $primary-shaddow;
+    }
+  }
+
+  .printBtn, .whitespace, .desktopMenuTop, .mobileMenuTop, .copyright {
+    display: none !important;
+  }
+
+  .hideForPrint {
+    display: none;
+  }
+
+  .printHeader {
+    display: block;
+  }
+
+}

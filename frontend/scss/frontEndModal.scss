@@ -1,0 +1,81 @@
+@import "variables.scss";
+
+.itemModal{
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+}
+
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1111;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $darker-primary-transparent;
+}
+
+.modalContent{
+  background-color: $base-color;
+  /*width: $mobileWidth;*/
+  margin: $standardMargin;
+  @include verticalCenter();
+  @include dropShaddow(0, 0, 9px, 4px, $primary-color);
+  border-radius: 1em;
+}
+
+.toggleModal > * {
+  pointer-events: none;
+}
+
+.toggleByThemeModal > * {
+  pointer-events: none;
+}
+
+.modalContent > * {
+  position: relative !important;
+}
+
+.modalContent > h2 {
+  //margin: 0em 0em 1em 0em;
+  //height: 1em;
+}
+
+.modalContent > .scroller {
+  max-width: 100%;
+  height: auto;
+}
+
+.modalContent > .buttonContainer {
+  width: 100%;
+}
+
+.tick::before {
+  float: left;
+  content: "\e013";
+  font-family: 'Glyphicons Halflings';
+  color: $primary-shaddow;
+  font-size: 1em;
+  padding-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.fullrowBottom {
+  flex: 0 0 100%;
+  background-color: $secondary-color;
+  background: linear-gradient(180deg, $secondary-color 0%, $tertiary-color 70%);
+  //height: $mobileMenuHeight;
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  padding: 1em;
+}
+
+.fullrowBottom > button{
+  padding: 1em;
+}

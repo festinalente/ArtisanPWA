@@ -1,0 +1,34 @@
+.paymentOptions.itemGroup.cart      
+  form(action="/globalPayment" method="post").payment-form.paybutton.payment-form-2.col1
+    -
+      let st = "<h3>Is it safe?</h3>" +
+              "<p>Yes. We've taken every precaution we are aware.</p>"+
+              "<p>Your information is encrypted on the way to the server, then again at the server and finally at the database."+
+              "<p>Your financial by using the very well regarded Stripe, Inc. to handle payments.</p>"+
+              "<p>You can be extra safe by not using public wifi, sing a credit card or pre-paid card instead of a debit card and where possible asserting your device has no viruses.</p>"+
+            "<h3>How to pay:</h3>"+
+            "<ol>"+
+              "<li>Enter your 16 digit card number along the front of your card,</li>"+
+              "<li>enter the month and day MM/DD as displayed on the from of you card usually labelled <em>good thru</em> or <em>expires by</em>,</li>"+ 
+              "<li>enter the last 3 digits of the Card Security Value (CSV) usually printed on the back of your card where the signature is.</li>"+
+            "<ol>"  
+                
+    +microdocs(st)
+    .form-row.itemGroupColumn.center  
+      -//.payment-form-label.col1.
+      h3 Pay now,
+      label(for="card-element").payment-form-label.col1.
+        credit or debit card:
+      .card-errors(role="alert").col1
+      .card-element.col1
+      span.paynowarrow.paynowNew
+        .glyphicon.glyphicon-ok.customarrow(aria-hidden="true")
+      -var value = "Submit Payment a of €" + (price /100).toFixed(2);
+      #phone-number
+      #email
+      button.btngreen.bounceOnHover.paymentBtn(type="submit") #{value}
+      .weDoOurBest Secured with AES-256 encryption
+        .glyphicon.glyphicon-ok.weDoOurBest
+
+  
+        

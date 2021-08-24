@@ -1,0 +1,32 @@
+include ../microdocs.pug
+-{data}
+  include ./mixins.pug
+  .backendParentDiv
+    h3 Add or alter content:
+    p Use this app to add or alter blog content to use with item types, producers, and themes. 
+    //
+      br
+      p Filter by topic:
+      if(data)
+        +distinctType(data, "topics", "topics")
+      br
+      button.btnwarn.bounceOnHover.resetFilters reset filters
+      br
+    h3 Select a post: 
+    +microdocs('Click on the post title to render it bellow:')
+    ol.postList
+      each val, i in data
+          //.itemprofile(data-topics=val.topics data-title =val.title data-id=val._id)
+          li(data-topics=val.topics data-title =val.title data-id=val._id) #{val.title}
+            span.bounceOnHover.btngreen.fetchpost fetch
+            span.bounceOnHover.btnwarn.deletepost delete
+    h3 Add new post:
+    br          
+    .controlbuttonsnew
+    .alertdiv.errors.hide
+    .postedit.postcontent
+      include ./posttemplate.pug
+    h3 Save post:
+    br
+    .controlbuttonssave
+    

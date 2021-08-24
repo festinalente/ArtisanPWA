@@ -1,0 +1,33 @@
+-//extends ../../includes/folder.pug
+
+
+  
+block otherstyles
+
+block description
+  meta(name="description", content=description)
+  meta(name="keywords", content=keywords)
+block robots
+  meta(name="robots", content= "index")
+block title
+  title=title
+  //-meta(name="title", content=title)
+block bodycontent
+  script(type="application/ld+json")
+    !="{jsonldpage}"
+    
+  -{checkout}  
+  include ../../mixins/folderComponents.pug
+  include ../../blog/mixins.pug
+  
+  .pages.itemGroup#deck
+    .alertdivfolder
+    
+    +page(checkout)
+
+  block orderConfirmation
+    //.orderConfirmation          
+block modals
+  
+block pagespecificscripts
+    

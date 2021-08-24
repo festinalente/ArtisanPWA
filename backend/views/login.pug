@@ -1,0 +1,41 @@
+doctype html
+-{language}
+html(lang="en-EU" xml:lang="en-EU")
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name="theme-color" content="#3366cc")
+    link(rel="stylesheet" href="/backendStatic/css/production/master.min.css" async)
+  body  
+    nav.itemGroupColumn(role='navigation')
+      .itemGroup.backendMenu.appsetupmenu
+        .itemGroupColumn.logocol
+          .logo.bounceOnHover SwiftMo Artisan
+            em.version version 1.0.0-alpha      
+    .itemGroupColumn.backendPage
+      .col1
+        .itemGroupColumn
+          .itemGroup
+            .fullrowAlign.backendParentDiv.titleDiv
+              .maincontent
+                h1 Backend login
+                form(id='loginform' action='/backend/backendlogin', method='post').loginform
+                .item
+                  p.flex
+                    span.bold App user name:
+                    input(id="username", name='username', type='text', placeholder="username").tabindex.inlineBlock.fieldEditable
+                .item
+                  p.flex
+                    span.bold Password:
+                    input(id="password", name='password', type='password', placeholder="password").tabindex.inlineBlock.fieldEditable  
+                .item
+                  p.flex
+                    button.btngreen.loginButton Submit  
+                div.loginError
+                h2 To reset your password contact your dev partner.  
+    .itemGroup#footer
+      p.
+        Any backend code and server side code is published with no licence granted by Tomás Swift-Metcalfe unless otherwise stated.  
+        #[a(href="/documentation") software documentation]            
+script(src='/backendStatic/productionJS/backendmaster.min.js')

@@ -1,0 +1,90 @@
+extends ../masterView.pug
+include ./mixins.pug
+
+mixin cardItemBlog(item)
+  -let link = item['image'][0][0];
+  -if(item['image'][0][0])
+    img(src= process.env.baseURL + link.replace(/^\/+/g, '') alt="An image of a " + item._id.name + " in " + item._id.theme.name)
+  .name #{item._id.name}
+  -//'/shop/themes/:theme/:item'
+  a.name(href='/shop/themes/' + themename_+'/'+name_) #{name}
+
+block otherstyles
+
+block description
+  meta(name="description", content=post.description)
+  meta(name="keywords", content=post.topics)
+
+block robots
+  meta(name="robots", content= "index")
+
+block title
+  title #{post.title}
+
+block bodycontent
+  script(type="application/ld+json")
+    !=jsonldpage 
+  .postInfoBox
+  //
+    ul.breadcrumbs
+      li
+        a(href='/') home
+      if post.url[0]
+        li  
+          a(href= '/' + post.url[0]) #{post.url[0]}
+      if post.url[1]     
+        li   
+          a(href= '/' + post.url[0] + '/' + post.url[1]) #{post.url[1]}
+      if post.url[2]    
+        li   
+          a(href= '/' + post.url[0] + '/' + post.url[1] + '/' + post.url[2]) #{post.url[2]}
+  .blogPostView
+    .postInfoBox
+      -let date = post['post date'].toLocaleString('en-GB', { timeZone: 'GMT', year: 'numeric', month: 'long', day: 'numeric' })
+      if post.alias 
+        p Written by: #{post.alias},
+        p on: #{date}
+      else  
+        .userInfoBox
+          p Written on #{date} by #{entity.mainUser.name.split(' ')[0]}
+          img(src=entity.mainUser.images[0] alt='picture of ' + entity.mainUser.name)
+          -//.quote #{entity.mainUser.tagline}
+    -//h1 #{post.title}
+    .post
+      each val, index in post.content  
+        case val.el
+          when 'p'
+            p !{val.cont}
+          when 'h1'
+            h1 #{val.cont}
+          when 'h2'
+            h2 #{val.cont}  
+          when 'h3'
+            h3 #{val.cont}
+          when 'h4'
+            h4 #{val.cont}
+          when 'em'
+            em #{val.cont}        
+          when 'quotation'
+            .quote 
+              em #{val.cont}            
+          when 'img' 
+            -//+imgMixin(val.cont, post.content[index+1].cont, val)
+            if post.content[index+1] && post.content[index+1].el === 'figcaption' && post.content[index+1].cont
+              +imgMixin(val.cont, post.content[index+1].cont, val)
+            else
+              +imgMixin(val.cont, 'no caption', val)
+          when 'video' 
+            -
+            +videoMixin(val.cont)
+    .postInfoBox        
+    -console.warn('TODO linked items')
+    //  
+      .linkedItems
+        if stock && stock.length > 0
+          each item in stock
+            -
+            +cardItemBlog(item)
+block modals
+  
+block pagespecificscripts

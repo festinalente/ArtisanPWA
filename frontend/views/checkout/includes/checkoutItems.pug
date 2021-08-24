@@ -1,0 +1,71 @@
+-
+  function formatGivenNumber(number, currency){
+    let ar = number.toString().split('');
+    if(ar.length ===1) ar.splice(ar.length -2, 0, '0');
+    ar.splice(ar.length -2, 0, '.');
+    if(ar.length > 6){
+      for(let i = 6; i < ar.length; i+=4){
+        ar.splice(ar.length-i, 0, ' ');
+      }
+    }
+    st = ar.join('');
+    return currency + ' ' + st;
+  }
+
+-
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+-  
+  function hyperbole(){
+    let omg = [
+      'A beautiful', 
+      'An attractive', 
+      'A pleasing',  
+      'A charming',
+      'A distinctive',
+      'A',
+      'A',
+      'A',
+      'A',
+      'A',
+      'A',
+      'A',
+      'A',
+    ];
+    return omg[getRandomInt(omg.length-1)];
+  }
+  
+  
+mixin checkoutItem(id, displayText, page, imgdivClass)
+  -let link = "/shop/" + displayText
+  .itemGroupColumnSmall
+    .shoplink(data-nextpage=page id=id class=imgdivClass data-linktext=displayText).btnnext
+      .overlay1.background1
+      noscript.incard
+        a(href=link) 
+         h1 #{displayText}
+      h1.potBespoke #{displayText}
+            
+      
+      
+-{items}
+  .itemGroupColumnSmall
+    .buttonContainer  
+      if items
+        each item, i in items
+          
+          -let name = (item.name) ? item.name.toLowerCase() : 'item without a name';
+          -let alt = hyperbole() + ' ' + name.toLowerCase() + ' with the ' + item.theme.name + ' design';
+                
+            #[b.estelica #{i+1}.] #{alt}
+            p. 
+              by #{item.producer.name} for: #[b #{formatGivenNumber(item.price, 'EUR')}] 
+              #[em Of which #{item.tax}%, #{formatGivenNumber(Math.round((item.price/(100+item.tax))*item.tax), 'EUR')} is tax.]
+          
+            img(src=item['image links'][0] alt=alt).thumbnail
+
+      else
+        h2 Choosen your items at in the  
+        a(href='./shop') shop 
