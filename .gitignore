@@ -1,6 +1,6 @@
 # Ignore node_modules folder
 /node_modules
-/frontend/css
+/frontend/css/*
 
 #images
 /static/images/*
