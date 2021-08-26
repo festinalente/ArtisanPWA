@@ -42,7 +42,7 @@ require('dotenv').config({path: '../../.env'})
         bcc: `"${cart.sale[0].entity.name}" <${user}>`,
         subject: `Your order confirmation from ${cart.sale[0].entity.name}.`, // Subject line
         template: 'confirmOrder',
-        ctx: sale
+        ctx: cart
 
     };
 
