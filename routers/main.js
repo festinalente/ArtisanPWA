@@ -122,10 +122,11 @@ module.exports = function(app) {
     }
   });
 
+/*
   app.get('/', (req, res)=>{
     let generateJSONLD = makeJSONLD.entity(res.locals.entityDetails);
     res.render('masterView.pug', {nonce: res.locals.nonce, entity: res.locals.entityDetails, jsonld: generateJSONLD});
-  });
+  });*/
 
   app.get('/sw.js', (req, res)=>{
     res.sendFile('/static/frontendPWA/production/sw.js', { root: '.' });
@@ -190,36 +191,36 @@ module.exports = function(app) {
     }
   }
 
-  app.get('/shop', (req, res)=>{
+  app.get('/', (req, res)=>{
     testNewFolder(res, null, null, req.originalUrl);
   });
 
 
-  app.get('/shop/themes', (req, res)=>{
+  app.get('/themes', (req, res)=>{
     testNewFolder(res, 'themes', null, req.originalUrl);
   });
 
-  app.get('/shop/shapes', (req, res)=>{
+  app.get('/shapes', (req, res)=>{
     testNewFolder(res, 'types', null, req.originalUrl);
   });
 
-  app.get('/shop/special', (req, res)=>{
+  app.get('/special', (req, res)=>{
     testNewFolder(res, 'special', null, req.originalUrl);
   });
 
-  app.get('/shop/shapes/:itemtype', (req, res)=>{
+  app.get('/shapes/:itemtype', (req, res)=>{
     testNewFolder(res, req.params.itemtype, null, req.originalUrl);
   });
 
-  app.get('/shop/themes/:theme', (req, res)=>{
+  app.get('/themes/:theme', (req, res)=>{
     testNewFolder(res, req.params.theme, null, req.originalUrl);
   });
 
-  app.get('/shop/shapes/:item/:theme', (req, res)=>{
+  app.get('/shapes/:item/:theme', (req, res)=>{
     testNewFolder(res, req.params.item, req.params.theme, req.originalUrl);
   });
 
-  app.get('/shop/themes/:theme/:item', (req, res)=>{
+  app.get('/themes/:theme/:item', (req, res)=>{
     testNewFolder(res, req.params.theme, req.params.item, req.originalUrl);
   });
 

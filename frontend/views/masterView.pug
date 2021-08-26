@@ -40,11 +40,11 @@ html(lang="en-EU" xml:lang="en-EU")
           -let stJson = JSON.stringify(jsonld);
           script(type="application/ld+json").
             !{stJson}
-        block bodycontent
+        block bodycontent  
           .itemGroup
             +cardLink('/shop', 'shop', 'placeHolderShop')
             +cardLink('/blog', 'blog', 'placeHolderBlog')
-            +cardLink('/our-story', 'my story', 'placeHolderStory')            
+            +cardLink('/our-story', 'my story', 'placeHolderStory')
       .gutters
     //-footer
     .itemGroup.col1.whitespace
