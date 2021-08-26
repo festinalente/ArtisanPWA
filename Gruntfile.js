@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('insertEnvVar', ['replace']);
-  
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     /*****CONCAT*****/
@@ -143,5 +143,4 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-replace');
-
 };
