@@ -170,7 +170,7 @@ function makeBlog(query){
       postcontent.querySelector('.blogImage').addEventListener('input', saveImage);
 
     function saveImage(event){
-      
+
       //attach the event to upload button
       if(hasClick === 0){
         event.target.nextSibling.addEventListener('click', function(e){
@@ -178,7 +178,7 @@ function makeBlog(query){
         e.preventDefault();
 
         let id = document.querySelector('.postcontent').querySelector('.postview').dataset._id;
-        
+
         let time = new Date(),
             mill = time.getTime(),
             imgdata = {
@@ -309,7 +309,7 @@ function makeBlog(query){
     let container = document.createElement('div');
     container.style.display = 'flex';
     let el = document.createElement(elementType);
-    
+
     if(!any(['img', 'video'], elementType)){
       el.setAttribute('contentEditable', true);
       el.classList.add('fieldEditable', 'fieldEditableUp');
@@ -321,14 +321,15 @@ function makeBlog(query){
       makeButton(container, 'moveDownButton', '\u21E9', 'move down', moveDown);
     }else if(elementType === 'img'){
       let cleanURL = (textContent.includes('http://localhost:8080')) ? textContent.replace('http://localhost:8080', '.') : textContent;
-      el.setAttribute('src', textContent);
+      el.setAttribute('src', cleanURL);
       container.appendChild(el);
       document.querySelector(parentElement).appendChild(container);
       makeButton(container, 'deleteButton', 'x', 'delete', deleteImage);
       makeButton(container, 'moveUpButton', '\u21E7', 'move up', moveUp);
       makeButton(container, 'moveDownButton', '\u21E9', 'move down', moveDown);
     }else if(elementType === 'video'){
-      el.setAttribute('src', textContent);
+      let cleanURL = (textContent.includes('http://localhost:8080')) ? textContent.replace('http://localhost:8080', '.') : textContent;
+      el.setAttribute('src', cleanURL);
       el.setAttribute('controls', true);
       el.setAttribute('autoplay', true);
       container.appendChild(el);
@@ -362,7 +363,7 @@ function makeBlog(query){
     xhr(q, '/backend/blogimagedelete', function(cb){
       document.querySelector('.content').removeChild(e.target.parentElement);
       let cbp = JSON.parse(cb);
-      
+
       if(cbp.error){
         swiftmoAlert.setContent(cbp.error).toggle();
       }else{
@@ -386,7 +387,7 @@ function makeBlog(query){
     xhr(q, '/backend/blogvideodelete', function(cb){
       document.querySelector('.content').removeChild(e.target.parentElement);
       let cbp = JSON.parse(cb);
-      
+
       if(cbp.error){
         swiftmoAlert.setContent(cbp.error).toggle();
       }else{
@@ -437,12 +438,12 @@ function makeBlog(query){
       let element = e.firstChild;
       if(any(['IMG', 'VIDEO'], element.tagName)){
         content.push({el: element.tagName.toLowerCase(), cont: element.src});
-        
-        
+
+
       }
       else{
         content.push({el: element.tagName.toLowerCase(), cont: element.textContent});
-        
+
       }
     });
 
@@ -490,13 +491,13 @@ let activateDropDown = (function(){
 
 	 return {
 		setState : function(dropdownName){
-			
+
 			//e.g. bike profifle .itemType
 			//e.g. #itemType
 			let dropdown = document.getElementById(dropdownName);
 			//whatever is selected, values will always match
 			selection = dropdown.options[dropdown.selectedIndex].dataset.attribute;
-			
+
 			dropdownState[dropdownName] = selection;
 
 			return this;
@@ -504,11 +505,11 @@ let activateDropDown = (function(){
 		hideOrDisplay : function(){
 			let keys = Object.values(dropdownState);
 			let allTargetNodes = document.querySelectorAll('.itemprofile');
-			
+
 			allTargetNodes.forEach(function(node){
 				let rank = 0;
 				let nodeDataset = Object.values(node.dataset);
-				
+
 				keys.forEach(function(e,index){
 					if(nodeDataset.includes(e) || e === undefined){
 						//undefined refers to 'ignore this aspect'
@@ -519,7 +520,7 @@ let activateDropDown = (function(){
 					}
 					if(index === keys.length-1){
 						if(rank === keys.length){
-							
+
 
 							//test if table or div
 							if(document.querySelectorAll('.itemprofile')[0].tagName === 'DIV'){
