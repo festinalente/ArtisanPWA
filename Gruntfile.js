@@ -11,6 +11,8 @@ module.exports = function(grunt) {
     drop_console: false
   };
 
+  grunt.registerTask('production', ['env:production', 'concat:scriptsFront', 'terser:js']);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     /*****CONCAT*****/
@@ -47,32 +49,24 @@ module.exports = function(grunt) {
     terser: {
       js: {
         options: {
-          //banner: '/*!SwiftMo-Artisan by Tomás Metcalfe, tomas@swiftmo.com. Licence: UNLICENSED <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-          //beautify: false,
-          //sourceMap: true,
           compress: compressionOptionsUglify,
         },
         files: {'frontend/productionJS/master.min.js': ['frontend/js/**/*.js', 'static/frontendPWA/pwa.js']}
       },
       sw: {
         options: {
-          //banner: '/*! SwifMoJS. by Tomás Metcalfe, tomas@swiftmo.com. Licence: UNLICENSED <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-          //beautify: false,
-          //sourceMap: true,
           compress: compressionOptionsUglify,
         },
         files: {'static/production/js/sw.min.js': ['static/frontendPWA/production/sw.js']}
       },
       backendjs: {
         options: {
-          //banner: '/*! SwifMoJS. by Tomás Metcalfe, tomas@swiftmo.com. Licence: UNLICENSED <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-          //beautify: false,
-          //sourceMap: true,
           compress: compressionOptionsUglify,
         },
         files: {'backend/productionJS/backendmaster.min.js': ['backend/js/*.js']}
       },
     },
+
     cssmin: {
       mastercss: {
         files: {'frontend/css/production/master.min.css': ['frontend/css/production/master.css']}
@@ -122,6 +116,10 @@ module.exports = function(grunt) {
         tasks: ['concat:stylesBack','cssmin:backendcss']
     },
   },
+
+    env: {
+      production: ".env"
+    },
 })
 
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -129,4 +127,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-env');
 };

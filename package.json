@@ -19,6 +19,7 @@
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
+    "grunt-env": "^1.0.1",
     "helmet": "^3.23.3",
     "jimp": "^0.10.3",
     "lodash": "^4.17.21",
