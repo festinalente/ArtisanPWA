@@ -1,5 +1,7 @@
+require('dotenv').config();
 module.exports = function(grunt) {
-  var compressionOptionsUglify = {
+
+  let compressionOptionsUglify = {
     sequences: true,
     dead_code: true,
     conditionals: true,
@@ -118,6 +120,7 @@ module.exports = function(grunt) {
   },
 
     replace: {
+
        dist: {
          options: {
            patterns: [
