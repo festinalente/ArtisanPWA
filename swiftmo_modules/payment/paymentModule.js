@@ -14,7 +14,7 @@ takes an object: {
                 }
 */
 
-const stripe = require('stripe')(process.env.stripeToken, {apiVersion: '2019-05-16'});
+const stripe = require('stripe')(process.env.stripeTokenSecret, {apiVersion: '2019-05-16'});
 
 exports.chargeSCA = function (charge, callback){
   (async () => {

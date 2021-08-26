@@ -49,10 +49,32 @@ key=your_key
 iv=your_iv
 dbname=your_database_name
 user=your_user_name_for_DB
-stripeToken=your_stripe_token
+stripeTokenPublic=your_stripe_token
 imageOutFormat=webp
 baseURL=http://localhost:8080/
 PORT=which_ever_port_you_want_the_app_to_listen_on.
+
+mongopass=your_mongoDB_pass.
+dbusername=your_db_username
+mongoDBUrl=`mongodb+srv://${dbusername}:${mongopass}@cluster0.5a5pf.gcp>
+sessionSecret=7ab22774ee78a48e3fc97b080005993423d329f4cde6999fb876eda7e>
+salt=37183B4A1100B377
+key=4F5B804A2DB2B759196F0A9D93E127D4
+iv=E4E850DFD7206A5EBA58321EB64ABCE7
+dbname=jewelkat
+user=Webapp_user_name
+password=create_a_unique_password
+email=
+emailpass=
+host=
+stripeTokenPublic=pk_test_...
+stripeTokenSecret=sk_test_...
+mongoDBUrl=`mongodb+srv://${dbusername}:${mongopass}@cluster0.5a5pf.gcp.mongodb.net/${dbname}?retryWrites=true&w=majority`
+baseURL=http://localhost:8080/
+imageOutFormat=webp
+PORT=Whichever_port_you_want_the server_to_listen_on.
+
+
 ```
 7. *Fire it up!* In your terminal write `node startapp.js`
 8. In your web browser navigate to either http://localhost:8080/app-set-up or

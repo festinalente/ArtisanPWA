@@ -4,7 +4,7 @@
   */
 function initStripeCartCode(parent, thenDo){
 
-  let stripe = Stripe(process.env.stripeToken),
+  let stripe = Stripe(process.env.stripeTokenPublic),
       elements = stripe.elements(),
       card = elements.create('card');
 
