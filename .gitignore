@@ -9,6 +9,8 @@
 # /static/images/models
 # /static/images/stock
 
+.favicon.ico
+
 /static/video/*
 
 # Ignore files related to keys
