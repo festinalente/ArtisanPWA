@@ -8,7 +8,7 @@ const mongo = swiftMod('mongo');
 
 function encrypt(text) {
   let iv = crypto.randomBytes(IV_LENGTH);
-  let cipher = crypto.createCipheriv('aes-256-cbc', new Buffer.from(ENCRYPTION_KEY), iv);
+  let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
   let encrypted = cipher.update(text);
       encrypted = Buffer.concat([encrypted, cipher.final()]);
   return iv.toString('hex') + ':' + encrypted.toString('hex');
@@ -17,7 +17,7 @@ function encrypt(text) {
 function encryptPromise(text) {
   let promise = new Promise((resolve, reject)=>{
     let iv = crypto.randomBytes(IV_LENGTH);
-    let cipher = crypto.createCipheriv('aes-256-cbc', new Buffer.from(ENCRYPTION_KEY), iv);
+    let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
     let encrypted = cipher.update(text);
         encrypted = Buffer.concat([encrypted, cipher.final()]);
     resolve(iv.toString('hex') + ':' + encrypted.toString('hex'));
@@ -39,16 +39,16 @@ function decrypt(text) {
     if(textParts.length < 2){
       return textParts;
     }
-    let iv = new Buffer(textParts.shift(), 'hex');
-    let encryptedText = new Buffer(textParts.join(':'), 'hex');
-    let decipher = crypto.createDecipheriv('aes-256-cbc', new Buffer.from(ENCRYPTION_KEY), iv);
+    let iv = Buffer.from(textParts.shift(), 'hex');
+    let encryptedText = Buffer.from(textParts.join(':'), 'hex');
+    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
     let decrypted = decipher.update(encryptedText);
         decrypted = Buffer.concat([decrypted, decipher.final()]);
         return decrypted.toString();
   }
   catch(err){
     throw err;
-    console.log('Cypher error pertaining to: ' + text + '. Details: ' +  err);
+    console.warn('Cypher error pertaining to: ' + text + '. Details: ' +  err);
   }
 
 }
@@ -59,7 +59,7 @@ function encrypt_AES_128_ECB(data) {
     let clearEncoding = 'utf8';
     let cipherEncoding = 'base64';
     let cipherChunks = [];
-    let cipher = crypto.createCipheriv('aes-128-ecb', new Buffer.from(ENCRYPTION_KEY), iv);
+    let cipher = crypto.createCipheriv('aes-128-ecb', Buffer.from(ENCRYPTION_KEY), iv);
     cipher.setAutoPadding(true);
     cipherChunks.push(cipher.update(data, clearEncoding, cipherEncoding));
     cipherChunks.push(cipher.final(cipherEncoding));
@@ -71,15 +71,14 @@ function decrypt_AES_128_ECB(data) {
     var clearEncoding = 'utf8';
     var cipherEncoding = 'base64';
     var cipherChunks = [];
-    var decipher = crypto.createDecipheriv('aes-128-cbc', new Buffer.from(ENCRYPTION_KEY), iv);
+    var decipher = crypto.createDecipheriv('aes-128-cbc', Buffer.from(ENCRYPTION_KEY), iv);
     decipher.setAutoPadding(true);
     cipherChunks.push(decipher.update(data, cipherEncoding, clearEncoding));
     cipherChunks.push(decipher.final(clearEncoding));
     return cipherChunks.join('');
 }
 
-console.warn('Cypher key stored in a variable, encryption line 50');
-const password = 'j3k5do9A';
+const password = process.env.password;
 function encryptSimple(text) {
   var cipher = crypto.createCipher(algorithm, password);
   var crypted = cipher.update(text, 'utf8', 'hex');
@@ -100,7 +99,7 @@ function decryptSimple(text) {
   }
 }
 
-console.warn('Write out all non modular calls to make item ref, crypto line 72');
+
 function  makeitemref() {
 
   function makeref(){
@@ -121,7 +120,7 @@ function  makeitemref() {
          let collision = await mongo.checkCollision({itemref: itemref});
 
         if(collision === true){
-          console.log('collision!');
+
           checkCollision();
         }
         else{

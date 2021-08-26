@@ -17,7 +17,7 @@ takes an object: {
 //var invoice = require('./rentalsApp/invoiceModule.js');
 //let stripe = require("stripe")("sk_live_");
 const stripe = require("stripe")(process.env.stripeToken);
-stripe.setApiVersion('2019-05-16');
+stripe.apiVersion('2019-05-16');
 
 exports.chargeSCA = function (charge, callback){
   (async () => {
@@ -29,8 +29,8 @@ exports.chargeSCA = function (charge, callback){
 }
 
 exports.charge = function(charge, callback){
-  
-    
+
+
     //In cent
     let price = function(){
       //e.g. 18992 int:
@@ -64,7 +64,7 @@ exports.charge = function(charge, callback){
       }
     };
 
-    
+
 
     let chargeObjectSCA = {
       payment_method : charge.payment_method_id,
@@ -95,8 +95,8 @@ exports.charge = function(charge, callback){
       }
       else{
         //callback('success');
-        
-        
+
+
         callback(generate_payment_response(intent));
       }
     });

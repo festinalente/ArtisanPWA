@@ -104,7 +104,7 @@ module.exports = function(app) {
         }
       }
       catch(e){
-        
+
       }
     })();
   });
@@ -131,6 +131,10 @@ module.exports = function(app) {
     res.sendFile('/static/frontendPWA/production/sw.js', { root: '.' });
   });
 
+  app.get('/robots.txt', (req, res)=>{
+    res.sendFile('robots.txt', { root: '.' });
+  });
+
   app.get('/pwa.js', (req, res)=>{
     res.sendFile('/static/frontendPWA/pwa.js', { root: '.' });
   });
@@ -143,9 +147,9 @@ module.exports = function(app) {
     try {
       (async ()=>{
         let name = 'About ' + res.locals.entityDetails.name;
-        
+
         let post = await mongo.getBlogsViaQuery({topics: name});
-        
+
         res.render('blog/postView.pug', {post: post[0], nonce: res.locals.nonce, entity: res.locals.entityDetails});
       })();
     } catch (e) {
@@ -453,7 +457,7 @@ module.exports = function(app) {
    * @return {Object} Returns the same cart object.
    */
   app.post('/updateCart', (req, res) =>{
-    
+
     try{
       (async ()=>{
 
@@ -1033,7 +1037,7 @@ function itemsInGroupPromisesFn(itemgroups){
     let singleExampleItemForEachGroup = [];
 
     function remove(indexes, targetArray){
-      
+
       let promise = new Promise((resolve, reject)=>{
         if(indexes.length === 0){
           resolve(targetArray);
@@ -1051,7 +1055,7 @@ function itemsInGroupPromisesFn(itemgroups){
 
 
     for (let i = 0; i < itemgroups.length; i++) {
-      
+
       let correctWhiteSpace = itemgroups[i]['item type']['item group'].match(/([\w\-]+)/g);
       if(correctWhiteSpace){
         if(!duplicateGroups.includes(correctWhiteSpace[0])){
@@ -1064,7 +1068,7 @@ function itemsInGroupPromisesFn(itemgroups){
 
       if(i === itemgroups.length -1){
         Promise.all(promises).then((items)=>{
-          
+
           for (let i = 0; i < items.length; i++) {
             if(items[i].length > 0){
               shopPages[i].data = items[i];
@@ -1074,9 +1078,9 @@ function itemsInGroupPromisesFn(itemgroups){
               toremove.push(i);
             }
             if(i === items.length -1){
-              
+
               remove(toremove, shopPages).then((e)=>{
-                
+
                 resolve({pages: shopPages, frontPageItems: singleExampleItemForEachGroup});
               });
             }
@@ -1244,7 +1248,7 @@ function testNewFolder(res, focusPageAddress, item, path){
                 display: 'reduce'}
             );
             if(i === themes.length -1){
-              
+
               resolve(shop);
             }
           }
