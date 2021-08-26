@@ -61,7 +61,14 @@ baseURL=http://localhost:8080/
 imageOutFormat=webp
 PORT=Whichever_port_you_want_the server_to_listen_on.
 ```
-7. *Fire it up!* In your terminal write `node startapp.js`
+7. Setting up Grunt to integrate your environmental variables into the front-end JavaScript where needed (stripeTokenPublic specifically), on your server:
+```
+sudo npm install -g grunt-cli
+sudo npm install grunt
+grunt insertEnvVar
+```
+This will compile the JavaScript destined for the frontend with your environmental variables in .env.
+7. *Fire it up* In your terminal write `node startapp.js`
 8. In your web browser navigate to either http://localhost:8080/app-set-up or
 https://yourURL.com/app-set-up and fill out the app user name and password, save
 these.

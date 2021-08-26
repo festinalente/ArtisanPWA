@@ -1999,7 +1999,7 @@ function formatGivenNumber(number, currency){
   */
 function initStripeCartCode(parent, thenDo){
 
-  let stripe = Stripe(process.env.stripeTokenPublic),
+  let stripe = Stripe('process.env.stripeTokenPublic'),
       elements = stripe.elements(),
       card = elements.create('card');
 

@@ -11,8 +11,8 @@ module.exports = function(grunt) {
     drop_console: false
   };
 
-  grunt.registerTask('production', ['env:production', 'concat:scriptsFront', 'terser:js']);
-
+  grunt.registerTask('insertEnvVar', ['replace']);
+  
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     /*****CONCAT*****/
@@ -117,9 +117,24 @@ module.exports = function(grunt) {
     },
   },
 
-    env: {
-      production: ".env"
-    },
+    replace: {
+       dist: {
+         options: {
+           patterns: [
+             {
+               match: 'stripeTokenPublic',
+               replacement: process.env.stripeTokenPublic
+             }
+           ]
+         },
+         files: [
+           {
+             expand: true, flatten: true, src: ['frontend/productionJS/master.min.js'], dest: 'frontend/productionJS/master.min.js'
+           }
+         ]
+       }
+     },
+
 })
 
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -127,5 +142,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-env');
+  grunt.loadNpmTasks('grunt-replace');
+
 };
