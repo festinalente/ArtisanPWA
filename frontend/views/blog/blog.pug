@@ -28,7 +28,8 @@ block bodycontent
               .itemprofile(data-topics=val.topics data-title=val.title)
                 h4.fetchpost #{val.title}
                 -if(t && t.cont)
-                  video(src=t.cont controls autoplay muted).fetchpost
+                  -let src = (t.cont.includes('8080')) ? t.cont.split('8080')[1] : t.cont;
+                  video(src=src controls autoplay muted).fetchpost
                   
             -else if(val.content && val.content.find(e => e.el === 'img'))
               -let t = val.content.find(e => e.el === 'img')
