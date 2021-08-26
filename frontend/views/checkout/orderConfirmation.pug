@@ -50,14 +50,14 @@ mixin cartItems(d, i, currency)
     .simpleFlexRow(data-pattern=d._id.pattern data-itemType=d._id.type data-items=JSON.stringify(d.items))
       .flexBy10em.itemImage
         -if(d['image links'] && d['image links'].length > 0)
-          -if (process.env.NODE_ENV === "development")
-              -//adds potterytest, removes leading slashes
-              img(src="http://localhost:8080/"+d['image links'][0].replace(/^\/+/g, '') alt="Image of "+d.name +" with " + d.theme.name)
-          -if (process.env.NODE_ENV === "production") 
-              img(src="https://www.porchespottery.com/"+d['image links'][0] alt="Image of "+d.name +" with " + d.theme.name)  
+          img(src=d['image links'][0] alt="Image of "+d.name +" with " + d.theme.name)  
         -let dimensions = (d['item type'].dimensions) ? d['item type'].dimensions.toString().replace(/,/g, ' x ') + ' mm' : null; 
       .flexBy350
-        p #{d.name} with #{d.theme.name} design | weight ~#{d['item type'].weight} g | dimensions ~#{dimensions}
+        p.
+          #{d['item type'].name} with #{d.theme.name} design. #{d.description} 
+        p.
+          weight ~#{d['item type'].weight} g | dimensions ~#{dimensions}
+        
         p 
           em Price: #{currency} #{price} with #{currency} #{vat} tax (V.A.T.) charged at #{d.tax}%
          

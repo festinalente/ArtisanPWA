@@ -118,7 +118,7 @@ exports.entity = function(data){
       "addressCountry": `${data.PostalAddress.addressCountry}`,
     },
     "email": `${data.email}`,
-    "logo": "https://www.porchespottery.com/images/logos/roundText80px.png",
+    "logo": "/images/logos/roundText80px.png",
     "taxID": `${data['fiscal number']}`,
     "geo": {
       "@type": "GeoCoordinates",
@@ -126,7 +126,7 @@ exports.entity = function(data){
       "longitude": `${data.location.lng}`,
     },
     "name": `${data.name}`,
-    "photo": "https://www.porchespottery.com/images/blog/About%20Porches%20Pottery/About%20Porches%20Pottery-538d.jpg",
+    "photo": "/images/blog/About%20Porches%20Pottery/About%20Porches%20Pottery-538d.jpg",
   };
 
   return jsonld;

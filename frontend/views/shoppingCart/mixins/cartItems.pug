@@ -67,7 +67,7 @@ mixin normal(fullData, i)
             -//adds potterytest, removes leading slashes
             img(src="http://localhost:8080/"+item['image links'][0].replace(/^\/+/g, '') alt="An image of a " + name + " in " + themename).thumbnail
         -if (process.env.NODE_ENV === "production") 
-            img(src="https://www.porchespottery.com/"+item['image links'][0] alt="An image of a " + name + " in " + themename).thumbnail
+            img(src="/"+item['image links'][0] alt="An image of a " + name + " in " + themename).thumbnail
       .break
       .btngrey.removeFromCart(data-itemref=item.itemref) remove  
       .break

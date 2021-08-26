@@ -8,9 +8,9 @@
   /*
     var patterns = new MakeScroller();
       patterns.build('.patternscroller', [
-        'https://www.porchespottery.com/images/bbdesign_slider/artichoke.jpg',
-        'https://www.porchespottery.com/images/bbdesign_slider/primavera.jpg',
-        'https://www.porchespottery.com/images/bbdesign_slider/lilyflower.jpg'
+        '/images/bbdesign_slider/artichoke.jpg',
+        '/images/bbdesign_slider/primavera.jpg',
+        '/images/bbdesign_slider/lilyflower.jpg'
       ]);
   */
 function MakeScroller(){

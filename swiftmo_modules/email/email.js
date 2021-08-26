@@ -35,13 +35,13 @@ transporter.verify(function(error, success) {
   }
 });
 
-exports.sendmail = function (sale) {
-  console.log(sale);
+exports.sendmail = function (cart) {
+  console.log(cart);
   let mailOptions = {
-      from: '"Porches Pottery" <info@porchespottery.com>', // sender address
-      to:  sale[0].clientDetails.email, // list of receivers
-      bcc: '"Porches Pottery" <info@porchespottery.com>',
-      subject: 'Your order confirmation from Porches Pottery.', // Subject line
+      from: `"${cart.sale[0].entity.name}" <${user}>`, // sender address
+      to:  cart.sale[0].clientDetails.email, // list of receivers
+      bcc: `"${cart.sale[0].entity.name}" <${user}>`,
+      subject: `Your order confirmation from ${cart.sale[0].entity.name}.`, // Subject line
       template: 'confirmOrder',
       ctx: sale
 
