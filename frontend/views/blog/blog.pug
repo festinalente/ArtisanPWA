@@ -22,7 +22,7 @@ block bodycontent
       .emphasis Click on a card to read the corresponding post.
       .itemGroup
         each val in data
-          -if(val.title.length > 0)
+          -if(val.title && val.title.length > 0)
             -if(val.content && val.content.find(e => e.el === 'video'))      
               -let t = val.content.find(e => e.el === 'video')
               .itemprofile(data-topics=val.topics data-title=val.title)
