@@ -132,7 +132,7 @@ module.exports = function(grunt) {
          },
          files: [
            {
-             expand: true, flatten: true, src: ['frontend/productionJS/master.min.js'], dest: 'frontend/productionJSwVar/master.min.js'
+             expand: true, flatten: true, src: ['frontend/productionJS/master.min.js'], dest: 'frontend/productionJSwVar'
            }
          ]
        }
