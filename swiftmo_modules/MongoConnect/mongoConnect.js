@@ -1,7 +1,7 @@
 const mongopass = process.env.mongopass;
 const dbname = process.env.dbname;
 const dbusername = process.env.dbusername;
-const url = eval(process.env.mongoDBUrl);
+const url = process.env.mongoDBUrl;
 const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
