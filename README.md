@@ -25,9 +25,10 @@ credentials*
 2. Go to [Mongo Atlas](https://cloud.mongodb.com/), sign up, set up a database for
  your app with a single empty collection called **entity**. Here you will need
  to get your password, username and URL for use further down setting these for
- use.
+ use. Edit the mongoDBUrl url bellow with your server address where it says
+ **server_address**, leave no spaces.
 
-3. Go to [Stripe] https:stripe.com and set up an account, obtain a Stripe token.
+3. Go to [Stripe] https:stripe.com and set up an account, obtain your Stripe tokens.
 
 4. Generate a salt key and iv hashes. E.g. on Linux open your terminal and type
 the following command:
@@ -42,39 +43,23 @@ the following command:
   and fill out the following information you obtained in the previous steps:
 ```
 mongopass=your_mongoDB_pass.
-sessionSecret=your_session_secret
-mongoDBUrl=url_to_connect_to_your_DB.
+dbusername=your_db_username
+sessionSecret=<a_hash>
+mongoDBUrl=<`mongodb+srv://${dbusername}:${mongopass}@server_address/${dbname}?retryWrites=true&w=majority`>.
 salt=your_salt
 key=your_key
 iv=your_iv
-dbname=your_database_name
-user=your_user_name_for_DB
-stripeTokenPublic=your_stripe_token
-imageOutFormat=webp
-baseURL=http://localhost:8080/
-PORT=which_ever_port_you_want_the_app_to_listen_on.
-
-mongopass=your_mongoDB_pass.
-dbusername=your_db_username
-mongoDBUrl=`mongodb+srv://${dbusername}:${mongopass}@cluster0.5a5pf.gcp>
-sessionSecret=7ab22774ee78a48e3fc97b080005993423d329f4cde6999fb876eda7e>
-salt=37183B4A1100B377
-key=4F5B804A2DB2B759196F0A9D93E127D4
-iv=E4E850DFD7206A5EBA58321EB64ABCE7
-dbname=jewelkat
-user=Webapp_user_name
-password=create_a_unique_password
-email=
-emailpass=
-host=
-stripeTokenPublic=pk_test_...
-stripeTokenSecret=sk_test_...
-mongoDBUrl=`mongodb+srv://${dbusername}:${mongopass}@cluster0.5a5pf.gcp.mongodb.net/${dbname}?retryWrites=true&w=majority`
+dbname=<Name_of_the_DB_you_want_the_app_to_use>
+user=<Webapp_user_name>
+password=<Create_a_unique_password>
+email=<!to_be_implemented>
+emailpass=<!to_be_implemented>
+host=<!to_be_implemented>
+stripeTokenPublic=<pk_test_...>
+stripeTokenSecret=<sk_test_...>
 baseURL=http://localhost:8080/
 imageOutFormat=webp
 PORT=Whichever_port_you_want_the server_to_listen_on.
-
-
 ```
 7. *Fire it up!* In your terminal write `node startapp.js`
 8. In your web browser navigate to either http://localhost:8080/app-set-up or
