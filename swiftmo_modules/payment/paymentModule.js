@@ -14,10 +14,7 @@ takes an object: {
                 }
 */
 
-//var invoice = require('./rentalsApp/invoiceModule.js');
-//let stripe = require("stripe")("sk_live_");
-const stripe = require("stripe")(process.env.stripeToken);
-stripe.apiVersion('2019-05-16');
+const stripe = require('stripe')(process.env.stripeToken, {apiVersion: '2019-05-16'});
 
 exports.chargeSCA = function (charge, callback){
   (async () => {
