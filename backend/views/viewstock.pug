@@ -20,6 +20,14 @@ mixin stockMixin(d, index)
       button.btngreen.bounceOnHover.cloneType clone items
       button.btnwarn.bounceOnHover.removeItems remove items
       button.btnpurple.bounceOnHover.removeTemplateItem remove template
+      button.btngreen.bounceOnHover.indexItem index item type
+    div
+      -if(!d._id.indexedGoogle)
+        .warning 
+          em Item type not indexed by Google
+      -else
+        .affirmation
+          em Item type last indexed on #{d._id.indexedGoogle}
   .editItemDiv.itemGroupColumn  
       -//button.btnwarn.bounceOnHover.removeType remove type
 -{stock}

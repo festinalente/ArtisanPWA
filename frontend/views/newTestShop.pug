@@ -54,7 +54,7 @@ mixin themes(data, nextPage)
     each theme, i in data.data
       -let displayText = (theme && theme.name) ? theme.name.split(' - ')[0] : 'no name';
       -let link = "/shop/designs/" + theme.name;
-      -let imageLink = (theme.image) ? theme.image : (theme['image links'] && theme['image links'][0]) ? theme['image links'][0] : 'no image in ' + theme;
+      -let imageLink = (theme.image) ? theme.image : (theme['image links'] && theme['image links'][0]) ? theme['image links'][0] : 'no image in ' + theme.name;
       .itemGroupColumnMedium
         .shoplink.btnnext.fetch.cardImageRules(data-backgroundImage=imageLink data-nextpage=nextPage data-linktext=theme.name data-fetchwhat='theme' data-fetchthis=theme.name)
           noscript.incard

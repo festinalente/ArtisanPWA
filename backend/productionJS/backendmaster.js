@@ -982,6 +982,25 @@ document.addEventListener('click', function(e){
     });
   }
 
+  if(e.target.classList.contains('indexItem')){
+    e.preventDefault();
+    let itemref = JSON.parse(e.target.parentElement.parentElement.dataset.items)[0].itemref;
+    let count = e.target.parentElement.querySelector('.numberInput').value;
+    if(count < 2){
+      swiftmoAlert.setContent(`You need at least one item in stock to index it`).toggle();
+    }
+    
+    xhr({itemref: itemref, count: count}, '/backend/indexItem', function callback(response){
+      if(response === 'OK'){
+        let countdisplay = e.target.parentElement.querySelector('.countval');
+        countdisplay.textContent = parseInt(countdisplay.textContent) + parseInt(count);
+      }else{
+        alert('oops an error occured');
+      }
+    });
+  }
+
+
   if(e.target.classList.contains('editItem')){
     e.preventDefault();
 

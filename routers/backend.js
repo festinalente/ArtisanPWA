@@ -93,9 +93,9 @@ function deleteIfUnalteredAfterOneHour(newitemref){
 function cleanDB(){
   mongo.getStock().then((items) =>{
     items.forEach((item, i) => {
-      
+
       if(Object.keys(item).length < 6){
-        
+
         mongo.deleteItem({itemref: item.itemref});
       }
     });
@@ -182,6 +182,31 @@ backend.post('/editItem', (req, res, next)=>{
   }
   });
 
+backend.post('/indexItem', (req, res, next)=>{
+  let index = swiftMod('autoGoogleIndex');
+  console.warn('URL canonicalization can be done on indexItem');
+
+  let item = await mongo.getItem({itemref: req.body.itemref});
+  let url = `${process.env.baseURL}shop/themes/${item.theme.name}/${item.name}`
+      url = url.replace(' ', '_');
+
+  async ()=>{
+    try{
+      let index = await index(url);
+      if(index === 'success'){
+        let timeNow = new Date().toISOString();
+        let updateItem = await mongo.updateItem({updates: {indexedGoogle: timeNow}}).then(
+          (cb) => {
+            res.send(timeNow);
+          });
+        }
+    }catch(err){
+      res.send('error');
+    }
+  }
+
+});
+
 backend.post('/cloneItem', (req, res, next)=>{
   try{
     (async ()=>{
@@ -230,7 +255,7 @@ function cloneItem(template){
         resolve(clone);
       })();
     } catch (e) {
-      
+
     }
   });
   return promise;
@@ -241,13 +266,13 @@ backend.post('/deleteItemType', (req, res, next)=>{
   try {
     (async ()=>{
       let result = await mongo.deleteItemType(req.body);
-      
+
       if(result === 1){
         res.send('OK');
       }
     })();
   } catch (e) {
-    
+
   }
 });
 
@@ -259,7 +284,7 @@ backend.post('/viewstock', (req, res, next)=>{
 
     })();
   } catch (e) {
-    
+
   }
   /*finally {
 
@@ -304,7 +329,7 @@ backend.post('/saveItemEdit', (req, res, next)=>{
   let items = req.body.itemrefs;
   for (let i = 0; i < items.length; i++) {
     req.body.updates.itemref = items[i].itemref;
-    
+
 
     mongo.updateItem(req.body)
     .then((cb) => {
@@ -442,7 +467,7 @@ backend.post('/deleteVideo', (req, res, next)=>{
 
 
 backend.post('/updateOrDeleteStockItemImage', (req, res, next)=>{
-  
+
   let frontendPathToImage, frontendPathToFolder, backendPathToImage, backendPathToFolder;
 
   frontendPathToImage = req.body.link;
@@ -455,12 +480,12 @@ backend.post('/updateOrDeleteStockItemImage', (req, res, next)=>{
   });
   backendPathToImage = './static' + decodeURIComponent(frontendPathToImage);
   backendPathToFolder = './static' + decodeURIComponent(frontendPathToFolder);
-  
+
   try{
     (async ()=>{
       let file = await fse.remove(backendPathToImage);
       let newImageLinks = await folderContent(backendPathToFolder);
-      
+
       let db = await mongo.bulkUpdateAllOfAnItem(
         {
           filter: {'theme.name': req.body.theme, 'item type.name': req.body.itemtype},
@@ -533,10 +558,10 @@ backend.post('/removestock', function(req, res){
         let folderpath = './static/images/stock/' +req.body.itemtype + '/' + req.body.itemrefs[i].itemref;
         let deleteFromDB = await mongo.deleteItem(deleteOb);
 
-        
+
 
         let deleteFromFileSystem = await deleter.deleteFolderAndContents(folderpath);
-        
+
 
         if(i === req.body.itemrefs.length -1){
           res.send('OK');
@@ -566,7 +591,7 @@ backend.post('/saveitemimage', fileUploads.storeItemImage.single('image'), funct
   (async()=>{
     try {
       let imglinks = await folderContent(path);
-      
+
       let dbinsert = mongo.updateItemType({updates: {name: req.body.name, itemtype: req.body.itemtype, 'image links': imglinks}}, path);
       res.send({message: 'Image saved', link: trimmedPath});
     } catch (e) {
@@ -652,12 +677,12 @@ backend.post('/blog', (req, res)=>{
 });
 
 function deleteBlogIfUnaltered(newblogpostId){
-  
+
   setTimeout(checkifUnaltered, 1 * 60 * 1000);
   function checkifUnaltered(){
     mongo.getBlogsViaQuery({blogid: newblogpostId}).then((blog)=>{
-      
-      
+
+
       if(blog.length === 0){
         deleteBlog(newblogpostId);
       }
@@ -704,7 +729,7 @@ backend.post('/sales', (req, res)=>{
   try {
     (async ()=>{
       let carts = await mongo.getCartsPendingShipping();
-      
+
       if(carts.length === 0){
         res.render('nosales.pug');
         return;
@@ -726,7 +751,7 @@ backend.post('/sales', (req, res)=>{
             let keys = Object.keys(obj);
             let values = Object.values(obj);
               for (var i = 0; i < keys.length; i++) {
-                
+
                 obj[keys[i]] = encryptor.decrypt(values[i]);
 
                 if(i === keys.length -1){
@@ -745,9 +770,9 @@ backend.post('/sales', (req, res)=>{
         for (let i = 0; i < carts.length; i++) {
             let clientDetails = await getClientDetails(carts[i].clientcode);
             let decryptClientDetails = await decryptObject(clientDetails);
-            
+
             let cartItems = await mongo.returnCartItems({cartcode: carts[i].cartcode});
-            
+
             carts[i].summary.orderPlaced = niceDates.fromTimeStamp(carts[i].status.checkOut);
             assembled.push({
               cart: carts[i],
@@ -757,7 +782,7 @@ backend.post('/sales', (req, res)=>{
             });
 
           if(i === carts.length -1){
-            
+
             res.render('sales.pug', {sales: assembled});
           }
         }
@@ -767,7 +792,7 @@ backend.post('/sales', (req, res)=>{
 
     })();
   } catch (e) {
-   
+
  }
 });
 
@@ -811,8 +836,8 @@ backend.post('/blogvideodelete', (req, res)=>{
   let forFse = 'static/' + decodeURIComponent(req.body.video);
   let forMongo = decodeURIComponent(req.body.video);
   req.body.item = {el: 'video', cont: forMongo};
-  
-  
+
+
   try {
     (async ()=>{
       let deletefile = fse.remove(forFse, err=>{if(err) res.send({error: 'Error deleting video'})});
@@ -888,17 +913,17 @@ backend.post('/blogsavenew', (req, res)=>{
   req.body.timestamp = req.body['post date'].getTime();
   req.body.topics = (req.body.topics) ? req.body.topics.split(', ') : [];
   req.body.url =['blog', req.body.topics[0], req.body.title];
-  
+
   //check if duplicate title:
   mongo.getBlogsViaQuery({title: req.body.title})
     .then((result)=>{
       let promise = new Promise((resolve, reject)=>{
         if(result.length === 0){
-          
+
           resolve('new post');
         }
         else{
-          
+
           req.body._id = result[0]._id;
           resolve('update post');
         }
@@ -908,7 +933,7 @@ backend.post('/blogsavenew', (req, res)=>{
       if(exists === 'update post'){
         mongo.blogsave(req);
       }else{
-        
+
         mongo.blogsavenew(req.body)
       }
     })
@@ -922,8 +947,8 @@ backend.post('/blogsavenew', (req, res)=>{
 backend.post('/saveblogimage', fileUploads.storeBlogImage.single('image'), function(req, res, next){
   let path = req.file.path;
   let trimmedPath = path.slice(6);
-  
-  
+
+
   //req.body.image = trimmedPath;
 
   mongo.blogsaveimages(req).then((link)=>{
@@ -1009,7 +1034,7 @@ function getArrayWithAllPathsInDir(path){
   /*backend.post('/saveblogvideo', fileUploads.storeVideo.single('video'), function(req, res, next){
     let path = req.file.path;
     let trimmedPath = path.slice(6);
-    
+
         req.body.image = trimmedPath;
 
     mongo.blogsaveimages(req).then((link)=>{

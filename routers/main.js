@@ -1163,14 +1163,7 @@ function testNewFolder(res, focusPageAddress, item, path){
           ],
           {page: 'special', view: 'specialCard', data: special, display: 'reduce'},
           {page: 'bespoke', view: 'blog', data: bespokePost, display: 'reduce'}
-        /*  [
-            {page: 'bespoke', view: 'blog', data: bespokePost, display: 'reduce', btnText: 'collections'},
-            {page: 'collections', view: 'themes', data: themes[0].theme, display: 'reduce'},//4.1
-
-            //{page: 'tile types', view: 'basicCard', data: tileTypes, display: 'reduce'},
-            //{page: 'panel parameters', view: 'panelParameters', data: null, display: 'reduce'},
-          ],*/
-          //'itemtypes is basically a placeholder:'
+      
       ];
 
       function themesByColours(bespoke){
