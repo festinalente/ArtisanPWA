@@ -190,20 +190,20 @@ backend.post('/indexItem', (req, res, next)=>{
   let url = `${process.env.baseURL}shop/themes/${item.theme.name}/${item.name}`
       url = url.replace(' ', '_');
 
-  async ()=>{
     try{
-      let index = await index(url);
-      if(index === 'success'){
-        let timeNow = new Date().toISOString();
-        let updateItem = await mongo.updateItem({updates: {indexedGoogle: timeNow}}).then(
-          (cb) => {
-            res.send(timeNow);
-          });
-        }
+      (async ()=>{
+        let index = await index(url);
+        if(index === 'success'){
+          let timeNow = new Date().toISOString();
+          let updateItem = await mongo.updateItem({updates: {indexedGoogle: timeNow}}).then(
+            (cb) => {
+              res.send(timeNow);
+            });
+          }
+        })();
     }catch(err){
       res.send('error');
     }
-  }
 
 });
 
