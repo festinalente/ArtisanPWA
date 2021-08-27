@@ -24,7 +24,7 @@ mixin stockMixin(d, index)
     div.indexed
       -if(!d._id.indexedGoogle)
         .warning 
-          em Item type not indexed by Google
+          em Item type not submited to Google index
       -else
         .affirmation
           em Item type last indexed on #{d._id.indexedGoogle}

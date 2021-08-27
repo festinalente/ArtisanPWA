@@ -302,7 +302,8 @@ input, select {
   padding: 0.1em;
   background-color: #000066;
   height: fit-content;
-  margin: 0.1em; }
+  margin: 0.1em;
+  border-style: dashed; }
 
 .itemGCtable {
   align-self: baseline;
