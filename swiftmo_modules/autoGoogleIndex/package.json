@@ -1,0 +1,11 @@
+{
+  "name": "Auto Google Index",
+  "version": "1.0.0",
+  "description": "send URLs to be indexed automatically",
+  "main": "index.js",
+  "author": "Tomás Swift-Metcalfe",
+  "license": "GPL-v3",
+  "dependencies": {
+    "googleapis": "^84.0.0"
+  }
+}
