@@ -188,10 +188,8 @@ backend.post('/indexItem', (req, res, next)=>{
 
     try{
       (async ()=>{
-        console.log({itemref: req.body.itemref});
         let item = await mongo.getItem({itemref: req.body.itemref});
-            console.log(item);
-        let url = `${process.env.baseURL}shop/themes/${item.theme.name}/${item.name}`
+        let url = `${process.env.baseURL}shop/themes/${item[0].theme.name}/${item[0].name}`
             url = url.replace(' ', '_');
         let index = await index(url);
         if(index === 'success'){
