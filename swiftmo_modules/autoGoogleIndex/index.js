@@ -2,7 +2,7 @@ var request = require("request");
 var { google } = require("googleapis");
 var key = require(process.env.indexingApiKey);
 
-module.exports = (url, callback)={
+module.exports = (url, callback)=>{
   const jwtClient = new google.auth.JWT(
     key.client_email,
     null,
