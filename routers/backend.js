@@ -183,15 +183,15 @@ backend.post('/editItem', (req, res, next)=>{
   });
 
 backend.post('/indexItem', (req, res, next)=>{
-  let index = swiftMod('autoGoogleIndex');
   console.warn('URL canonicalization can be done on indexItem');
 
     try{
       (async ()=>{
+        let indexURL = swiftMod('autoGoogleIndex');
         let item = await mongo.getItem({itemref: req.body.itemref});
         let url = `${process.env.baseURL}shop/themes/${item[0].theme.name}/${item[0].name}`
             url = url.replace(' ', '_');
-        let index = await index(url);
+        let index = await indexURL(url);
         if(index === 'success'){
           let timeNow = new Date().toISOString();
           let updateItem = await mongo.updateItem({updates: {indexedGoogle: timeNow}}).then(
