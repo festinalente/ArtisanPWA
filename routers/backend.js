@@ -193,7 +193,7 @@ backend.post('/indexItem', (req, res, next)=>{
         let index = await indexURL(url);
         if(index === 'success'){
           let timeNow = new Date().toISOString();
-          let updateItem = await mongo.updateItem({updates: {indexedGoogle: timeNow}}).then(
+          let updateItem = await mongo.updateItemType({updates: {indexedGoogle: timeNow}}).then(
             (cb) => {
               res.send(timeNow);
             });
