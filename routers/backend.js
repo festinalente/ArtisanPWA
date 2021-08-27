@@ -184,7 +184,6 @@ backend.post('/editItem', (req, res, next)=>{
 
 backend.post('/indexItem', (req, res, next)=>{
   console.warn('URL canonicalization can be done on indexItem');
-
     try{
       (async ()=>{
         let indexURL = swiftMod('autoGoogleIndex');

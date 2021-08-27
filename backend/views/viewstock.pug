@@ -21,7 +21,7 @@ mixin stockMixin(d, index)
       button.btnwarn.bounceOnHover.removeItems remove items
       button.btnpurple.bounceOnHover.removeTemplateItem remove template
       button.btngreen.bounceOnHover.indexItem index item type
-    div
+    div.indexed
       -if(!d._id.indexedGoogle)
         .warning 
           em Item type not indexed by Google
