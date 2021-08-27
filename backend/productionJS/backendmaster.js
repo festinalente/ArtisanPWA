@@ -985,15 +985,19 @@ document.addEventListener('click', function(e){
   if(e.target.classList.contains('indexItem')){
     e.preventDefault();
     let itemref = JSON.parse(e.target.parentElement.parentElement.dataset.items)[0].itemref;
-    let count = e.target.parentElement.querySelector('.numberInput').value;
+    let count = parseInt(e.target.parentElement.parentElement.querySelector('.countval').textContent);
     if(count < 2){
-      swiftmoAlert.setContent(`You need at least one item in stock to index it`).toggle();
+      swiftmoAlert.setContent(`You need at least one item in stock to index it, clone more items`).toggle();
     }
-    
+
     xhr({itemref: itemref, count: count}, '/backend/indexItem', function callback(response){
       if(response === 'OK'){
-        let countdisplay = e.target.parentElement.querySelector('.countval');
-        countdisplay.textContent = parseInt(countdisplay.textContent) + parseInt(count);
+        let affirm = document.createElement('div');
+            affirm.classList.add('affirm');
+        let em = document.createElement('em');
+            em.textContent = `Item type last indexed on ${response}`;
+            affirm.appendChild(em);
+        e.target.parentElement.nextSibling.appendChild(affirm);
       }else{
         alert('oops an error occured');
       }

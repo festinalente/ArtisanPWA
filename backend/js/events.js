@@ -143,9 +143,9 @@ document.addEventListener('click', function(e){
   if(e.target.classList.contains('indexItem')){
     e.preventDefault();
     let itemref = JSON.parse(e.target.parentElement.parentElement.dataset.items)[0].itemref;
-    let count = e.target.parentElement.querySelector('.numberInput').value;
-    if(count < 1){
-      swiftmoAlert.setContent(`You need at least one item in stock to index it`).toggle();
+    let count = parseInt(e.target.parentElement.parentElement.querySelector('.countval').textContent);
+    if(count < 2){
+      swiftmoAlert.setContent(`You need at least one item in stock to index it, clone more items`).toggle();
     }
 
     xhr({itemref: itemref, count: count}, '/backend/indexItem', function callback(response){
