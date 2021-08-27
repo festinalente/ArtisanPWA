@@ -186,9 +186,9 @@ backend.post('/indexItem', (req, res, next)=>{
   let index = swiftMod('autoGoogleIndex');
   console.warn('URL canonicalization can be done on indexItem');
 
-
     try{
       (async ()=>{
+        console.log({itemref: req.body.itemref});
         let item = await mongo.getItem({itemref: req.body.itemref});
             console.log(item);
         let url = `${process.env.baseURL}shop/themes/${item.theme.name}/${item.name}`
