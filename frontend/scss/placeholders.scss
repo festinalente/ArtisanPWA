@@ -162,7 +162,7 @@
   background-position: 25% 44%;
   background-repeat: no-repeat;
   background-size: cover;
-  @include placeholder($secondary-color);
+  //@include placeholder($secondary-color);
 }
 
 .placeHolderVisit{
@@ -170,7 +170,7 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  @include placeholder($secondary-color);
+  //@include placeholder($secondary-color);
 }
 
 .placeHolderBlog{
@@ -178,7 +178,7 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  @include placeholder($secondary-color);
+  //@include placeholder($secondary-color);
 }
 
 .placeHolderStory {
@@ -186,7 +186,7 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  @include placeholder($secondary-color);
+  //@include placeholder($secondary-color);
 }
 
 .buttonContainer {

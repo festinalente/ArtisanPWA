@@ -102,8 +102,8 @@ mixin cardType(id, text, page)
       h1 #{text}
       
 mixin cardLink(link, displayText, imgdivClass)
-  .itemGroupColumnMedium.placeholder
-    a(href=link class=imgdivClass).shoplink.btnnext
+  .itemGroupColumnMedium
+    a(href=link class=imgdivClass).shoplink.btnnext.placeholder
       .overlay1.background1
       p.potBespoke #{displayText}
 
