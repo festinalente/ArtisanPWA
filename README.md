@@ -96,6 +96,14 @@ to add your own changes and compile the SCSS into CSS using the `npm run scss`
 command, or using `./developmentStartUp.sh`. Once Grunt is
 listening for changes, it will update these changes as they are made.
 
+If you just want to compile the current scss to css:
+
+`node-sass frontend/scss -o frontend/css/sassDerived`
+
+and
+
+`grunt compileScss`
+
 ## Pages and shop layout
 Pages, layout and logic can be altered in the `routers/main.js` specifically
 the `testNewFolder(res, focusPageAddress, item, path)` function which maps out the

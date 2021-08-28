@@ -17,6 +17,7 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('insertEnvVar', ['replace']);
+  grunt.registerTask('compileScss', ['concat:stylesFront','cssmin:mastercss']);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -119,8 +120,8 @@ module.exports = function(grunt) {
       backendCSS: {
         files: ['backend/scss/*.scss'],
         tasks: ['concat:stylesBack','cssmin:backendcss']
+      },
     },
-  },
 
     replace: {
 
