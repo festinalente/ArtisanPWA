@@ -73,6 +73,10 @@
     margin: 1em 20vw !important;
   }
 
+  .placeHolder {
+    $boxheight: calc(100vh - #{$mobileMenuHeight});
+  }
+
   .itemButton {
     flex-basis: 17em;
     padding: 1em;

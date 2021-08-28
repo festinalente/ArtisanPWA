@@ -109,6 +109,10 @@
   @include placeholder($darker-primary);
 }
 
+.placeholder {
+  @include placeholder($darker-primary);
+}
+
 .placeHolderBase {
   min-width: 300px;
   display: flex;
