@@ -1,7 +1,4 @@
 require('dotenv').config();
-const mongo = swiftMod('mongo');
-const entity = mongo.entityDetails();
-
 module.exports = function(grunt) {
 
   let compressionOptionsUglify = {
@@ -17,7 +14,7 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('insertEnvVar', ['replace']);
-  grunt.registerTask('compileScss', ['concat:stylesFront','cssmin:mastercss']);
+  grunt.registerTask('compileScss', ['concat:stylesFront','cssmin:mastercss'com]);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
