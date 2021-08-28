@@ -137,15 +137,6 @@
   @include placeholder($secondary-color);
 }
 
-
-.placeHolderTiles{
-  background-image: url('/images/entity/tiles.jpg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  @include placeholder($secondary-color);
-}
-
 .placeHolderSpecial{
   background-image: url('/images/entity/special.webp');
   background-position: 25% 44%;
@@ -163,7 +154,7 @@
 }
 
 .placeHolderShop{
-  background-image: url('/images/entity/Shop.webp');
+  background-image: url('/images/entity/shop.webp');
   background-position: 25% 44%;
   background-repeat: no-repeat;
   background-size: cover;
