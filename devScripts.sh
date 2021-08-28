@@ -1,7 +1,8 @@
 #!/bin/sh
 buildOnAlter(){
   npm run scssCompile &
-  grunt comileScss &
+  grunt scssCompile &
+  grunt scssCompile &
   grunt insertEnvVar;
 }
 
