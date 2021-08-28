@@ -101,5 +101,30 @@ Pages, layout and logic can be altered in the `routers/main.js` specifically
 the `testNewFolder(res, focusPageAddress, item, path)` function which maps out the
 layout and indexes each page.
 
+## Extending templates:
+Add an entry to your template in the DB. For example if I wanted to add "color" to
+"entity" to use in some way, I would add `entity.color: 'blue'` to the one and
+only document entity in the entity collection.
+
+If this option is to be altered by the client on the back end I can add this to the
+relevant template view and it should be automatically integrated. For example
+in this example I would alter "backend/views/entity2.pug" to consume this data
+with:
+
+```
+  -//provide some info to help end users enter the right information:
+  +microdocs("Enter an App color").tabindex
+  -//Fetch the current color if it exists:
+  -let color = (entity && entity.color) ? entity.color :'enter your app color'
+  -//Add a paragraph element that collects textual information (prompt, variable, default value):
+  +paragraph('App color', color, 'color')
+```
+
+This can then be consumed at some other point in the app (e.g. setting the color
+for a PWA)
+
+Some complex data types will require new templates to be built and custom storage
+routes to handle these.
+
 ### TODO
 Add auto sitemap and robots.txt generation.

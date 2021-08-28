@@ -14,6 +14,16 @@ h2 Entity details:
       +microdocs("The person or business who trades using this platform").tabindex
       -let businessName = (entity && entity.provider) ? entity.provider :'enter your business name'
       +paragraph('Business entity name', businessName, 'provider')
+      
+      +microdocs("Schema.org category, e.g JewelryStore, HomeGoodsStore)").tabindex
+      p See #[a(href='https://schema.org/') Schema.org] for categories (e.g JewelryStore):
+      -let storeCategory = (entity && entity.storeCategory) ? entity.storeCategory :'enter a store category'
+      +paragraph('Schema.org store category', storeCategory, 'storeCategory')
+      
+      +microdocs("Price range: 0-9 $, 10-99, $$, 100-999, $$$").tabindex
+      p See #[a(href='https://schema.org/priceRange') Schema.org]
+      -let priceRange = (entity && entity.priceRange) ? entity.priceRange : '$$'
+      +paragraph('Price range', priceRange, 'priceRange') 
     
       +microdocs("The trading name of the business").tabindex
       -let tradingName = (entity && entity.name) ? entity.name :'enter your trading name'

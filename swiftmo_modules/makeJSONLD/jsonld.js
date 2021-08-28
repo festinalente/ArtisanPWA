@@ -103,11 +103,11 @@ exports.entity = function(data){
 
   let jsonld = {
     "@context": "http://schema.org",
-    "@type": "HomeGoodsStore",
-    "priceRange": "€€",
+    "@type": `${data.storeCategory}`,
+    "priceRange": `${data.priceRange}`,
     "currenciesAccepted": `${data.currency}`,
     "openingHours": `${formatOpeningTimes(data.openingHours)}`,
-    "paymentAccepted": "Cash, Credit Card",
+    "paymentAccepted": "Credit Card",
     "telephone": `${'+' + data['country code'] + data.phone}`,
     "address": {
       "@type": "PostalAddress",

@@ -115,6 +115,8 @@ exports.seedDB = ()=>{
           let entityOb = {
                                 username : "",
                                 password : "",
+                                storeCategory: "",
+                                priceRange: "",
                                 otherUsers: [
                                   {
                                     username : "",
