@@ -14,7 +14,8 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('insertEnvVar', ['replace']);
-  grunt.registerTask('compileScss', ['concat:stylesFront','cssmin:mastercss']);
+  grunt.registerTask('scssCompile', ['concat:stylesFront']);
+  grunt.registerTask('minifyCSS', ['cssmin:mastercss']);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
