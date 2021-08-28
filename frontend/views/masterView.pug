@@ -42,7 +42,8 @@ html(lang="en-EU" xml:lang="en-EU")
             !{stJson}
         block bodycontent  
           .itemGroup.bannerFrontPage
-            .quote #{entity["shop description tag"]}
+            h4
+              .quote #{entity["shop description tag"]}
           .itemGroup
             +cardLink('/shop', 'shop', 'placeHolderShop')
             +cardLink('/blog', 'blog', 'placeHolderBlog')
