@@ -98,7 +98,7 @@ listening for changes, it will update these changes as they are made.
 
 If you just want to compile the current scss to css:
 
-`node-sass frontend/scss -o frontend/css/sassDerived`
+`npm run scssCompile`
 
 and
 

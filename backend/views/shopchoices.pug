@@ -44,11 +44,9 @@ h2 Shop options:
       +images(null, 'placeholderimage', 'special', '/images/entity/special.jpg')
       +images(null, 'placeholderimage', 'bespoke', '/images/entity/bespoke.jpg')
       h4 Home page, /
+      p Shop link image: 
       +images(null, 'placeholderimage', 'shop', '/images/entity/shop.jpg')
-      +images(null, 'placeholderimage', 'shop', '/images/entity/blog.jpg')
+      p Blog link image:
+      +images(null, 'placeholderimage', 'blog', '/images/entity/blog.jpg')
+      p About or "my story" image: 
       +images(null, 'placeholderimage', 'about', '/images/entity/about.jpg')
-      //
-        +microdocs("The person or business who trades using this platform").tabindex
-        -let businessName = (entity && entity.provider) ? entity.provider :'enter your business name'
-        +paragraph('Business entity name', businessName, 'provider')
-      
