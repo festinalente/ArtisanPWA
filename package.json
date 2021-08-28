@@ -60,6 +60,7 @@
     "start": "node startapp.js",
     "scss": "node-sass --watch frontend/scss -o frontend/css/sassDerived",
     "scss1": "node-sass --watch backend/scss -o backend/css/sassDerived",
+    "scssCompile": "node-sass frontend/scss -o frontend/css/sassDerived",
     "cleanDB": "node -e 'require(\"./routers/backend\").cleanDB()'"
   },
   "repository": {
