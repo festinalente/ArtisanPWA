@@ -6,6 +6,7 @@ mixin paragraph(field, content, originalName)
     span.bold #{field}:
     span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
       -//span.flexrow.controlParent(data-type=originalName data-values=content tabindex='0').editContol      
+
 h2 Entity details:
 .backendbox 
   -//.itemprofile
@@ -14,6 +15,11 @@ h2 Entity details:
       +microdocs("The person or business who trades using this platform").tabindex
       -let businessName = (entity && entity.provider) ? entity.provider :'enter your business name'
       +paragraph('Business entity name', businessName, 'provider')
+      
+      +microdocs("Entity app color, in hex value, e.g. white is #fff").tabindex
+      p See #[a(href='https://htmlcolorcodes.com/') https://htmlcolorcodes.com/] to find a color picker:
+      -let color = (entity && entity.color) ? entity.color :'enter your app color hex value (e.g #fff)'
+      +paragraph('App color hex value', color , 'color')
       
       +microdocs("Schema.org category, e.g JewelryStore, HomeGoodsStore)").tabindex
       p See #[a(href='https://schema.org/') Schema.org] for categories (e.g JewelryStore):

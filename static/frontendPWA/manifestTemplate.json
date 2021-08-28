@@ -1,10 +1,10 @@
 {
-  "name": "JewelKat",
-  "short_name": "JewelKat",
+  "name": "@@appName",
+  "short_name": "@@appName",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
-  "theme_color": "#dab3aa",
+  "theme_color": "@@entityColor",
   "description": "PWA caching views and serving notifications where permited.",
   "orientation": "portrait-primary",
   "scope": "/",

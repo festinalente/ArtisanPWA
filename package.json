@@ -64,17 +64,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/festinalente/pottery.git"
+    "url": "git+https://github.com/festinalente/ArtisanPWA.git"
   },
   "keywords": [
-    "pottery",
+    "artisanal",
     "product",
     "e-commerce",
     "appified",
     "business"
   ],
   "bugs": {
-    "url": "https://github.com/festinalente/pottery/issues"
+    "url": "https://github.com/festinalente/ArtisanPWA/issues"
   },
-  "homepage": "https://github.com/festinalente/pottery#readme"
+  "homepage": "https://github.com/festinalente/ArtisanPWA#readme"
 }

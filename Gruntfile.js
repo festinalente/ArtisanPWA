@@ -1,4 +1,7 @@
 require('dotenv').config();
+const mongo = swiftMod('mongo');
+const entity = mongo.entityDetails();
+
 module.exports = function(grunt) {
 
   let compressionOptionsUglify = {

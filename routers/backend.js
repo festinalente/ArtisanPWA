@@ -19,7 +19,6 @@ const fileUploads = swiftMod('multerFileUpload');
 const niceDates = swiftMod('niceDates');
 const sharp = swiftMod('sharpImageManipulation');
 
-
 backend.use(function (req, res, next) {
   try{
     (async ()=>{
@@ -122,10 +121,35 @@ backend.post('/shopchoices', (req, res, next)=>{
   res.render('shopchoices.pug', {entity: res.locals.entityDetails});
 });
 
+
+function updateFile(path, pattern, replacement){
+  fs.readFile(path, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    let re = new RegExp(pattern,"g");
+    let result = data.replace(re, replacement);
+
+    fs.writeFile(path, result, 'utf8', function (err) {
+       if (err) return console.log(err);
+    });
+  });
+}
+
 backend.post('/updateEntity', (req, res, next)=>{
+
   if(Object.keys(req.body).length > 0 && req.body.constructor === Object){
     req.body.username = (req.body.username) ? encryptor.encrypt(req.body.username) : res.locals.entityDetails.username;
     req.body.password = (req.body.password) ? encryptor.encrypt(req.body.password) : res.locals.entityDetails.password;
+
+    if(req.body.name){
+      updateFile('./static/frontendPWA/manifest.json', 'appName', req.body.name);
+    }
+
+    if(req.body.color){
+      updateFile('./static/frontendPWA/manifest.json', 'entityColor', req.body.color);
+    }
+
     (async ()=>{
       let insert = await mongo.updateEntity(req.body);
       res.send('OK');
