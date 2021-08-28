@@ -1,9 +1,13 @@
 #!/bin/sh
 buildOnAlter(){
   npm run scssCompile &
+  echo "Ran npm scssCompile" &
   grunt scssCompile &
-  grunt scssCompile &
-  grunt insertEnvVar;
+  echo "Ran grunt scssCompile" &
+  grunt minifyCSS &
+  echo "Ran grunt minify" &
+  grunt insertEnvVar &
+  echo "Inserted variable from .env";
 }
 
 startUpDev(){
