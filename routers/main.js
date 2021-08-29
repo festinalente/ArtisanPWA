@@ -61,7 +61,7 @@ module.exports = function(app) {
 						return "'nonce-" + res.locals.nonce + "'";
 					},
         ],
-				connectSrc: ["'self'",  '*.endurance.link', '*.stripe.com', '*.mapbox.com'],
+				connectSrc: ["'self'",  '*.openstreetmap.org', '*.stripe.com', '*.mapbox.com'],
 				fontSrc: ["'self'", '*.gstatic.com'],
 				imgSrc: [
           "'self'",
