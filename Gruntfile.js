@@ -14,7 +14,11 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('insertEnvVar', ['replace']);
-  grunt.registerTask('scssCompile', ['concat:stylesFront']);
+
+  /**Updating styles**/
+  //git pull new styles, then
+  //npm run scssCompile, then
+  grunt.registerTask('scssConcat', ['concat:stylesFront']);
   grunt.registerTask('minifyCSS', ['cssmin:mastercss']);
 
   grunt.initConfig({
