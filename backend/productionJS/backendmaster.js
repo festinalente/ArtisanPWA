@@ -1162,7 +1162,7 @@ document.addEventListener('click', function(e){
 
       let shopLocation = new MapFunctions('.locationMap', '400px');
       shopLocation
-        .generateMap('https://tile.openstreetmap.org/${z}/${x}/${y}.png	')
+        .generateMap('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'')
         .locateOnClick(true, null, null, false)
         .invalidateSize();
 
@@ -1198,7 +1198,7 @@ document.addEventListener('click', function(e){
         for (let i = 0; i < coordinates.length; i++) {
           let location = JSON.parse(coordinates[i].dataset.location);
           maps[i] = new MapFunctions(coordinates[i], '400px');
-          maps[i].generateMap('https://tile.openstreetmap.org/${z}/${x}/${y}.png')
+          maps[i].generateMap('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'')
             .locateOnClick(true, null, null, false)
             .invalidateSize();
 
