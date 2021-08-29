@@ -1163,7 +1163,6 @@ function testNewFolder(res, focusPageAddress, item, path){
           ],
           {page: 'special', view: 'specialCard', data: special, display: 'reduce'},
           {page: 'bespoke', view: 'blog', data: bespokePost, display: 'reduce'}
-      
       ];
 
       function themesByColours(bespoke){

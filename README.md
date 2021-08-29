@@ -13,7 +13,7 @@ See an example of the app here: [JewelKat](https://jewelkat.studio)
 ```
 mkdir yourAppName
 cd yourAppName
-git clone https://github.com/festinalente/SwiftMo-Artisan.git
+git clone https://github.com/festinalente/ArtisanPWA.git
 git submodule init
 git submodule update
 npm install
@@ -78,23 +78,74 @@ these.
 (the blog interface is currently a bit clunky but ensures clean data is saved).
 11. Add whatever content you want to sell and support materials (blog, video).
 
-## Appearance and templating
+# Personalizing the app
+
+## Appearance and templates
 General appearance can be changed by adding custom icons for the shopping cart,
 business name, fonts, colors, shadows. I don't recommend altering layouts as this
 might likely break the folder containing the pages, the folder system allows
 for pages to be deeply nested and may easily include thousands of pages:
+
+Pages, layout and logic can be altered in the `routers/main.js` specifically
+the `testNewFolder(res, focusPageAddress, item, path)` function which maps out the
+layout and indexes each page resulting in the following HTML:
 
 ```
 <div class="pages itemGroup" id="deck">
  <div class="page focus 0" data-address="0" data-name="start"> </div>
  <div class="page reduce 1|0" data-address="1|0" data-name="themes"> </div>
  <div class="page reduce 1|1|0" data-address="1|1|0" data-name="Queen Anne's Lace"> </div>
+ ...and so on
 </div>
 ```
-By default, the rendered front-end CSS isn't included, to get the CSS you will need
-to add your own changes and compile the SCSS into CSS using the `npm run scss`
-command, or using `./developmentStartUp.sh`. Once Grunt is
-listening for changes, it will update these changes as they are made.
+
+**The above HTML is rendered via an object**
+```
+let shop = [ {page: 'start', view: 'shopbase', data: frontPage, display: 'focus'},
+             [ {page: 'themes', view: 'themes', data: themes[0].theme, display: 'reduce'},
+               []
+             ]
+           ];
+```
+
+**In pseudo code:**
+```
+[ {data-address: 0},
+  [ {data-address: 1|0},
+    [ {data-address: 1|1|0}]
+  ]
+]
+```
+
+**each page is represented by an object:**
+`{page: 'start', view: 'shopbase', data: frontPage, display: 'focus'}`
+
+**Where**
+* page = page name
+* view = view to be rendered for each page
+* data = data to be added to the rendered view
+* display = whether the page is to be displayed or not.
+
+**A page can followed be it's "child" pages in an array**
+`[{page}, ['child pages']]`
+
+The data attribute "address" is a unique identifier for each page which also maps
+to it's location in the tree:
+
+0 (parent) -> 1|0 (first child) -> 1|1|0 (first child of child)
+0 (parent) -> 2|0 (second child) -> 2|1|0 (first child of second child)
+
+## Styles
+Front end styles are included in a separate repo of SCSS. These need to be altered
+to suit your project and then compiled:
+
+ `npm run scss`
+
+or using
+
+`./developmentStartUp.sh`.
+
+Once Grunt is listening for changes, it will update these changes as they are made.
 
 If you just want to compile the current scss to css:
 
@@ -104,35 +155,34 @@ and
 
 `grunt compileScss`
 
-## Pages and shop layout
-Pages, layout and logic can be altered in the `routers/main.js` specifically
-the `testNewFolder(res, focusPageAddress, item, path)` function which maps out the
-layout and indexes each page.
+It's recommended you clone the repo [https://github.com/festinalente/ArtisanPWAstyles](ArtisanPWAstyles)
+and have git track your new clone (see .gitmodules in the root of this project)
 
 ## Extending templates:
-Add an entry to your template in the DB. For example if I wanted to add "color" to
-"entity" to use in some way, I would add `entity.color: 'blue'` to the one and
-only document entity in the entity collection.
 
-If this option is to be altered by the client on the back end I can add this to the
-relevant template view and it should be automatically integrated. For example
-in this example I would alter "backend/views/entity2.pug" to consume this data
-with:
+**Example, adding a color**
+Add an entry to your database. For example if I wanted to add "color" to
+"entity" to use in some way, I would add `entity.color: 'blue'` to the entity
+document.
+
+To then consume this information I would alter "backend/views/entity2.pug" to
+consume this data with:
 
 ```
   -//provide some info to help end users enter the right information:
+
   +microdocs("Enter an App color").tabindex
+
   -//Fetch the current color if it exists:
+
   -let color = (entity && entity.color) ? entity.color :'enter your app color'
+
   -//Add a paragraph element that collects textual information (prompt, variable, default value):
+
   +paragraph('App color', color, 'color')
 ```
-
-This can then be consumed at some other point in the app (e.g. setting the color
-for a PWA)
-
 Some complex data types will require new templates to be built and custom storage
 routes to handle these.
 
 ### TODO
-Add auto sitemap and robots.txt generation.
+Add auto sitemap and robots.txt auto generation, auto submit to index. 

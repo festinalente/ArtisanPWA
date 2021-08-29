@@ -4,3 +4,6 @@
 [submodule "backend/mapfunctions"]
 	path = backend/mapfunctions
 	url = https://github.com/festinalente/mapfunctions.git
+[submodule "frontend/scss"]
+	path = frontend/scss
+	url = https://github.com/festinalente/ArtisanPWAstyles.git
