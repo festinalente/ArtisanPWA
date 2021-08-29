@@ -96,7 +96,7 @@ exports.entity = function(data){
       "longitude": `${data.location.lng}`,
     },
     "name": `${data.name}`,
-    "photo": "/images/entity/marquee.webp",
+    "photo": "./images/entity/marquee.webp",
   };
 
   return jsonld;
