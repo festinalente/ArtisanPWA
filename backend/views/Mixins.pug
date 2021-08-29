@@ -13,7 +13,7 @@
 
 mixin images(itemref, imageType, imageName, imagelink)
   +microdocs('<p>Click on the plus sign to open the image adder, the minus to close it.</p>') 
-  p.flex(data-fieldname='images' data-imageType=imageType) #[span.bold.itemname #{imageName} #{imageType} images:]
+  p.flex(data-fieldname='images' data-imageType=imageType) #[span.bold.itemname #{imageName} #{imageType} image:]
     span.inlineBlock.fieldEditable
       span.flexrow.controlParent    
         span.expand.editContol.editImages(tabindex='0')
