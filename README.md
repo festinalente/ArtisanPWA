@@ -151,9 +151,9 @@ If you just want to compile the current scss to css:
 
 `npm run scssCompile`
 
-and
+followed by
 
-`grunt compileScss`
+`grunt minifyCSS`
 
 It's recommended you clone the repo [https://github.com/festinalente/ArtisanPWAstyles](ArtisanPWAstyles)
 and have git track your new clone (see .gitmodules in the root of this project)
@@ -185,4 +185,4 @@ Some complex data types will require new templates to be built and custom storag
 routes to handle these.
 
 ### TODO
-Add auto sitemap and robots.txt auto generation, auto submit to index. 
+Add auto sitemap and robots.txt auto generation, auto submit to index.
