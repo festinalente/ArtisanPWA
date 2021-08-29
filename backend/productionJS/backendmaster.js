@@ -1871,7 +1871,7 @@ function addImageEvent(){
 }
 
 function saveImage(imagediv, item){
-  
+
   if(imagediv.dataset.type === 'stock'){
     saveNewItem(imagediv, item);
   }
@@ -1885,14 +1885,14 @@ function saveImage(imagediv, item){
     placeholderimage(imagediv, item)
   }
   else{
-    
+
     itemtypeAlter(imagediv, item);
   }
 }
 
 function saveOnAddName(imagediv, item){
-  
-  
+
+
   let savebtn = document.createElement('button');
       savebtn.classList.add('btngreen', 'sms2', 'bounceOnHover', 'block');
       savebtn.textContent = 'Save Image';
@@ -1944,7 +1944,7 @@ function saveNewItem(imagediv, item){
 
     imagediv.querySelector('.deleteImage').addEventListener('click', function(e){
       xhr({link: JSON.parse(callback).link}, '/backend/deleteImage', function(){
-        
+
         let child = imagediv.querySelector('.lazyImage').firstChild;
         imagediv.querySelector('.lazyImage').removeChild(child);
       });
@@ -1954,7 +1954,7 @@ function saveNewItem(imagediv, item){
 }
 
 function itemtypeAlter(imagediv, item){
-  
+
 
   if(imagediv.querySelector('.imagetype') && imagediv.querySelector('.imagetype').value === ''){
     saveOnAddName(imagediv, item);
@@ -1984,8 +1984,6 @@ function itemtypeAlter(imagediv, item){
 }
 
 function placeholderimage(imagediv, item){
-  
-
   let time = new Date(),
       mill = time.getTime(),
       placeholder = imagediv.dataset.value,

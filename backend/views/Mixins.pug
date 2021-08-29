@@ -21,7 +21,8 @@ mixin images(itemref, imageType, imageName, imagelink)
   .hide
     .emphasis.itemGroupColumn.images
       .fullrowAlign
-        .div(class='distinctImage '+imageType data-type=imageType data-imageName=imageName data-itemref=itemref).distinctImage
+        -//data-value is a misnomer, should be image name. 
+        .div(class='distinctImage '+imageType data-type=imageType data-value=imageName data-itemref=itemref).distinctImage
           +microdocs("<p>Choose an image, label it, then click upload and this image will be saved with that label in the file path.</p>").tabindex
           h3.title #{imageName} image
           .line
