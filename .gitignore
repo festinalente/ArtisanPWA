@@ -10,7 +10,7 @@
 # /static/images/models
 # /static/images/stock
 
-.favicon.ico
+favicon.ico
 
 /static/video/*
 
