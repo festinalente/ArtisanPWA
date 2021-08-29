@@ -371,6 +371,7 @@ document.addEventListener('click', function(e){
         }
       }
       entityAlterEvents();
+      attachImageLoadEvent();
 
     });
   }
