@@ -88,7 +88,10 @@ exports.entity = function(data){
       "addressCountry": `${data.PostalAddress.addressCountry}`,
     },
     "email": `${data.email}`,
-    "logo": "/images/logos/android-chrome-192x192.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/logos/android-chrome-192x192.png"
+    },
     "taxID": `${data['fiscal number']}`,
     "geo": {
       "@type": "GeoCoordinates",
@@ -96,7 +99,10 @@ exports.entity = function(data){
       "longitude": `${data.location.lng}`,
     },
     "name": `${data.name}`,
-    "photo": "./images/entity/marquee.webp",
+    "image": {
+      "@type": "ImageObject",
+      "url": "/images/entity/marquee.webp"
+    }
   };
 
   return jsonld;
