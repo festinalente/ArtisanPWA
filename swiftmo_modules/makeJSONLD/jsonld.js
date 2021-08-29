@@ -1,34 +1,5 @@
 /*jshint esversion: 6 */
 
-/*  { _id:
-     { weight: 628,
-       type: 'Pot Stand',
-       pattern: 'Rambling Rose - Pink & Green',
-       dimensions: [Array] },
-    firstExample:
-     { _id: 5fa2981ca266110f54dc6335,
-       itemref: 'd2801732',
-       created: 1604491292685,
-       'image links': [Array],
-       itemtype: 'new stock item',
-       name: 'Pot Stand',
-       description:
-        'This medium hot plate features a non-slip cork backing, which is perfect\n for protecting delicate surfaces from hot pots and pans while cooking \nor while serving at table. We use cork because, like clay, it is a \nversatile natural material, and like pottery it is synonymous with \nAlgarve.     ',
-       'item type': [Object],
-       'linked post': [Object],
-       price: 1800,
-       producer: [Object],
-       quantity: 10,
-       special: false,
-       tax: 23,
-       theme: [Object],
-       templateItem: false },
-    count: 1,
-    items: [ 'd2801732' ],
-    image:
-     [ '/images/stock/new stock item/Pot Stand/Rambling Rose - Pink & Green/12c38112-main.jpg',
-       '/images/stock/new stock item/Pot Stand/Rambling Rose - Pink & Green/12c38112-secondary.jpg' ] }
-*/
 exports.artesanato = function(data){
   let promise = new Promise((resolve, reject)=>{
     if(data && data[0] && data[0].firstExample){
@@ -58,7 +29,6 @@ exports.artesanato = function(data){
 }
 
 exports.entity = function(data){
-
   function formatOpeningTimes(times){
       let days = Object.keys(times);
       let sorted = [[]]
@@ -118,7 +88,7 @@ exports.entity = function(data){
       "addressCountry": `${data.PostalAddress.addressCountry}`,
     },
     "email": `${data.email}`,
-    "logo": "/images/logos/roundText80px.png",
+    "logo": "/images/logos/android-chrome-192x192.png",
     "taxID": `${data['fiscal number']}`,
     "geo": {
       "@type": "GeoCoordinates",
@@ -126,7 +96,7 @@ exports.entity = function(data){
       "longitude": `${data.location.lng}`,
     },
     "name": `${data.name}`,
-    "photo": "/images/blog/About%20Porches%20Pottery/About%20Porches%20Pottery-538d.jpg",
+    "photo": "/images/entity/marqueeImage.jpg",
   };
 
   return jsonld;

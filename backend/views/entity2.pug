@@ -1,20 +1,17 @@
 -{entity}
-
 include ./microdocs.pug  
-mixin paragraph(field, content, originalName)
-  p.flex
-    span.bold #{field}:
-    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
-      -//span.flexrow.controlParent(data-type=originalName data-values=content tabindex='0').editContol      
+include ./Mixins.pug
 
 h2 Entity details:
 .backendbox 
-  -//.itemprofile
   .itemGroup
     .itemGCtable        
       +microdocs("The person or business who trades using this platform").tabindex
       -let businessName = (entity && entity.provider) ? entity.provider :'enter your business name'
       +paragraph('Business entity name', businessName, 'provider')
+      
+      p Marquee image (a image to be used as a banner): 
+      +images(null, 'placeholderimage', 'themes', '/images/entity/marqueeImage.jpg')
       
       +microdocs("Entity app color, in hex value, e.g. white is #fff").tabindex
       p See #[a(href='https://htmlcolorcodes.com/') https://htmlcolorcodes.com/] to find a color picker:

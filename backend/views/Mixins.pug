@@ -1,0 +1,43 @@
+-/**
+   * @function images - Render image upload widget
+   * @param {string|null} itemref - The itemref (refrence code) of an item
+   * @param {string} imageType - Dictates how the image will be handled and saved: 
+   *  'stock' === image of stock,  'theme' === image for theme, 'producer' === image of a producer/artisan 
+   *  'placeholderimage' === used for link boxes, 'item type' (default) === images for an item type. 
+   * @param {string} imageName - The name the image is to be saved with. 
+   * @param {string} imageLink - The link to the image, relevant if you want to
+   *   have only a single image to update. 
+   * @description See backend/js/images.js to see the various routes used for 
+   *  each image type.  
+   */
+
+mixin images(itemref, imageType, imageName, imagelink)
+  +microdocs('<p>Click on the plus sign to open the image adder, the minus to close it.</p>') 
+  p.flex(data-fieldname='images' data-imageType=imageType) #[span.bold.itemname #{imageName} #{imageType} images:]
+    span.inlineBlock.fieldEditable
+      span.flexrow.controlParent    
+        span.expand.editContol.editImages(tabindex='0')
+        span.contract.editContol(tabindex='0')
+  .hide
+    .emphasis.itemGroupColumn.images
+      .fullrowAlign
+        .div(class='distinctImage '+imageType data-type=imageType data-imageName=imageName data-itemref=itemref).distinctImage
+          +microdocs("<p>Choose an image, label it, then click upload and this image will be saved with that label in the file path.</p>").tabindex
+          h3.title #{imageName} image
+          .line
+          .lazyImage.displayImage(data-image='main')
+          if imagelink
+            img(src=imagelink)
+          .line
+          h4 Upload or alter image:
+          +microdocs("<p>When you select an image, it will be uploaded to the "+imageType+" folder.</p><p>If an image exists with the same name it will get over written.</p>").tabindex
+          input(type="file" name="imageInput" accept="image/*").imageInput.tabindex
+          
+          .line
+          +microdocs("This button deletes this image, it is not recoverable after deletion.").tabindex
+          button.btnwarn.sms2.bounceOnHover(type="button" data-type=imageType data-imageName=imageName ).deleteImage.tabindex Delete this image
+
+mixin paragraph(field, content, originalName)
+  p.flex
+    span.bold #{field}:
+    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}

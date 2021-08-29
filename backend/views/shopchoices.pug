@@ -1,37 +1,6 @@
 include ./microdocs.pug  
-mixin paragraph(field, content, originalName)
-  p.flex
-    span.bold #{field}:
-    span.inlineBlock.edit.fieldEditable(data-fieldname=originalName).tabindex #{content}
-    
-mixin images(itemref, placeholder, value, imagelink)
-  -
-  -//+images(d.itemref, 'stock', null, d[field])
-  +microdocs('<p>Click on the plus sign to open the image adder, the minus to close it.</p>') 
-  p.flex(data-fieldname='images' data-placeholder=placeholder) #[span.bold.itemname #{value} #{placeholder} images:]
-    span.inlineBlock.fieldEditable
-      span.flexrow.controlParent    
-        span.expand.editContol.editImages(tabindex='0')
-        span.contract.editContol(tabindex='0')
-  .hide
-    .emphasis.itemGroupColumn.images
-      .fullrowAlign
-        .div(class='distinctImage '+placeholder data-type=placeholder data-value=value data-itemref=itemref).distinctImage
-          +microdocs("<p>Choose an image, label it, then click upload and this image will be saved with that label in the file path.</p>").tabindex
-          h3.title #{value} image
-          .line
-          .lazyImage.displayImage(data-image='main')
-          if imagelink
-            img(src=imagelink)
-          .line
-          h4 Upload or alter image:
-          +microdocs("<p>When you select an image, it will be uploaded to the "+placeholder+" folder.</p><p>If an image exists with the same name it will get over written.</p>").tabindex
-          input(type="file" name="imageInput" accept="image/*").imageInput.tabindex
-          
-          .line
-          +microdocs("This button deletes this image, it is not recoverable after deletion.").tabindex
-          button.btnwarn.sms2.bounceOnHover(type="button" data-type=placeholder data-value=value ).deleteImage.tabindex Delete this image
-          
+include ./Mixins.pug
+              
 h2 Shop options:
 .backendbox 
   .itemGroup
