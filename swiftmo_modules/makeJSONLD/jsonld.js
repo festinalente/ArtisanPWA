@@ -102,7 +102,8 @@ exports.entity = function(data){
     "image": {
       "@type": "ImageObject",
       "url": "/images/entity/marquee.webp"
-    }
+    },
+    "url": "/"
   };
 
   return jsonld;
