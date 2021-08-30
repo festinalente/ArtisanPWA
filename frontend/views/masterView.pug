@@ -59,7 +59,6 @@ html(lang="en-EU" xml:lang="en-EU")
     if entity.otherPointsOfSale[0].PostalAddress.name  
       a(href="https://www.google.pt/maps/dir//"+entity.location.lat + ',' +entity.location.lng target="_blank").item.center.hideForPrint Directions
     #footer.itemGroup
-      .itemGroup.emphasis
       if entity.otherPointsOfSale[0].PostalAddress.name
         .itemGroupColumnSmall.emphasis
           h4 Address:
@@ -78,16 +77,16 @@ html(lang="en-EU" xml:lang="en-EU")
             span(itemprop="openingHours" content=schemaname + times)
               b #{keys[i]}:
               p times
-      div.copyright.itemGroup
-        p 
-          span This website uses one nessesary session cookie, a service worker, no tracking cookie, no 3rd party cookies. No explicit user consent is required under EU law. 
-          a(href="/personal-data-and-cookies") Cookies and privacy policy, 
-          a(href="/terms") Terms &amp; Conditions, 
-          a(href="/website-terms") Website terms of use.    
-      div.copyright.itemGroup
-        p.
-          Any client facing code <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-only</a> by <a href="https://appyou.pro">Tomás Swift-Metcalfe</a>, website content <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a> #{entity.provider}.
-        //- sitemap
+    div.copyright.itemGroup
+      p 
+        span This website uses one nessesary session cookie, a service worker, no tracking cookie, no 3rd party cookies. No explicit user consent is required under EU law. 
+        a(href="/personal-data-and-cookies") Cookies and privacy policy, 
+        a(href="/terms") Terms &amp; Conditions, 
+        a(href="/website-terms") Website terms of use.    
+    div.copyright.itemGroup
+      p.
+        Any client facing code <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-only</a> by <a href="https://appyou.pro">Tomás Swift-Metcalfe</a>, website content <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC-BY-NC-ND 4.0</a> #{entity.provider}.
+      //- sitemap
     block modals
     
     .modal.alertmodal
