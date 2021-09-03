@@ -1144,7 +1144,9 @@ function makePlaceHolderPageOnly(pages, view, data){
   return promise;
 }
 
+
 function testNewFolder(res, focusPageAddress, item, path){
+  console.log(`Call`);
 
   let frontPage = [
     {id: 'browseByTheme', text: "themes", imgdivClass: 'placeHolderTheme', linkto:'themes'},
