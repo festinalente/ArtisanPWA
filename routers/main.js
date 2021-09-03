@@ -235,7 +235,6 @@ module.exports = function(app) {
     testNewFolder(res, req.params.theme, req.params.item, req.originalUrl);
   });
 
-
   app.post('/stockByItemGroup', (req, res)=> {
     try{
       (async ()=>{
@@ -1067,8 +1066,9 @@ function itemsInGroupPromisesFn(itemgroups){
 
 
     for (let i = 0; i < itemgroups.length; i++) {
-
+      console.log('SAN');
       let correctWhiteSpace = itemgroups[i]['item type']['item group'].match(/([\w\-]+)/g);
+      console.log(correctWhiteSpace);
       if(correctWhiteSpace){
         if(!duplicateGroups.includes(correctWhiteSpace[0])){
           promises.push(mongo.stockQuery({'item type.item group': correctWhiteSpace[0]}));
@@ -1084,6 +1084,7 @@ function itemsInGroupPromisesFn(itemgroups){
           for (let i = 0; i < items.length; i++) {
             if(items[i].length > 0){
               shopPages[i].data = items[i];
+              shopPages[i].view = 'itemGroupView';
               singleExampleItemForEachGroup.push(items[i][0]);
             }
             else{
