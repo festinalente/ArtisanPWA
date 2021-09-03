@@ -168,9 +168,9 @@ mixin blog(data, next)
           h2 #{data.btnText}
                
 mixin itemGroupView(data, id, next) 
-  -console.log([...arguments])
   .buttonContainer
-    +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
+    -console.warn('jsonld not passed for items via item groups');
+    +cardItemByTheme(data[0].firstExample, data[0].items, data[0].count, null)
 
 mixin page(shop)
   each page, i in shop
