@@ -1067,7 +1067,8 @@ function itemsInGroupPromisesFn(itemgroups){
 
     for (let i = 0; i < itemgroups.length; i++) {
       let group = itemgroups[i]['item type']['item group'];
-      console.log('SAN');
+
+      console.log(group);
       let correctWhiteSpace = (group) ? group.match(/([\w\-]+)/g)[0] : false;
 
       console.log(correctWhiteSpace);
