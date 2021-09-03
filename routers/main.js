@@ -1070,14 +1070,11 @@ function itemsInGroupPromisesFn(itemgroups){
       //tests is not null, is not empty string, is a word and not whitespace
       let correctWhiteSpace = (group && group.length > 0 && !/[^a-zA-Z]/.test(group)) ? group.match(/([\w\-]+)/g)[0] : false;
 
-      console.log(correctWhiteSpace);
       if(correctWhiteSpace){
         if(!duplicateGroups.includes(correctWhiteSpace)){
           //DATA:
           promises.push(mongo.stockQuery({'item type.item group': correctWhiteSpace}));
           //shopPages.push({page: correctWhiteSpace[0], view: 'specificItemGroup', data: '', display: 'reduce'});
-
-          //
           shopPages.push({page: correctWhiteSpace, view: null, data: null, display: 'reduce'});
           duplicateGroups.push(correctWhiteSpace);
         }

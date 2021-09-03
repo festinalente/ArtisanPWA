@@ -127,8 +127,6 @@ mixin itemtypes(data, id, next)
       .itemGroupColumnSmall
         .shoplink(data-nextpage=next data-fetchwhat='name' data-fetchthis=type data-linktext=type).btnnext.textonly.fetchItemTypes
           h1 #{type}
-        
-      -//+cardType('browseByItemType', type, next)  
 
 mixin blog(data, next) 
   -let post = data.data
@@ -169,13 +167,13 @@ mixin blog(data, next)
         .bigYellowBtn.btnnext.center(data-nextpage=next)
           h2 #{data.btnText}
                
-mixin itemsByTheme(data, id, next) 
-  -{stock}
+mixin itemGroupView(data, id, next) 
   .buttonContainer
-    if stock
-      each item, i in stock
-        +cardItemByTheme(item.firstExample)
+    +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
 
+-/*
+  Next page can be largely ignored and 
+  */
 mixin page(shop)
   each page, i in shop
     -if(Array.isArray(page) === true)
