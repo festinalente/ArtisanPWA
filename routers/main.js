@@ -1067,14 +1067,17 @@ function itemsInGroupPromisesFn(itemgroups){
 
     for (let i = 0; i < itemgroups.length; i++) {
       console.log('SAN');
-      let correctWhiteSpace = itemgroups[i]['item type']['item group'].match(/([\w\-]+)/g);
+      let correctWhiteSpace = itemgroups[i]['item type']['item group'].match(/([\w\-]+)/g)[0];
       console.log(correctWhiteSpace);
       if(correctWhiteSpace){
-        if(!duplicateGroups.includes(correctWhiteSpace[0])){
-          promises.push(mongo.stockQuery({'item type.item group': correctWhiteSpace[0]}));
+        if(!duplicateGroups.includes(correctWhiteSpace)){
+          //DATA:
+          promises.push(mongo.stockQuery({'item type.item group': correctWhiteSpace}));
           //shopPages.push({page: correctWhiteSpace[0], view: 'specificItemGroup', data: '', display: 'reduce'});
-          shopPages.push({page: correctWhiteSpace[0], view: null, data: null, display: 'reduce'});
-          duplicateGroups.push(correctWhiteSpace[0]);
+
+          //
+          shopPages.push({page: correctWhiteSpace, view: null, data: null, display: 'reduce'});
+          duplicateGroups.push(correctWhiteSpace);
         }
       }
 
@@ -1085,6 +1088,7 @@ function itemsInGroupPromisesFn(itemgroups){
             if(items[i].length > 0){
               shopPages[i].data = items[i];
               shopPages[i].view = 'itemGroupView';
+              console.log(shopPages[i]);
               singleExampleItemForEachGroup.push(items[i][0]);
             }
             else{
