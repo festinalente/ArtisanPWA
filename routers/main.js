@@ -1066,28 +1066,31 @@ function itemsInGroupPromisesFn(itemgroups){
 
 
     for (let i = 0; i < itemgroups.length; i++) {
+      //Filter out item groups
       let group = itemgroups[i]['item type']['item group'];
+
       //tests is not null, is not empty string, is a word and not whitespace
       let correctWhiteSpace = (group && group.length > 0 && !/[^a-zA-Z]/.test(group)) ? group.match(/([\w\-]+)/g)[0] : false;
 
       if(correctWhiteSpace){
         if(!duplicateGroups.includes(correctWhiteSpace)){
-          //DATA:
+          //Data to retrieve:
           promises.push(mongo.stockQuery({'item type.item group': correctWhiteSpace}));
-          //shopPages.push({page: correctWhiteSpace[0], view: 'specificItemGroup', data: '', display: 'reduce'});
+          //Place holder object for page:
           shopPages.push({page: correctWhiteSpace, view: null, data: null, display: 'reduce'});
+          //Tracking array
           duplicateGroups.push(correctWhiteSpace);
         }
       }
 
       if(i === itemgroups.length -1){
         Promise.all(promises).then((items)=>{
-
+          console.log('items');
+          console.log(items.length);
           for (let i = 0; i < items.length; i++) {
             if(items[i].length > 0){
               shopPages[i].data = items[i];
               shopPages[i].view = 'itemGroupView';
-              console.log(shopPages[i]);
               singleExampleItemForEachGroup.push(items[i][0]);
             }
             else{
