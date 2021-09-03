@@ -172,7 +172,7 @@ mixin itemGroupView(data, id, next)
     -console.warn('jsonld not passed for items via item groups');
     -console.log(data)
     if data.data
-      each item, i in stock
+      each item, i in data.data
         +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
 
 mixin page(shop)
