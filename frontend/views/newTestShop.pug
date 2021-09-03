@@ -170,6 +170,7 @@ mixin blog(data, next)
 mixin itemGroupView(data, id, next) 
   .buttonContainer
     -console.warn('jsonld not passed for items via item groups');
+    -console.log(data)
     +cardItemByTheme(data[0].firstExample, data[0].items, data[0].count, null)
 
 mixin page(shop)
