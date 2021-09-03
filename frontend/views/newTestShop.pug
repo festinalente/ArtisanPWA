@@ -171,9 +171,6 @@ mixin itemGroupView(data, id, next)
   .buttonContainer
     +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
 
--/*
-  Next page can be largely ignored and 
-  */
 mixin page(shop)
   each page, i in shop
     -if(Array.isArray(page) === true)
