@@ -200,6 +200,7 @@ module.exports = function(app) {
   });
 
   app.get('/shop/types', (req, res)=>{
+    console.log('Types w/out param');
     testNewFolder(res, 'itemgroups', null, req.originalUrl);
   });
 
@@ -222,6 +223,7 @@ module.exports = function(app) {
   });
 
   app.get('/shop/types/:type', (req, res)=>{
+    console.log('Types with param');
     testNewFolder(res, req.params.type, null, req.originalUrl);
   });
 
