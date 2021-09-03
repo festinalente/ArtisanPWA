@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     preLoadItems(themes, '/stockQuery');
   }
 
+  if(window.location.pathname.includes('/shop/themes')){
+    attachCloseEvents();
+  }
+
   if(window.location.pathname.includes('/checkout')){
 
   }
@@ -135,8 +139,8 @@ function url(){
 }
 
 function preLoadItems(items, route){
-  
-  
+
+
   for (let i = 0; i < items.length; i++) {
     if(items[i].dataset.fetchthis.match(/'/g)) {
       items[i].dataset.fetchthis.replace("'", "\'");
@@ -166,14 +170,14 @@ function openModalViaPath(){
     item = (path.includes('shapes')) ? path[3].replace(/_/g, ' ') : path[4].replace(/_/g, ' '),
     theme = (path.includes('shapes')) ? path[4].replace(/_/g, ' ') : path[3].replace(/_/g, ' '),
     target = document.querySelector('.itemModal[data-item="' + escapeQuotes(item) +'"][ data-theme="' + escapeQuotes(theme) +'"]');
-    
+
     openModalSetState(page, target, path[4]);
-    
+
   }
 };
 
 function fetchItem(target, route){
-  
+
   if(document.querySelector('[data-name="'+ target.dataset.fetchthis+'"]' ).innerHTML.length < 10){
     xhr({ [target.dataset.fetchwhat] : target.dataset.fetchthis}, route, function(res){
       let targetPage = document.querySelector('[data-name="'+ target.dataset.fetchthis+'"]' );
@@ -193,7 +197,7 @@ function clickEvents() {
     }
 
     if(e.target.classList.contains('arrowBack')){
-      
+
       let ar = window.history.state.page.split('|');
       let n = ar.slice().slice(0,-1);
       n[n.length-1] = parseInt(n[n.length-1])-1;
@@ -242,7 +246,7 @@ function clickEvents() {
     }
 
     if(e.target.classList.contains('fetchItemTypes')){
-      
+
       fetchItem(e.target, '/stockByItemType');
     }
 
@@ -421,7 +425,7 @@ function addScroller(targetDiv){
 }
 
 function openModal(page, targetModal, themeOrItem){
-  
+
   targetModal.style.display = 'block';
   addScroller(targetModal.querySelector('.scroller'));
 
@@ -472,7 +476,7 @@ function openModal(page, targetModal, themeOrItem){
   * @memberof clientEventDelegation.modalMethods
   */
 function openModalSetState(page, targetModal, themeOrItem){
-  
+
   openModal(page, targetModal, themeOrItem);
   let len = window.location.pathname.split('/').length;
       //add = (len < 5) ? window.location.pathname + '/' +  targetModal.dataset.theme.replace(/ /g, '_') + '/' +  targetModal.dataset.item.replace(/ /g, '_')  : window.location.pathname;

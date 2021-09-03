@@ -223,7 +223,9 @@ module.exports = function(app) {
   });
 
   app.get('/shop/types/:type', (req, res)=>{
-    console.log('Types with param');
+    console.warn(`Check multiple get requests, build frontend preloading
+      rather than server rendering, extend to include SPECIFIC item (themes + shape)
+      on the next level and modal toggle on visit`);
     testNewFolder(res, req.params.type, null, req.originalUrl);
   });
 
