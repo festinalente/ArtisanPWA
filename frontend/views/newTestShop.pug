@@ -168,6 +168,7 @@ mixin blog(data, next)
           h2 #{data.btnText}
                
 mixin itemGroupView(data, id, next) 
+  -console.log([...arguments])
   .buttonContainer
     +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
 
