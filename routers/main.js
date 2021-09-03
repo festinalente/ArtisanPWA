@@ -199,6 +199,10 @@ module.exports = function(app) {
     testNewFolder(res, 'themes', null, req.originalUrl);
   });
 
+  app.get('/shop/types', (req, res)=>{
+    testNewFolder(res, 'itemgroups', null, req.originalUrl);
+  });
+
   app.get('/shop/shapes', (req, res)=>{
     testNewFolder(res, 'types', null, req.originalUrl);
   });
@@ -207,6 +211,8 @@ module.exports = function(app) {
     testNewFolder(res, 'special', null, req.originalUrl);
   });
 
+  //Third level links
+
   app.get('/shop/shapes/:itemtype', (req, res)=>{
     testNewFolder(res, req.params.itemtype, null, req.originalUrl);
   });
@@ -214,6 +220,12 @@ module.exports = function(app) {
   app.get('/shop/themes/:theme', (req, res)=>{
     testNewFolder(res, req.params.theme, null, req.originalUrl);
   });
+
+  app.get('/shop/types/:type', (req, res)=>{
+    testNewFolder(res, req.params.type, null, req.originalUrl);
+  });
+
+  //Fourth level links
 
   app.get('/shop/shapes/:item/:theme', (req, res)=>{
     testNewFolder(res, req.params.item, req.params.theme, req.originalUrl);
@@ -1138,7 +1150,6 @@ function testNewFolder(res, focusPageAddress, item, path){
   try{
     (async ()=>{
       let themes = await mongo.getAllThemesV2();
-
       //shapes
       let itemtypes = await mongo.getFullDocumentByDistinctValue('item type.name');
       let itemtypepages = await createItemTypePages(itemtypes);
@@ -1252,6 +1263,8 @@ function testNewFolder(res, focusPageAddress, item, path){
       //let addTileThemeBlog = await addTileThemes(tileThemes, shop, 4, 2);
       let processedShop =  await processPages(addthemes, focusPageAddress);
 
+      generateSiteMap(shop, blog, others);
+
       res.render('newTestShop.pug', {
         shop: processedShop,
         itemModalToggle: item,
@@ -1267,6 +1280,22 @@ function testNewFolder(res, focusPageAddress, item, path){
   catch(err){
     console.warn(err);
   }
+}
+
+function generateSiteMap(shop, blog, others){
+  console.log(shop);
+  let dNow = new Date()
+  let datest = dNow.getFullYear() + '-' +
+  let base = `<?xml version="1.0" encoding="UTF-8"?>
+                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+                <url><loc>"/shop"</loc><lastmod></lastmod></url>`;
+  let closingTag = `</urlset>`
+
+  /**
+    * @param url - relative URL
+    * @param date - 2018-06-04
+    */
+  let newUrl = ()=>{`<url><loc>${url}</loc><lastmod>${date}</lastmod></url>`};
 }
 
 function processPages(shop, focusPageAddress){
