@@ -171,8 +171,9 @@ mixin itemGroupView(data, id, next)
   .buttonContainer
     -console.warn('jsonld not passed for items via item groups');
     -console.log(data)
-    -let item = data.data[0]
-    +cardItemByTheme(item.firstExample, item.items, item.count, null)
+    if data.data
+      each item, i in stock
+        +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
 
 mixin page(shop)
   each page, i in shop

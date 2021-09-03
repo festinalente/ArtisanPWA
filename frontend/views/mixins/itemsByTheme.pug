@@ -3,5 +3,4 @@ include folderComponents.pug
 .buttonContainer
   if stock
     each item, i in stock
-      
       +cardItemByTheme(item.firstExample, item.items, item.count, item.jsonld)
