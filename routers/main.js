@@ -1281,7 +1281,7 @@ function testNewFolder(res, focusPageAddress, item, path){
     console.warn(err);
   }
 }
-
+/*
 function generateSiteMap(shop, blog, others){
   console.log(shop);
   let dNow = new Date()
@@ -1294,10 +1294,10 @@ function generateSiteMap(shop, blog, others){
   /**
     * @param url - relative URL
     * @param date - 2018-06-04
-    */
   let newUrl = ()=>{`<url><loc>${url}</loc><lastmod>${date}</lastmod></url>`};
 }
 
+*/
 function processPages(shop, focusPageAddress){
 
   let promise = new Promise((resolve, reject)=>{
