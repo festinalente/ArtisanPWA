@@ -1263,7 +1263,7 @@ function testNewFolder(res, focusPageAddress, item, path){
       //let addTileThemeBlog = await addTileThemes(tileThemes, shop, 4, 2);
       let processedShop =  await processPages(addthemes, focusPageAddress);
 
-      generateSiteMap(shop, blog, others);
+      //generateSiteMap(shop, blog, others);
 
       res.render('newTestShop.pug', {
         shop: processedShop,
